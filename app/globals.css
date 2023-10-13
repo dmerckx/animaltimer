@@ -17,11 +17,19 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: auto;
+  color: #313083;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    #e9deff 0,
+    #d5eafd 1200px,
+    #fbf4f4 2400px,
+    #f6deec 4000px,
+    #e9deff 6000px,
+    #d5eafd 8000px,
+    #fbf4f4 10000px
+  );
 }
