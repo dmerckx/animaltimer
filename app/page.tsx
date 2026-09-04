@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#f7f5ef] text-[#203028]">
-      <MobileHeader
+      <MobileNavigation
         view={view}
         onExercises={showExercises}
         onParcours={showParcours}
@@ -115,7 +115,7 @@ export default function Home() {
   );
 }
 
-function MobileHeader({
+function MobileNavigation({
   view,
   onExercises,
   onParcours,
@@ -127,41 +127,29 @@ function MobileHeader({
   onTimer: () => void;
 }) {
   return (
-    <>
-      <header className="sticky top-0 z-30 flex items-center justify-between border-b border-[#dcd9d1] bg-[#f7f5ef]/95 px-4 py-3 backdrop-blur lg:hidden">
-        <Brand compact />
-        <span className="rounded-full border border-[#dedbd3] bg-white px-3 py-1.5 text-[11px] font-black text-[#5c675f] shadow-sm">
-          {view === "exercises"
-            ? "Oefeningen"
-            : view === "parcours"
-              ? "Parcours"
-              : "Dierentimer"}
-        </span>
-      </header>
-      <nav
-        className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-3 gap-1 rounded-[22px] border border-[#d6d3cb] bg-[#f4f2ec]/96 p-1.5 shadow-[0_14px_40px_rgba(30,40,34,0.20)] backdrop-blur lg:hidden"
-        aria-label="Hoofdnavigatie"
-      >
-        <MobileNavButton
-          active={view === "exercises"}
-          icon={<LibraryIcon />}
-          label="Oefeningen"
-          onClick={onExercises}
-        />
-        <MobileNavButton
-          active={view === "parcours"}
-          icon={<ParcoursIcon />}
-          label="Parcours"
-          onClick={onParcours}
-        />
-        <MobileNavButton
-          active={view === "timer"}
-          icon={<TimerIcon />}
-          label="Dierentimer"
-          onClick={onTimer}
-        />
-      </nav>
-    </>
+    <nav
+      className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-3 gap-1 rounded-[22px] border border-[#d6d3cb] bg-[#f4f2ec]/96 p-1.5 shadow-[0_14px_40px_rgba(30,40,34,0.20)] backdrop-blur lg:hidden"
+      aria-label="Hoofdnavigatie"
+    >
+      <MobileNavButton
+        active={view === "exercises"}
+        icon={<LibraryIcon />}
+        label="Oefeningen"
+        onClick={onExercises}
+      />
+      <MobileNavButton
+        active={view === "parcours"}
+        icon={<ParcoursIcon />}
+        label="Parcours"
+        onClick={onParcours}
+      />
+      <MobileNavButton
+        active={view === "timer"}
+        icon={<TimerIcon />}
+        label="Dierentimer"
+        onClick={onTimer}
+      />
+    </nav>
   );
 }
 
@@ -194,15 +182,9 @@ function MobileNavButton({
   );
 }
 
-function Brand({ compact = false }: { compact?: boolean }) {
+function Brand() {
   return (
-    <div
-      className={
-        compact
-          ? "flex items-center gap-2.5"
-          : "flex items-center gap-2.5 px-5 pt-7"
-      }
-    >
+    <div className="flex items-center gap-2.5 px-5 pt-7">
       <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-[#203a2d] shadow-sm">
         <span className="absolute left-2 top-2 h-3 w-3 rounded-full bg-[#f5c655]" />
         <span className="absolute bottom-2 right-2 h-4 w-4 rounded-full bg-[#ef8068]" />

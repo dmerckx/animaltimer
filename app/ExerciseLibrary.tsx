@@ -1,20 +1,13 @@
 "use client";
 
-import {
-  categories,
-  exercises,
-  type Exercise,
-  type ExerciseCategory,
-} from "@/data/exercises";
-import { useMemo, useState } from "react";
+import { exercises, type Exercise } from "@/data/exercises";
+import { useState } from "react";
 
 type ExerciseLibraryProps = {
   selectedExercise: Exercise | null;
   onOpenExercise: (exercise: Exercise) => void;
   onCloseExercise: () => void;
 };
-
-type MaterialFilter = "all" | "none" | "ball" | "hoop" | "bench";
 
 const accentClasses: Record<
   Exercise["accent"],
@@ -52,14 +45,6 @@ const accentClasses: Record<
   },
 };
 
-const materialOptions: { value: MaterialFilter; label: string }[] = [
-  { value: "all", label: "Alle materialen" },
-  { value: "none", label: "Zonder materiaal" },
-  { value: "ball", label: "Met bal" },
-  { value: "hoop", label: "Met hoepel" },
-  { value: "bench", label: "Met bank" },
-];
-
 export function ExerciseLibrary({
   selectedExercise,
   onOpenExercise,
@@ -81,173 +66,19 @@ export function ExerciseLibrary({
 function ExerciseOverview({
   onOpenExercise,
 }: Pick<ExerciseLibraryProps, "onOpenExercise">) {
-  const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<ExerciseCategory | "Alle">("Alle");
-  const [materialFilter, setMaterialFilter] =
-    useState<MaterialFilter>("all");
-
-  const filteredExercises = useMemo(() => {
-    const normalizedQuery = query.trim().toLocaleLowerCase("nl-BE");
-
-    return exercises.filter((exercise) => {
-      const haystack = [
-        exercise.title,
-        exercise.summary,
-        exercise.category,
-        ...exercise.material,
-        ...(exercise.optionalMaterial ?? []),
-      ]
-        .join(" ")
-        .toLocaleLowerCase("nl-BE");
-      const allMaterial = [
-        ...exercise.material,
-        ...(exercise.optionalMaterial ?? []),
-      ]
-        .join(" ")
-        .toLocaleLowerCase("nl-BE");
-
-      const matchesMaterial =
-        materialFilter === "all" ||
-        (materialFilter === "none" && exercise.material.length === 0) ||
-        (materialFilter === "ball" && allMaterial.includes("bal")) ||
-        (materialFilter === "hoop" && allMaterial.includes("hoepel")) ||
-        (materialFilter === "bench" && allMaterial.includes("bank"));
-
-      return (
-        (!normalizedQuery || haystack.includes(normalizedQuery)) &&
-        (category === "Alle" || exercise.category === category) &&
-        matchesMaterial
-      );
-    });
-  }, [category, materialFilter, query]);
-
   return (
-    <div className="mx-auto w-full max-w-[1440px] px-5 pb-16 pt-7 sm:px-8 lg:px-10 lg:pt-10">
-      <header className="flex flex-col gap-5 border-b border-[#dedbd3] pb-8 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-[#e05d42]">
-            Lesvoorbereiding
-          </p>
-          <h1 className="text-balance text-4xl font-black tracking-[-0.045em] text-[#18251f] sm:text-5xl">
-            Wat gaan we vandaag doen?
-          </h1>
-          <p className="mt-3 max-w-2xl text-base leading-7 text-[#68736c]">
-            Kies een oefening, blader door de opdrachten en pas ze aan aan jouw
-            groep.
-          </p>
-        </div>
-        <div className="flex shrink-0 items-center gap-3 rounded-2xl border border-[#dedbd3] bg-white px-4 py-3 shadow-[0_8px_30px_rgba(40,48,43,0.05)]">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e9f4e8] text-xl">
-            🗂️
-          </span>
-          <div>
-            <div className="text-xl font-black leading-none text-[#203028]">
-              {exercises.length}
-            </div>
-            <div className="mt-1 text-xs font-semibold text-[#788179]">
-              oefeningen klaar
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <section className="pt-7" aria-label="Oefeningen zoeken en filteren">
-        <div className="flex flex-col gap-3 lg:flex-row">
-          <label className="relative flex-1">
-            <span className="sr-only">Zoek een oefening</span>
-            <SearchIcon />
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Zoek op oefening of materiaal…"
-              className="h-13 w-full rounded-2xl border border-[#d9d7cf] bg-white py-3 pl-12 pr-4 text-[15px] font-medium text-[#223028] outline-none transition placeholder:text-[#9b9e98] focus:border-[#ed765d] focus:ring-4 focus:ring-[#ed765d]/10"
-            />
-          </label>
-          <label className="relative">
-            <span className="sr-only">Filter op materiaal</span>
-            <select
-              value={materialFilter}
-              onChange={(event) =>
-                setMaterialFilter(event.target.value as MaterialFilter)
-              }
-              className="h-13 w-full appearance-none rounded-2xl border border-[#d9d7cf] bg-white py-3 pl-4 pr-11 text-[15px] font-bold text-[#3f4c45] outline-none transition focus:border-[#ed765d] focus:ring-4 focus:ring-[#ed765d]/10 lg:w-52"
-            >
-              {materialOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <ChevronDownIcon />
-          </label>
-        </div>
-
-        <div className="no-scrollbar -mx-5 mt-5 flex gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0">
-          {(["Alle", ...categories] as const).map((item) => {
-            const active = category === item;
-            return (
-              <button
-                type="button"
-                key={item}
-                onClick={() => setCategory(item)}
-                className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-bold transition ${
-                  active
-                    ? "bg-[#20342a] text-white shadow-sm"
-                    : "border border-[#dcdad2] bg-white text-[#657068] hover:border-[#b9b8b1] hover:text-[#26352d]"
-                }`}
-              >
-                {item}
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="pt-8" aria-live="polite">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-black text-[#24332b]">
-            {category === "Alle" ? "Alle oefeningen" : category}
-          </h2>
-          <span className="text-sm font-semibold text-[#818880]">
-            {filteredExercises.length} gevonden
-          </span>
-        </div>
-
-        {filteredExercises.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {filteredExercises.map((exercise) => (
-              <ExerciseCard
-                key={exercise.id}
-                exercise={exercise}
-                onOpen={() => onOpenExercise(exercise)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="rounded-3xl border border-dashed border-[#cbc8bf] bg-white/60 px-6 py-16 text-center">
-            <div className="text-4xl">🧭</div>
-            <h3 className="mt-4 text-lg font-black text-[#26352d]">
-              Geen oefeningen gevonden
-            </h3>
-            <p className="mt-2 text-sm text-[#747d76]">
-              Probeer een andere zoekterm of zet de filters terug op alles.
-            </p>
-            <button
-              type="button"
-              onClick={() => {
-                setQuery("");
-                setCategory("Alle");
-                setMaterialFilter("all");
-              }}
-              className="mt-5 rounded-xl bg-[#20342a] px-4 py-2.5 text-sm font-bold text-white"
-            >
-              Wis filters
-            </button>
-          </div>
-        )}
-      </section>
-    </div>
+    <main className="mx-auto w-full max-w-[1200px] px-3 pb-8 pt-3 sm:px-6 lg:px-10 lg:pt-8">
+      <h1 className="sr-only">Oefeningen</h1>
+      <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+        {exercises.map((exercise) => (
+          <ExerciseCard
+            key={exercise.id}
+            exercise={exercise}
+            onOpen={() => onOpenExercise(exercise)}
+          />
+        ))}
+      </div>
+    </main>
   );
 }
 
@@ -264,46 +95,79 @@ function ExerciseCard({
     <button
       type="button"
       onClick={onOpen}
-      className="group flex min-h-72 flex-col overflow-hidden rounded-[26px] border border-[#dedbd3] bg-white text-left shadow-[0_8px_25px_rgba(43,52,47,0.04)] transition duration-200 hover:-translate-y-1 hover:border-[#c8c4bb] hover:shadow-[0_18px_45px_rgba(43,52,47,0.10)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#ed765d]"
+      className="group w-full rounded-[20px] border border-[#dedbd3] bg-white p-4 text-left shadow-[0_5px_18px_rgba(43,52,47,0.035)] transition hover:border-[#c4c1b8] hover:shadow-[0_10px_28px_rgba(43,52,47,0.08)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#ed765d]"
     >
-      <div
-        className={`relative flex h-31 w-full items-center justify-center overflow-hidden ${colors.card}`}
-      >
-        <div className="absolute -left-5 -top-9 h-24 w-24 rounded-full border-[18px] border-white/35" />
-        <div className="absolute -bottom-9 -right-1 h-24 w-24 rounded-full border-[16px] border-white/45" />
-        <div
-          className={`relative flex h-17 w-17 rotate-[-5deg] items-center justify-center rounded-[22px] text-4xl shadow-[0_10px_25px_rgba(43,52,47,0.12)] transition duration-300 group-hover:rotate-3 group-hover:scale-105 ${colors.icon}`}
+      <div className="flex items-start gap-3">
+        <span
+          className={`flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ${colors.icon}`}
+          aria-hidden="true"
         >
-          <span aria-hidden="true">{exercise.emoji}</span>
-        </div>
-        <span className="absolute right-4 top-4 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-extrabold text-[#4c574f] backdrop-blur">
-          {exercise.assignments.length} opdrachten
+          {exercise.emoji}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[9px] font-black uppercase tracking-[0.13em] text-[#949a95]">
+            {exercise.category}
+          </span>
+          <span className="mt-1 block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
+            {exercise.title}
+          </span>
+          <span className="mt-1 line-clamp-1 block text-xs leading-5 text-[#747d76]">
+            {exercise.summary}
+          </span>
+        </span>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f4f2ec] text-base text-[#26372d] transition group-hover:bg-[#26372d] group-hover:text-white">
+          →
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <span className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#848c85]">
-          {exercise.category}
+      <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-[#ebe8e1] pt-3">
+        {exercise.material.length > 0 ? (
+          exercise.material.map((material) => (
+            <MaterialBadge key={material} material={material} />
+          ))
+        ) : (
+          <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2f4f0] px-2 py-1 text-[10px] font-bold text-[#68736c]">
+            <span aria-hidden="true">🙌</span> Geen materiaal
+          </span>
+        )}
+        <span className="ml-auto whitespace-nowrap text-[10px] font-black text-[#929892]">
+          {exercise.assignments.length} opdrachten
         </span>
-        <h3 className="mt-2 text-xl font-black tracking-[-0.025em] text-[#1e2d25]">
-          {exercise.title}
-        </h3>
-        <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#6d766f]">
-          {exercise.summary}
-        </p>
-        <div className="mt-auto flex items-center gap-3 border-t border-[#ebe8e1] pt-4 text-xs font-bold text-[#677169]">
-          <span className="flex items-center gap-1.5">
-            <span aria-hidden="true">⏱</span> {exercise.duration}
-          </span>
-          <span className="h-1 w-1 rounded-full bg-[#b8b9b4]" />
-          <span>{exercise.ages}</span>
-          <span className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#f4f2ec] text-lg text-[#26372d] transition group-hover:bg-[#26372d] group-hover:text-white">
-            →
-          </span>
-        </div>
       </div>
     </button>
   );
+}
+
+function MaterialBadge({ material }: { material: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2f4f0] px-2 py-1 text-[10px] font-bold text-[#5f6b63]">
+      <span className="text-sm" aria-hidden="true">
+        {getMaterialIcon(material)}
+      </span>
+      {material}
+    </span>
+  );
+}
+
+function getMaterialIcon(material: string) {
+  const value = material.toLocaleLowerCase("nl-BE");
+
+  if (value.includes("parachute")) return "🪂";
+  if (value.includes("touw")) return "🪢";
+  if (value.includes("hoepel")) return "⭕";
+  if (value.includes("kegel") || value.includes("marker")) return "🔶";
+  if (value.includes("kersepit")) return "🫘";
+  if (value.includes("bal")) return "⚽";
+  if (value.includes("bank")) return "➖";
+  if (value.includes("mat")) return "▰";
+  if (value.includes("plint")) return "▤";
+  if (value.includes("ladder")) return "🪜";
+  if (value.includes("goal")) return "🥅";
+  if (value.includes("muur")) return "🧱";
+  if (value.includes("meetlint")) return "📏";
+  if (value.includes("vest")) return "🦺";
+  if (value.includes("knuffel")) return "🧸";
+  return "🎒";
 }
 
 function ExerciseDetail({
@@ -555,32 +419,5 @@ function StatCard({
         {value}
       </p>
     </div>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#8b918c]"
-    >
-      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.8" />
-      <path d="m16 16 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function ChevronDownIcon() {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      aria-hidden="true"
-      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#747d76]"
-    >
-      <path d="m5 7.5 5 5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }

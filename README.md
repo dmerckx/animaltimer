@@ -6,7 +6,7 @@ Een praktische lesgeverstool met losse Multimove-oefeningen, een voorbereid parc
 
 - 17 losse, thematische oefeningen van ongeveer 10 minuten.
 - 166 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
-- Zoeken op naam en materiaal, met filters voor thema en materiaal.
+- Compacte mobiele oefeningskaarten met direct zichtbare materiaalpictogrammen.
 - Info over leeftijd, groepsgrootte, opstelling, materiaal en lesgevertips.
 - Een apart parcours met 7 voorbereide stations en 42 combineerbare uitvoeringen.
 - Een stationsoverzicht, individuele variatieknoppen en een willekeurige nieuwe ronde.
