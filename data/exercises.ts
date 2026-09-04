@@ -1056,4 +1056,283 @@ export const exercises: Exercise[] = [
       },
     ],
   },
+  {
+    id: "matten-overdragen",
+    title: "Matten overdragen",
+    summary: "Breng samen een mat en haar lading veilig naar de overkant.",
+    category: "Samen spelen",
+    emoji: "🛝",
+    accent: "blue",
+    duration: "± 10 min",
+    ages: "4–9 jaar",
+    groupSize: "6–24 kinderen",
+    material: ["1 lichte mat per team"],
+    optionalMaterial: ["Knuffels", "Zachte ballen", "Kersepitzakjes", "Kegels"],
+    setup:
+      "Maak teams van drie of vier kinderen. Elk team krijgt een mat en een eigen brede baan tussen de start- en eindlijn.",
+    tip:
+      "Laat de kinderen eerst afspreken wie waar vasthoudt. De mat blijft laag, niemand zit erop tijdens het dragen en bij onbalans zet het team ze meteen neer.",
+    assignments: [
+      {
+        title: "Samen naar de overkant",
+        instruction:
+          "Iedereen neemt een hoek of stevige rand vast. Til tegelijk op en draag de lege mat rustig naar de overkant.",
+        level: "Rustig",
+      },
+      {
+        title: "Knuffeltransport",
+        instruction:
+          "Leg enkele knuffels als passagiers op de mat. Breng ze naar de overkant zonder dat er eentje afvalt.",
+        level: "Rustig",
+      },
+      {
+        title: "Ballen aan boord",
+        instruction:
+          "Leg drie zachte ballen op de mat. Stap gelijkmatig zodat de ballen aan boord blijven.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Schatten verzamelen",
+        instruction:
+          "Stop onderweg bij drie kegels en leg bij elke kegel een kersepitzakje extra op de mat.",
+        level: "Actief",
+      },
+      {
+        title: "Slalomtransport",
+        instruction:
+          "Draag de mat samen in een ruime slalom rond de kegels. Overleg vóór elke bocht.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Eén hand per helper",
+        instruction:
+          "Draag een lege, lichte mat met één hand per kind aan de rand. De andere hand blijft op je rug.",
+        level: "Uitdaging",
+      },
+      {
+        title: "De stille verhuis",
+        instruction:
+          "Breng de mat over zonder te praten. Gebruik kijken, knikken en samen tellen om tegelijk te bewegen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Kleurenvracht",
+        instruction:
+          "De lesgever noemt een kleur. Neem onderweg alleen voorwerpen met die kleur mee op de mat.",
+        level: "Actief",
+      },
+      {
+        title: "Wissel van plaats",
+        instruction:
+          "Zet de mat halverwege zacht neer. Iedereen schuift één plaats door en samen dragen jullie verder.",
+        level: "Rustig",
+      },
+      {
+        title: "Mat wordt eiland",
+        instruction:
+          "Draag de mat tot het midden, leg ze neer, stap er met het hele team even op en draag daarna verder.",
+        level: "Actief",
+      },
+      {
+        title: "Tegen de zandloper",
+        instruction:
+          "Breng de vracht voor de tijd om is veilig naar de overkant. Lopen is niet toegestaan; niets verliezen is belangrijker dan snelheid.",
+        level: "Actief",
+      },
+    ],
+  },
+  {
+    id: "touwtrekken",
+    title: "Touwtrekken",
+    summary: "Trek, werk samen en ontdek hoe een team zijn kracht verdeelt.",
+    category: "Samen spelen",
+    emoji: "🪢",
+    accent: "yellow",
+    duration: "± 10 min",
+    ages: "5–10 jaar",
+    groupSize: "6–24 kinderen",
+    material: ["Lang, stevig touw", "Middenlint", "3 markeringslijnen"],
+    optionalMaterial: ["Partijvestjes", "Knuffel als mascotte"],
+    setup:
+      "Markeer het midden van het touw en leg één middenlijn met aan beide kanten een winlijn. Maak twee evenwichtige teams.",
+    tip:
+      "Wikkel het touw nooit rond handen of lichaam. Trek met twee handen, hou afstand, speel op een stroef vlak en stop onmiddellijk op het afgesproken signaal. Niemand laat plots los.",
+    assignments: [
+      {
+        title: "Klassiek touwtrekken",
+        instruction:
+          "Elk team trekt het middenlint voorbij de eigen winlijn. Trek gestaag en blijf samen op je voeten.",
+        level: "Actief",
+      },
+      {
+        title: "Best of three",
+        instruction:
+          "Speel maximaal drie korte rondes. Het eerste team met twee punten wint de reeks.",
+        level: "Actief",
+      },
+      {
+        title: "Wissel van kant",
+        instruction:
+          "Speel één ronde, wissel daarna van kant en speel opnieuw met exact dezelfde teams.",
+        level: "Rustig",
+      },
+      {
+        title: "Groeiende teams",
+        instruction:
+          "Start met twee kinderen per kant. Op elk fluitsignaal sluit achteraan één nieuw kind aan.",
+        level: "Actief",
+      },
+      {
+        title: "Trekken op het ritme",
+        instruction:
+          "De kapitein telt: drie tellen samen trekken, één tel stilhouden. Welk team vindt het beste ritme?",
+        level: "Uitdaging",
+      },
+      {
+        title: "Stille ronde",
+        instruction:
+          "Trek zonder te praten. Kijk naar je teamgenoten en probeer allemaal op hetzelfde moment kracht te zetten.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Vak voor vak",
+        instruction:
+          "Een team verdient al een punt wanneer het middenlint de eerste zijlijn raakt. Zet daarna alles weer in het midden.",
+        level: "Rustig",
+      },
+      {
+        title: "De mascotte kiest",
+        instruction:
+          "Leg een knuffel bij het midden. Het winnende team kiest welk dier iedereen vóór de volgende ronde nadoet.",
+        level: "Actief",
+      },
+      {
+        title: "Begeleider tegen de groep",
+        instruction:
+          "Eén of twee begeleiders trekken gecontroleerd tegen de hele groep. Kan de groep perfect samen starten?",
+        level: "Actief",
+      },
+      {
+        title: "Maak het eerlijk",
+        instruction:
+          "Na elke ronde verhuist één kind van het winnende naar het andere team. Zoek zo naar twee even sterke teams.",
+        level: "Rustig",
+      },
+      {
+        title: "Touwtrein",
+        instruction:
+          "Geen wedstrijd: iedereen houdt dezelfde kant van het touw vast en volgt samen een route door de zaal.",
+        level: "Rustig",
+      },
+      {
+        title: "Maak een touwgolf",
+        instruction:
+          "De twee rijen houden het touw losjes vast en maken samen kleine, daarna grote golven zonder te trekken.",
+        level: "Rustig",
+      },
+    ],
+  },
+  {
+    id: "parachute",
+    title: "Spelen met de parachute",
+    summary: "Laat de parachute golven, vliegen en dieren verstoppen.",
+    category: "Samen spelen",
+    emoji: "🪂",
+    accent: "purple",
+    duration: "± 10 min",
+    ages: "3–9 jaar",
+    groupSize: "6–24 kinderen",
+    material: ["Speelparachute"],
+    optionalMaterial: ["1–6 zachte balletjes", "Kersepitzakjes"],
+    setup:
+      "Spreid de parachute uit en verdeel de kinderen gelijkmatig rond de rand. Iedereen neemt met twee handen een handvat of stuk rand vast.",
+    tip:
+      "Spreek vaste signalen af voor omhoog, omlaag en loslaten. Kinderen lopen alleen onder de parachute wanneer jij dat roept en de doorgang vrij is.",
+    assignments: [
+      {
+        title: "Bal in de lucht houden",
+        instruction:
+          "Leg één zachte bal op de parachute. Maak samen golven en probeer de bal zo lang mogelijk op het doek te houden.",
+        level: "Rustig",
+      },
+      {
+        title: "Popcorn",
+        instruction:
+          "Leg meerdere zachte balletjes op het doek. Laat ze stuiteren zonder dat er popcorn op de grond valt.",
+        level: "Actief",
+      },
+      {
+        title: "Katapult",
+        instruction:
+          "Breng de parachute eerst laag en trek daarna allemaal tegelijk snel omhoog. Hoe hoog vliegt het balletje?",
+        level: "Actief",
+      },
+      {
+        title: "Cijfers wisselen",
+        instruction:
+          "Geef iedereen een cijfer. Roep twee cijfers; zij wisselen onder het hoge doek zo snel mogelijk van plaats.",
+        level: "Actief",
+      },
+      {
+        title: "Kleuren wisselen",
+        instruction:
+          "Roep een kleur van de parachute. Iedereen die bij die kleur staat, wisselt onder het hoge doek van plaats.",
+        level: "Actief",
+      },
+      {
+        title: "Pinguïn in de sneeuw",
+        instruction:
+          "Ga op de grond zitten en trek de parachute rond je lichaam. Alleen je pinguïnhoofd blijft boven de sneeuw.",
+        level: "Rustig",
+      },
+      {
+        title: "Struisvogel in het zand",
+        instruction:
+          "Blijf buiten de parachute zitten en steek alleen je hoofd onder het doek alsof het zand is.",
+        level: "Rustig",
+      },
+      {
+        title: "Kikker onder water",
+        instruction:
+          "Wanneer de parachute hoog gaat, spring je als een kikker volledig onder het doek en hurk je neer.",
+        level: "Actief",
+      },
+      {
+        title: "Dierenalarm",
+        instruction:
+          "De lesgever roept pinguïn, struisvogel of kikker. Voer onmiddellijk de juiste verstopbeweging uit.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Rustige en wilde zee",
+        instruction:
+          "Maak eerst piepkleine golven. Op het signaal verandert de parachute in een wilde zee met grote golven.",
+        level: "Actief",
+      },
+      {
+        title: "De paddenstoel",
+        instruction:
+          "Hef de parachute allemaal tegelijk hoog en stap samen één pas naar binnen zodat een grote paddenstoel ontstaat.",
+        level: "Rustig",
+      },
+      {
+        title: "Kamperen in de tent",
+        instruction:
+          "Hef het doek hoog, stap naar binnen, trek de rand achter je naar de grond en ga samen in de tent zitten.",
+        level: "Rustig",
+      },
+      {
+        title: "Bal naar het midden",
+        instruction:
+          "Maak gerichte golven en probeer de bal naar het gat of een gemarkeerd middenpunt te sturen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Draaimolen",
+        instruction:
+          "Hou de parachute op heuphoogte en wandel allemaal in dezelfde richting. Wissel op het signaal rustig van richting.",
+        level: "Rustig",
+      },
+    ],
+  },
 ];

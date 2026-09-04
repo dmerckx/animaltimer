@@ -4,8 +4,8 @@ Een praktische lesgeverstool met losse Multimove-oefeningen, een voorbereid parc
 
 ## Functionaliteit
 
-- 14 losse, thematische oefeningen van ongeveer 10 minuten.
-- 129 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
+- 17 losse, thematische oefeningen van ongeveer 10 minuten.
+- 166 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
 - Zoeken op naam en materiaal, met filters voor thema en materiaal.
 - Info over leeftijd, groepsgrootte, opstelling, materiaal en lesgevertips.
 - Een apart parcours met 7 voorbereide stations en 42 combineerbare uitvoeringen.
