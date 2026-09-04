@@ -39,7 +39,7 @@ export const exercises: Exercise[] = [
     emoji: "🔎",
     accent: "coral",
     duration: "± 10 min",
-    ages: "3–8 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–16 kinderen",
     material: ["10 kegels", "Geel balletje"],
     optionalMaterial: ["Hoepels", "Kersepitzakjes"],
@@ -106,13 +106,13 @@ export const exercises: Exercise[] = [
     emoji: "🎯",
     accent: "yellow",
     duration: "± 10 min",
-    ages: "4–8 jaar",
+    ages: "3–6 jaar",
     groupSize: "6–20 kinderen",
     material: ["10 kegels", "Bank", "Zachte ballen"],
     setup:
-      "Zet de kegels verspreid op een bank. Maak twee teams en teken een veilige werplijn. Ballen mogen steeds gerecupereerd worden.",
+      "Zet de kegels verspreid op een bank. Maak één of twee kleine groepjes en teken een werplijn dicht genoeg bij de bank. Ballen worden alleen op het stopsignaal opgehaald.",
     tip:
-      "Gebruik alleen zachte ballen en laat kinderen rond de bank lopen, nooit ervoor terwijl er gegooid wordt.",
+      "Gebruik grote, zachte ballen. Laat de jongste kinderen eerst rollen of van dichtbij gooien en geef telkens maar één korte opdracht.",
     assignments: [
       {
         title: "Alle kegels neer",
@@ -157,9 +157,9 @@ export const exercises: Exercise[] = [
         level: "Actief",
       },
       {
-        title: "Bouwers tegen gooiers",
+        title: "Eerst gooien, dan bouwen",
         instruction:
-          "Eén klein team zet omgevallen kegels recht, het andere gooit. Wissel na één minuut.",
+          "De gooiers wachten achter de lijn zodra het stopsignaal klinkt. Pas dan zet het andere groepje de kegels weer recht. Daarna wisselen jullie.",
         level: "Actief",
       },
     ],
@@ -172,7 +172,7 @@ export const exercises: Exercise[] = [
     emoji: "⭕",
     accent: "blue",
     duration: "± 10 min",
-    ages: "3–8 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–20 kinderen",
     material: ["1 hoepel per kind of duo"],
     setup:
@@ -250,7 +250,7 @@ export const exercises: Exercise[] = [
     emoji: "🐾",
     accent: "green",
     duration: "± 10 min",
-    ages: "3–7 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–24 kinderen",
     material: [],
     optionalMaterial: ["2 matten"],
@@ -339,14 +339,14 @@ export const exercises: Exercise[] = [
     emoji: "🏃",
     accent: "purple",
     duration: "± 10 min",
-    ages: "3–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–24 kinderen",
     material: [],
     optionalMaterial: ["2 matten", "Kegels"],
     setup:
-      "Gebruik twee lijnen of matten als start en finish. Laat voldoende ruimte tussen de kinderen en stuur in kleine golven.",
+      "Gebruik twee lijnen of matten als start en finish. Toon elke beweging eerst voor en stuur de kinderen in kleine golven met voldoende tussenruimte.",
     tip:
-      "Kies vijf tot acht opdrachten per les. Herhaal favorieten op een andere snelheid of in de omgekeerde richting.",
+      "Kies drie tot vijf opdrachten en gebruik een eenvoudig beeld, zoals reus of kabouter. Voor 3-jarigen is nadoen belangrijker dan technisch juist uitvoeren.",
     assignments: [
       {
         title: "Op je tippen",
@@ -356,7 +356,7 @@ export const exercises: Exercise[] = [
       {
         title: "Hinkelen",
         instruction:
-          "Hinkel op één been tot halverwege en wissel daar van been.",
+          "Probeer enkele sprongen op één been. Lukt dat nog niet, maak dan een stap en een klein huppelsprongetje.",
         level: "Uitdaging",
       },
       {
@@ -373,7 +373,7 @@ export const exercises: Exercise[] = [
       {
         title: "Kruispas",
         instruction:
-          "Beweeg zijwaarts en kruis afwisselend één voet voor en achter de andere.",
+          "Stap zijwaarts en kruis af en toe één voet voor de andere. De lesgever doet traag mee.",
         level: "Uitdaging",
       },
       {
@@ -425,13 +425,13 @@ export const exercises: Exercise[] = [
     emoji: "⛵",
     accent: "blue",
     duration: "± 10 min",
-    ages: "4–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "8–24 kinderen",
     material: ["2 matten"],
     setup:
-      "Leg aan elk uiteinde van de zaal een mat. Eén schipper staat in het midden. Wie de opdracht volgt, mag vrij over; de anderen kunnen getikt worden.",
+      "Leg aan elk uiteinde van de zaal een mat. Toon eerst één oversteek zonder tikker. Daarna staat de lesgever of één kind als schipper in het midden.",
     tip:
-      "Laat getikte kinderen mee schipper worden, maar spreek af dat aantikken zacht op de schouder gebeurt.",
+      "Tik zacht op de schouder en laat niemand afvallen. Voeg hoogstens enkele schippers toe en start daarna opnieuw, zodat de jongste kinderen het spel blijven begrijpen.",
     assignments: [
       {
         title: "Kikkerboot",
@@ -491,25 +491,25 @@ export const exercises: Exercise[] = [
     emoji: "📏",
     accent: "yellow",
     duration: "± 10 min",
-    ages: "4–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–16 kinderen",
     material: ["Markeringspotjes"],
     optionalMaterial: ["Meetlint", "Matten"],
     setup:
-      "Laat elk kind even op de grond liggen en markeer met twee potjes de lichaamslengte. Maak verschillende veilige springbanen naast elkaar.",
+      "Laat elk kind even op een mat liggen en markeer de lichaamslengte met twee potjes. Leg halverwege een extra startafstand voor kinderen die nog kleine sprongen maken.",
     tip:
-      "Vergelijk kinderen niet met elkaar. De uitdaging is telkens de eigen afstand op een veilige manier te halen.",
+      "Vergelijk kinderen niet met elkaar. Begin op een haalbare afstand en schuif het eindpotje pas verder wanneer een kind zacht en stabiel landt.",
     assignments: [
       {
         title: "Spring uit stand",
         instruction:
-          "Zet je voeten naast elkaar, zwaai je armen en probeer voorbij je eigen lengte te landen.",
+          "Zet je voeten naast elkaar, zwaai je armen en land zacht voorbij het eerste potje. Schuif het potje telkens een klein stukje verder.",
         level: "Rustig",
       },
       {
         title: "Met aanloop",
         instruction:
-          "Neem een korte aanloop, zet met één voet af en land met twee voeten voorbij de potjes.",
+          "Neem drie rustige aanlooppassen, zet af en land met twee voeten op de mat. Kies zelf een haalbaar potje om voorbij te springen.",
         level: "Actief",
       },
       {
@@ -525,10 +525,10 @@ export const exercises: Exercise[] = [
         level: "Uitdaging",
       },
       {
-        title: "Achterwaartse mini-sprongen",
+        title: "Spring over beekjes",
         instruction:
-          "Maak kleine sprongen achteruit tussen de potjes. Kijk eerst of je baan vrij is.",
-        level: "Uitdaging",
+          "Leg twee of drie korte lijnen als beekjes. Spring er met twee voeten over en land telkens zacht.",
+        level: "Actief",
       },
       {
         title: "Groepsslang",
@@ -546,14 +546,14 @@ export const exercises: Exercise[] = [
     emoji: "🤸",
     accent: "purple",
     duration: "± 10 min",
-    ages: "3–8 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–16 kinderen",
     material: ["Dikke matten"],
     optionalMaterial: ["Schuine bank", "Kersepitzakje"],
     setup:
       "Leg matten in één of meer banen. Kinderen starten pas wanneer de vorige van de mat is. Help actief bij nieuwe rolbewegingen.",
     tip:
-      "Begin met eenvoudige lengte- en zijrollen. Een koprol vraagt een ronde rug en kin op de borst; bied ondersteuning waar nodig.",
+      "Begin met eenvoudige lengte- en zijrollen. Laat een koprol alleen proberen met actieve hulp van een begeleider en forceer de beweging nooit.",
     assignments: [
       {
         title: "Boomstamrol",
@@ -570,13 +570,13 @@ export const exercises: Exercise[] = [
       {
         title: "Zijwaarts tuimelen",
         instruction:
-          "Hurkt neer, zet één hand op de mat en tuimel zacht over je zij.",
+          "Hurk neer, zet één hand op de mat en tuimel zacht over je zij.",
         level: "Rustig",
       },
       {
         title: "Koprol",
         instruction:
-          "Zet je handen neer, kin op de borst, billen omhoog en rol over je ronde rug.",
+          "Zet je handen neer en maak je rug rond. Rol alleen wanneer een begeleider naast je zit en je helpt.",
         level: "Uitdaging",
       },
       {
@@ -613,13 +613,13 @@ export const exercises: Exercise[] = [
     emoji: "⚖️",
     accent: "coral",
     duration: "± 10 min",
-    ages: "3–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–18 kinderen",
     material: ["Turnbanken", "Matten"],
     setup:
       "Zet banken stevig en leg matten aan risicopunten. Werk in één richting en laat pas starten wanneer er ruimte is.",
     tip:
-      "Maak meerdere niveaus: naast de bank voor beginners, op de bank voor wie meer uitdaging wil.",
+      "Laat 3-jarigen dezelfde beweging eerst op een lijn naast de bank proberen. Een begeleider blijft binnen armbereik bij elke opdracht op de bank.",
     assignments: [
       {
         title: "Gewoon wandelen",
@@ -659,7 +659,7 @@ export const exercises: Exercise[] = [
       {
         title: "Achteruit balanceren",
         instruction:
-          "Wandel traag achteruit met een begeleider naast de bank.",
+          "Probeer eerst achteruit over een lijn op de grond. Op de bank mag het alleen stap voor stap met de hand van een begeleider.",
         level: "Uitdaging",
       },
       {
@@ -684,67 +684,68 @@ export const exercises: Exercise[] = [
   },
   {
     id: "passenspel",
-    title: "Vijf passen",
-    summary: "Samen vrijlopen, passen en onderscheppen in twee teams.",
+    title: "Passenspel",
+    summary: "Samen rollen, gooien, vrijlopen en voorzichtig onderscheppen.",
     category: "Samen spelen",
     emoji: "🤝",
     accent: "green",
     duration: "± 10 min",
-    ages: "6–10 jaar",
+    ages: "3–6 jaar",
     groupSize: "8–20 kinderen",
-    material: ["1 zachte bal", "Partijvestjes"],
+    material: ["1 grote, zachte bal", "Partijvestjes"],
+    optionalMaterial: ["2 hoepels"],
     setup:
-      "Maak twee teams, liefst met een begeleider in elk team. Vijf opeenvolgende passen is één punt. Met de bal in de hand mag je niet lopen.",
+      "Maak twee kleine teams met liefst een begeleider in elk team. Speel in een duidelijk vak en begin zonder tegenstander, zodat de kinderen eerst leren kijken en passen.",
     tip:
-      "Begeleiders onderscheppen niet en spelen bewust naar kinderen die nog weinig aan de bal kwamen.",
+      "Gebruik voor 3- en 4-jarigen vooral rollen en drie passen met de begeleider als verbindingsspeler. Voeg pas bij een vaardige groep één wandelende verdediger toe.",
     assignments: [
+      {
+        title: "Bal rond de kring",
+        instruction:
+          "Maak per team een kleine kring. Rol de bal naar elkaar en noem de naam van het kind dat de bal krijgt.",
+        level: "Rustig",
+      },
+      {
+        title: "Naar de begeleider",
+        instruction:
+          "Gooi of rol naar de begeleider. Die speelt de bal telkens door naar een ander kind. Er is nog geen verdediger.",
+        level: "Rustig",
+      },
       {
         title: "Drie passen",
         instruction:
-          "Start eenvoudig: drie geslaagde passen zonder onderschepping is één punt.",
-        level: "Rustig",
+          "Maak samen drie passen zonder dat de bal wegrolt. Valt hij, dan raapt iemand hem op en tellen jullie opnieuw.",
+        level: "Actief",
       },
       {
         title: "Vijf passen",
         instruction:
-          "Maak vijf opeenvolgende passen voor een punt. De teller start opnieuw na balverlies.",
-        level: "Actief",
+          "Lukken drie passen vlot? Probeer er dan vijf. Een begeleider telt luidop mee en iedereen blijft wandelen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Noem een naam",
+        instruction:
+          "Kijk eerst naar een teamgenoot, noem de naam en pas pas wanneer die klaarstaat met twee open handen.",
+        level: "Rustig",
       },
       {
         title: "Iedereen aan de bal",
         instruction:
-          "Een punt telt alleen als ieder kind van het team minstens één pas kreeg.",
+          "De begeleider helpt om de bal één keer bij ieder kind te krijgen. Daarna juicht het hele team samen.",
         level: "Uitdaging",
       },
       {
-        title: "Botspas telt dubbel",
+        title: "Eén zachte verdediger",
         instruction:
-          "Een goede botspas is twee passen waard. Roep samen de nieuwe tussenstand.",
-        level: "Actief",
-      },
-      {
-        title: "Geen terugpas",
-        instruction:
-          "Je mag de bal niet meteen terugspelen naar het kind van wie je hem kreeg.",
+          "Eén verdediger wandelt en mag alleen een pass onderscheppen, nooit de bal uit handen nemen. Wissel snel van verdediger.",
         level: "Uitdaging",
       },
       {
-        title: "Eindzone",
+        title: "Naar het eiland",
         instruction:
-          "Na drie passen mag je scoren door naar een medespeler in de eindzone te passen.",
+          "Maak drie passen en rol de bal daarna naar een teamgenoot in een hoepel. Dat is samen één punt.",
         level: "Uitdaging",
-      },
-      {
-        title: "Twee ballen",
-        instruction:
-          "Breng een tweede zachte bal in het spel. Kijk extra goed rond voor je past.",
-        level: "Uitdaging",
-      },
-      {
-        title: "Stille ronde",
-        instruction:
-          "Speel zonder te praten. Gebruik kijken, wijzen en vrijlopen om elkaar te vinden.",
-        level: "Rustig",
       },
     ],
   },
@@ -756,13 +757,13 @@ export const exercises: Exercise[] = [
     emoji: "🏐",
     accent: "blue",
     duration: "± 10 min",
-    ages: "4–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–24 kinderen",
     material: ["1 bal per duo", "1 mat per duo"],
     setup:
-      "Maak duo’s. Elk duo zit of staat aan een andere korte zijde van een mat, zodat de afstand meteen duidelijk is.",
+      "Maak duo’s en laat ze dicht bij elkaar beginnen. De mat toont hun speelvak; pas wanneer het goed lukt, schuiven ze een klein stapje uit elkaar.",
     tip:
-      "Geef elk duo een bal die bij hun niveau past. Een grotere, zachte bal is makkelijker om te vangen.",
+      "Geef elk duo een grote, zachte bal. Een 3-jarige mag de bal na een bots tegen het lichaam stoppen; netjes uit de lucht vangen hoeft nog niet.",
     assignments: [
       {
         title: "Zittend rollen",
@@ -801,10 +802,10 @@ export const exercises: Exercise[] = [
         level: "Uitdaging",
       },
       {
-        title: "Draai voor je vangt",
+        title: "Door het poortje",
         instruction:
-          "Je partner roept ‘ja’. Draai je om en vang de bal die daarna rustig wordt gegooid.",
-        level: "Uitdaging",
+          "Maak een breed poortje met je benen. Je partner rolt de bal erdoor en jij draait je om om hem te halen.",
+        level: "Actief",
       },
       {
         title: "Eén hand",
@@ -819,9 +820,9 @@ export const exercises: Exercise[] = [
         level: "Uitdaging",
       },
       {
-        title: "Tien zonder vallen",
+        title: "Samen tot tien",
         instruction:
-          "Tel samen hoeveel passen lukken zonder dat de bal valt. Probeer jullie record te verbeteren.",
+          "Tel elke pas samen tot tien. Rolt of valt de bal weg, haal hem op en tel gewoon verder.",
         level: "Actief",
       },
     ],
@@ -834,7 +835,7 @@ export const exercises: Exercise[] = [
     emoji: "⚽",
     accent: "yellow",
     duration: "± 10 min",
-    ages: "4–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "4–24 kinderen",
     material: ["1 bal per kind"],
     optionalMaterial: ["Kegels", "2 matten"],
@@ -913,18 +914,18 @@ export const exercises: Exercise[] = [
     emoji: "🧱",
     accent: "coral",
     duration: "± 10 min",
-    ages: "5–10 jaar",
+    ages: "3–6 jaar",
     groupSize: "2–16 kinderen",
     material: ["1 zachte bal per kind of duo", "Vrije muur"],
     setup:
-      "Geef elk kind een eigen stuk muur en zet een werplijn op veilige afstand. Controleer dat niemand door een andere werpzone loopt.",
+      "Geef elk kind of duo een eigen stuk muur. Begin op één grote kinderpas van de muur en zorg dat niemand door een andere werpzone loopt.",
     tip:
-      "Begin dicht bij de muur. Wie controle heeft, zet na drie goede vangballen een kleine stap achteruit.",
+      "Begin met rollen en stoppen, daarna pas met gooien. Gebruik een grote, zachte bal en laat kinderen de terugkerende bal gerust na een bots vastnemen.",
     assignments: [
       {
-        title: "Gooi en vang",
+        title: "Rol en stop",
         instruction:
-          "Gooi met twee handen tegen de muur en vang de bal rechtstreeks terug.",
+          "Rol de bal met twee handen tegen de muur en stop hem met open handen wanneer hij terugkomt.",
         level: "Rustig",
       },
       {
@@ -934,9 +935,9 @@ export const exercises: Exercise[] = [
         level: "Rustig",
       },
       {
-        title: "Klappen",
+        title: "Gooi en vang",
         instruction:
-          "Klap één keer nadat je gooit en vang de bal daarna met twee handen.",
+          "Gooi met twee handen tegen de muur. Probeer rechtstreeks te vangen of neem de bal na één bots vast.",
         level: "Uitdaging",
       },
       {
@@ -946,15 +947,15 @@ export const exercises: Exercise[] = [
         level: "Rustig",
       },
       {
-        title: "Gooi en zit",
+        title: "Tik de grond",
         instruction:
-          "Gooi hoog, ga snel op je poep zitten en vang na één bots.",
+          "Gooi rustig tegen de muur, tik de grond aan en stop de bal met twee handen na de bots.",
         level: "Uitdaging",
       },
       {
-        title: "Draai rond",
+        title: "Klap en pak",
         instruction:
-          "Gooi de bal hoog tegen de muur, draai één rondje en probeer hem na een bots te vangen.",
+          "Gooi tegen de muur, klap één keer en pak de bal vast nadat hij op de grond botst.",
         level: "Uitdaging",
       },
       {
@@ -985,14 +986,14 @@ export const exercises: Exercise[] = [
     emoji: "🥅",
     accent: "purple",
     duration: "± 10 min",
-    ages: "4–10 jaar",
+    ages: "3–6 jaar",
     groupSize: "5–20 kinderen",
     material: ["Zachte ballen", "Goal", "Kegels", "Mat"],
     optionalMaterial: ["Hoepels", "Bank"],
     setup:
-      "Maak vóór het doel een korte bewegingslus zodat niemand stilstaat. Eén begeleider of kind is keeper; de anderen gooien om beurten vanaf de lijn.",
+      "Maak vóór het doel een korte bewegingslus zodat niemand lang stilstaat. Zet een brede, nabije werplijn en begin met een begeleider als rustige keeper.",
     tip:
-      "Wissel de keeper vaak en maak scoren niet het enige succes: gericht gooien of de juiste techniek uitvoeren telt ook.",
+      "Gebruik zachte ballen en laat de keeper met de handen laag en open klaarstaan. Een bal tot bij het doel krijgen is al succes; mikken in hoeken is voor een vaardige groep.",
     assignments: [
       {
         title: "Van achter het hoofd",
@@ -1039,7 +1040,7 @@ export const exercises: Exercise[] = [
       {
         title: "Na een botspas",
         instruction:
-          "Een begeleider geeft een botspas. Vang, draai naar het doel en gooi in één vloeiende beweging.",
+          "Een begeleider rolt of botst de bal rustig toe. Stop hem eerst met twee handen, draai naar het doel en gooi.",
         level: "Uitdaging",
       },
       {
@@ -1064,14 +1065,14 @@ export const exercises: Exercise[] = [
     emoji: "🛝",
     accent: "blue",
     duration: "± 10 min",
-    ages: "4–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "6–24 kinderen",
     material: ["1 lichte mat per team"],
     optionalMaterial: ["Knuffels", "Zachte ballen", "Kersepitzakjes", "Kegels"],
     setup:
-      "Maak teams van drie of vier kinderen. Elk team krijgt een mat en een eigen brede baan tussen de start- en eindlijn.",
+      "Maak teams van drie of vier kinderen. Elk team krijgt een lichte mat en een eigen korte, brede baan zonder tegenliggers.",
     tip:
-      "Laat de kinderen eerst afspreken wie waar vasthoudt. De mat blijft laag, niemand zit erop tijdens het dragen en bij onbalans zet het team ze meteen neer.",
+      "Toon eerst samen: twee handen aan de rand, kleine stappen en stoppen op jouw signaal. De mat blijft laag, niemand zit erop en bij onbalans zet het team ze meteen neer.",
     assignments: [
       {
         title: "Samen naar de overkant",
@@ -1104,10 +1105,10 @@ export const exercises: Exercise[] = [
         level: "Uitdaging",
       },
       {
-        title: "Eén hand per helper",
+        title: "Kabouterstappen",
         instruction:
-          "Draag een lege, lichte mat met één hand per kind aan de rand. De andere hand blijft op je rug.",
-        level: "Uitdaging",
+          "Iedereen houdt de mat met twee handen vast en draagt ze met piepkleine kabouterstappen naar de overkant.",
+        level: "Rustig",
       },
       {
         title: "De stille verhuis",
@@ -1136,7 +1137,7 @@ export const exercises: Exercise[] = [
       {
         title: "Tegen de zandloper",
         instruction:
-          "Breng de vracht voor de tijd om is veilig naar de overkant. Lopen is niet toegestaan; niets verliezen is belangrijker dan snelheid.",
+          "Kan het team rustig aankomen voor de zandloper leeg is? Niet sneller lopen: samen blijven en niets verliezen is het doel.",
         level: "Actief",
       },
     ],
@@ -1149,25 +1150,25 @@ export const exercises: Exercise[] = [
     emoji: "🪢",
     accent: "yellow",
     duration: "± 10 min",
-    ages: "5–10 jaar",
+    ages: "3–6 jaar",
     groupSize: "6–24 kinderen",
     material: ["Lang, stevig touw", "Middenlint", "3 markeringslijnen"],
     optionalMaterial: ["Partijvestjes", "Knuffel als mascotte"],
     setup:
-      "Markeer het midden van het touw en leg één middenlijn met aan beide kanten een winlijn. Maak twee evenwichtige teams.",
+      "Markeer het midden van het touw en leg dicht bij het midden twee winlijnen. Maak kleine, evenwichtige teams en laat de andere kinderen op veilige afstand wachten of dierenbewegingen doen.",
     tip:
-      "Wikkel het touw nooit rond handen of lichaam. Trek met twee handen, hou afstand, speel op een stroef vlak en stop onmiddellijk op het afgesproken signaal. Niemand laat plots los.",
+      "Hou rondes kort en trek alleen onder direct toezicht. Wikkel het touw nooit rond handen of lichaam, zet geen kind als anker achteraan en oefen eerst: bij ‘stop’ blijft iedereen staan en legt het touw rustig neer.",
     assignments: [
       {
         title: "Klassiek touwtrekken",
         instruction:
-          "Elk team trekt het middenlint voorbij de eigen winlijn. Trek gestaag en blijf samen op je voeten.",
+          "Trek rustig tot het middenlint een winlijn raakt. Op het stopsignaal bevriest iedereen en leggen beide teams het touw samen neer.",
         level: "Actief",
       },
       {
-        title: "Best of three",
+        title: "Korte rondes",
         instruction:
-          "Speel maximaal drie korte rondes. Het eerste team met twee punten wint de reeks.",
+          "Trek vijf tellen en stop samen, ook als niemand de lijn bereikt. Wissel daarna enkele kinderen van plaats.",
         level: "Actief",
       },
       {
@@ -1177,15 +1178,15 @@ export const exercises: Exercise[] = [
         level: "Rustig",
       },
       {
-        title: "Groeiende teams",
+        title: "Vind het evenwicht",
         instruction:
-          "Start met twee kinderen per kant. Op elk fluitsignaal sluit achteraan één nieuw kind aan.",
-        level: "Actief",
+          "De lesgever maakt de teams na elke korte ronde iets gelijker. Het doel is dat het lint bijna in het midden blijft.",
+        level: "Rustig",
       },
       {
         title: "Trekken op het ritme",
         instruction:
-          "De kapitein telt: drie tellen samen trekken, één tel stilhouden. Welk team vindt het beste ritme?",
+          "De lesgever telt traag: drie tellen zacht trekken, één tel stilstaan. Beide teams proberen hetzelfde ritme te volgen.",
         level: "Uitdaging",
       },
       {
@@ -1203,19 +1204,19 @@ export const exercises: Exercise[] = [
       {
         title: "De mascotte kiest",
         instruction:
-          "Leg een knuffel bij het midden. Het winnende team kiest welk dier iedereen vóór de volgende ronde nadoet.",
+          "Leg een knuffel naast de middenlijn. Na elke ronde kiest het team dat het best samenwerkte welk dier iedereen even nadoet.",
         level: "Actief",
       },
       {
         title: "Begeleider tegen de groep",
         instruction:
-          "Eén of twee begeleiders trekken gecontroleerd tegen de hele groep. Kan de groep perfect samen starten?",
+          "Eén begeleider houdt gecontroleerd tegen terwijl een klein groepje samen trekt. De begeleider laat het touw nooit plots los.",
         level: "Actief",
       },
       {
         title: "Maak het eerlijk",
         instruction:
-          "Na elke ronde verhuist één kind van het winnende naar het andere team. Zoek zo naar twee even sterke teams.",
+          "Verplaats na elke ronde één kind als dat helpt. Zoek twee teams die allebei stevig kunnen staan zonder hard te moeten trekken.",
         level: "Rustig",
       },
       {
@@ -1240,7 +1241,7 @@ export const exercises: Exercise[] = [
     emoji: "🪂",
     accent: "purple",
     duration: "± 10 min",
-    ages: "3–9 jaar",
+    ages: "3–6 jaar",
     groupSize: "6–24 kinderen",
     material: ["Speelparachute"],
     optionalMaterial: ["1–6 zachte balletjes", "Kersepitzakjes"],
@@ -1270,8 +1271,8 @@ export const exercises: Exercise[] = [
       {
         title: "Cijfers wisselen",
         instruction:
-          "Geef iedereen een cijfer. Roep twee cijfers; zij wisselen onder het hoge doek zo snel mogelijk van plaats.",
-        level: "Actief",
+          "Geef elk cijfer aan meerdere kinderen en oefen de cijfers eerst. Roep één cijfer; die kinderen wisselen onder het hoge doek rustig van plaats.",
+        level: "Uitdaging",
       },
       {
         title: "Kleuren wisselen",
@@ -1294,7 +1295,7 @@ export const exercises: Exercise[] = [
       {
         title: "Kikker onder water",
         instruction:
-          "Wanneer de parachute hoog gaat, spring je als een kikker volledig onder het doek en hurk je neer.",
+          "Wanneer de parachute hoog gaat, stapt iedereen op de eigen plaats onder het doek en hurkt als een kikker. Niemand loopt door het midden.",
         level: "Actief",
       },
       {

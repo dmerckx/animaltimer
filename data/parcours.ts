@@ -21,7 +21,7 @@ export const parcours = {
     "Een vaste opstelling die de kinderen meerdere keren doorlopen. Kies voor elke ronde een andere uitvoering per station.",
   duration: "± 15 min bewegen",
   setupTime: "± 10 min opbouw",
-  ages: "3–9 jaar",
+  ages: "3–6 jaar",
   groupSize: "6–20 kinderen",
   stations: [
     {
@@ -82,7 +82,7 @@ export const parcours = {
       preparation:
         "Leg de mat in het verlengde van het parcours. Gebruik eventueel een tweede mat om voldoende uitloopruimte te maken.",
       safety:
-        "Laat het volgende kind pas starten wanneer de mat volledig vrij is. Help bij nieuwe rolbewegingen.",
+        "Laat het volgende kind pas starten wanneer de mat volledig vrij is. Een koprol gebeurt alleen met actieve hulp van een begeleider.",
       variations: [
         {
           title: "Boomstamrol",
@@ -93,7 +93,7 @@ export const parcours = {
         {
           title: "Koprol",
           instruction:
-            "Zet je handen neer, breng je kin naar je borst en rol met een ronde rug naar voren.",
+            "Maak je rug rond en rol alleen wanneer een begeleider naast de mat zit en je helpt.",
           level: "Uitdaging",
         },
         {

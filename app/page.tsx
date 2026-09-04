@@ -3,41 +3,49 @@
 import { AnimalTimer } from "@/app/AnimalTimer";
 import { ExerciseLibrary } from "@/app/ExerciseLibrary";
 import { ParcoursPage } from "@/app/Parcours";
-import type { Exercise } from "@/data/exercises";
-import { useState } from "react";
+import { useSessionStorageValue } from "@/app/useSessionStorage";
+import { exercises, type Exercise } from "@/data/exercises";
 
 type View = "exercises" | "parcours" | "timer";
 
+const storageKeys = {
+  view: "multimove:view",
+  exercise: "multimove:exercise",
+};
+
 export default function Home() {
-  const [view, setView] = useState<View>("exercises");
-  const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(
-    null,
+  const [storedView, setStoredView] = useSessionStorageValue(storageKeys.view);
+  const [selectedExerciseId, setSelectedExerciseId] = useSessionStorageValue(
+    storageKeys.exercise,
   );
+  const view: View =
+    storedView === "parcours" || storedView === "timer"
+      ? storedView
+      : "exercises";
+  const selectedExercise =
+    exercises.find((exercise) => exercise.id === selectedExerciseId) ?? null;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const showExercises = () => {
-    setView("exercises");
-    setSelectedExercise(null);
+    setStoredView("exercises");
     scrollToTop();
   };
 
   const showTimer = () => {
-    setView("timer");
-    setSelectedExercise(null);
+    setStoredView("timer");
     scrollToTop();
   };
 
   const showParcours = () => {
-    setView("parcours");
-    setSelectedExercise(null);
+    setStoredView("parcours");
     scrollToTop();
   };
 
   const openExercise = (exercise: Exercise) => {
-    setSelectedExercise(exercise);
+    setSelectedExerciseId(exercise.id);
     scrollToTop();
   };
 
@@ -101,7 +109,7 @@ export default function Home() {
             selectedExercise={selectedExercise}
             onOpenExercise={openExercise}
             onCloseExercise={() => {
-              setSelectedExercise(null);
+              setSelectedExerciseId(null);
               scrollToTop();
             }}
           />

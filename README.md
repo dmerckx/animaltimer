@@ -1,16 +1,17 @@
 # Mijn Multimove
 
-Een praktische lesgeverstool met losse Multimove-oefeningen, een voorbereid parcours met stations en de dierentimer als minigame.
+Een praktische lesgeverstool voor Multimove-kinderen van 3 tot 6 jaar, met losse oefeningen, een voorbereid parcours met stations en de dierentimer als minigame.
 
 ## Functionaliteit
 
-- 17 losse, thematische oefeningen van ongeveer 10 minuten.
+- 17 losse, thematische kleuteroefeningen van ongeveer 10 minuten.
 - 166 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
 - Compacte mobiele oefeningskaarten met direct zichtbare materiaalpictogrammen.
 - Info over leeftijd, groepsgrootte, opstelling, materiaal en lesgevertips.
 - Een apart parcours met 7 voorbereide stations en 42 combineerbare uitvoeringen.
-- Een stationsoverzicht, individuele variatieknoppen en een willekeurige nieuwe ronde.
-- Een responsive interface voor telefoon, tablet en desktop.
+- Een compact stationsoverzicht met veegbare uitvoeringen per station.
+- De actieve oefening, opdracht, het actieve station en de uitvoering blijven tijdens de browsersessie bewaard.
+- Een mobiel geoptimaliseerde interface die ook schaalt naar tablet en desktop.
 - De bestaande dierentimer met afstandskeuze, dierengeluiden en opgeslagen tijden.
 
 ## Ontwikkelen

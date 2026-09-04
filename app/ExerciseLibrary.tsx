@@ -1,7 +1,7 @@
 "use client";
 
+import { useSessionStorageValue } from "@/app/useSessionStorage";
 import { exercises, type Exercise } from "@/data/exercises";
-import { useState } from "react";
 
 type ExerciseLibraryProps = {
   selectedExercise: Exercise | null;
@@ -177,25 +177,39 @@ function ExerciseDetail({
   exercise: Exercise;
   onBack: () => void;
 }) {
-  const [assignmentIndex, setAssignmentIndex] = useState(0);
+  const storageKey = `multimove:exercise:${exercise.id}:assignment`;
+  const [storedIndex, setStoredIndex] = useSessionStorageValue(storageKey);
+  const parsedIndex = Number(storedIndex);
+  const assignmentIndex =
+    Number.isInteger(parsedIndex) &&
+    parsedIndex >= 0 &&
+    parsedIndex < exercise.assignments.length
+      ? parsedIndex
+      : 0;
   const assignment = exercise.assignments[assignmentIndex];
   const colors = accentClasses[exercise.accent];
 
+  const updateAssignmentIndex = (
+    getNextIndex: (currentIndex: number) => number,
+  ) => {
+    setStoredIndex(String(getNextIndex(assignmentIndex)));
+  };
+
   const goPrevious = () => {
-    setAssignmentIndex((current) =>
+    updateAssignmentIndex((current) =>
       current === 0 ? exercise.assignments.length - 1 : current - 1,
     );
   };
 
   const goNext = () => {
-    setAssignmentIndex((current) =>
+    updateAssignmentIndex((current) =>
       current === exercise.assignments.length - 1 ? 0 : current + 1,
     );
   };
 
   const chooseRandom = () => {
     if (exercise.assignments.length < 2) return;
-    setAssignmentIndex((current) => {
+    updateAssignmentIndex((current) => {
       const offset = Math.floor(Math.random() * (exercise.assignments.length - 1)) + 1;
       return (current + offset) % exercise.assignments.length;
     });
@@ -304,7 +318,7 @@ function ExerciseDetail({
                   <button
                     type="button"
                     key={item.title}
-                    onClick={() => setAssignmentIndex(index)}
+                    onClick={() => updateAssignmentIndex(() => index)}
                     className={`h-2.5 shrink-0 rounded-full transition-all ${
                       index === assignmentIndex
                         ? `w-8 ${colors.line}`
