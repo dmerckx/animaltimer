@@ -15,6 +15,7 @@ export type Assignment = {
 
 export type Exercise = {
   id: string;
+  kind?: "animal-timer";
   title: string;
   summary: string;
   category: ExerciseCategory;
@@ -1335,5 +1336,115 @@ export const exercises: Exercise[] = [
         level: "Rustig",
       },
     ],
+  },
+  {
+    id: "ballenbak",
+    title: "Ballenbak",
+    summary: "Haal een bal, voer een opdracht uit en blijf rondjes bewegen.",
+    category: "Gooien & vangen",
+    emoji: "🏀",
+    accent: "green",
+    duration: "± 10 min",
+    ages: "3–6 jaar",
+    groupSize: "4–24 kinderen",
+    material: ["3 turnbanken", "Veel zachte ballen in verschillende maten"],
+    optionalMaterial: ["Kegels", "Hoepels", "Muziek"],
+    setup:
+      "Leg drie stabiele turnbanken op hun zij in een U-vorm en vul het midden met zachte ballen. Maak een vaste looprichting: pak een bal, doe de stationaire opdracht, gooi hem onderhands terug, loop één rondje en kies een nieuwe bal.",
+    tip:
+      "Maak een aparte plek om ballen te nemen en terug te gooien. Gebruik alleen zachte ballen, laat niemand op de banken klimmen en toon het volledige patroon eerst langzaam voor.",
+    assignments: [
+      {
+        title: "Knuffelbal",
+        instruction:
+          "Knuffel de bal drie tellen stevig tegen je buik en gooi hem daarna onderhands terug.",
+        level: "Rustig",
+      },
+      {
+        title: "Reus en kabouter",
+        instruction:
+          "Hou de bal drie tellen hoog boven je hoofd en daarna drie tellen laag bij je tenen.",
+        level: "Rustig",
+      },
+      {
+        title: "Bots en pak",
+        instruction:
+          "Laat de bal één keer botsen en pak hem met twee handen vast. Probeer het drie keer.",
+        level: "Actief",
+      },
+      {
+        title: "Kleine luchtballon",
+        instruction:
+          "Gooi de bal een klein stukje omhoog en vang hem met twee handen of pak hem na de bots.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Rond je buik",
+        instruction:
+          "Geef de bal drie keer van hand naar hand rond je buik zonder je voeten te verplaatsen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Tik je lichaam",
+        instruction:
+          "Tik met de bal je hoofd, buik, knieën en voeten aan. De lesgever noemt de volgorde.",
+        level: "Rustig",
+      },
+      {
+        title: "Bal tussen de knieën",
+        instruction:
+          "Klem de bal tussen je knieën en maak drie kleine sprongen op dezelfde plaats.",
+        level: "Actief",
+      },
+      {
+        title: "Zit en sta",
+        instruction:
+          "Hou de bal met twee handen vast, ga op je poep zitten en sta weer recht.",
+        level: "Actief",
+      },
+      {
+        title: "Draai als een tol",
+        instruction:
+          "Hou de bal voor je buik, draai één rustig rondje en blijf daarna stevig stilstaan.",
+        level: "Rustig",
+      },
+      {
+        title: "Rol rond je voeten",
+        instruction:
+          "Zet je voeten stil en rol de bal met twee handen één rondje rond je schoenen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Kleur of formaat",
+        instruction:
+          "Zoek een bal met de kleur of het formaat dat de lesgever noemt. Toon hem hoog aan de groep.",
+        level: "Actief",
+      },
+      {
+        title: "Eigen baltruc",
+        instruction:
+          "Bedenk één beweging die je op dezelfde plaats met de bal kunt doen. De groep probeert ze na.",
+        level: "Uitdaging",
+      },
+    ],
+  },
+  {
+    id: "dierentimer",
+    kind: "animal-timer",
+    title: "Dierentimer",
+    summary: "Meet een loopje en ontdek welk dier even snel beweegt.",
+    category: "Lopen & bewegen",
+    emoji: "⏱️",
+    accent: "purple",
+    duration: "± 10 min",
+    ages: "3–6 jaar",
+    groupSize: "2–24 kinderen",
+    material: ["2 markeringspotjes"],
+    optionalMaterial: ["Meetlint"],
+    setup:
+      "Markeer een korte, rechte loopafstand met twee potjes en kies die afstand in de timer. Voorzie naast de loopbaan een vrije terugweg.",
+    tip:
+      "Laat één kind lopen terwijl de volgende klaarstaat. Vergelijk met dieren, niet met andere kinderen: elk resultaat is een leuke ontdekking.",
+    assignments: [],
   },
 ];

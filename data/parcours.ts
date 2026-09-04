@@ -10,6 +10,7 @@ export type ParcoursStation = {
   emoji: string;
   accent: "coral" | "blue" | "yellow" | "green" | "purple";
   material: string[];
+  optionalMaterial?: string[];
   preparation: string;
   safety: string;
   variations: StationVariation[];
@@ -30,6 +31,7 @@ export const parcours = {
       emoji: "➖",
       accent: "coral",
       material: ["1–3 turnbanken", "Mat aan het uiteinde"],
+      optionalMaterial: ["Kersepitzakjes"],
       preparation:
         "Zet één bank of enkele banken stevig achter elkaar. Laat tussen twee banken geen gevaarlijke opening.",
       safety:
@@ -79,6 +81,7 @@ export const parcours = {
       emoji: "▰",
       accent: "blue",
       material: ["1 lange of 2 korte matten"],
+      optionalMaterial: ["Kersepitzakje"],
       preparation:
         "Leg de mat in het verlengde van het parcours. Gebruik eventueel een tweede mat om voldoende uitloopruimte te maken.",
       safety:
@@ -128,6 +131,7 @@ export const parcours = {
       emoji: "▤",
       accent: "yellow",
       material: ["Plint op aangepaste hoogte", "Dikke landingsmat"],
+      optionalMaterial: ["Gekleurde kersepitzakjes"],
       preparation:
         "Kies een lage, haalbare hoogte. Zet de plint stabiel en leg een dikke mat aan de afstapzijde.",
       safety:
@@ -177,6 +181,7 @@ export const parcours = {
       emoji: "🔶",
       accent: "green",
       material: ["6–10 kegeltjes"],
+      optionalMaterial: ["Kersepitzakje", "Bal"],
       preparation:
         "Zet de kegeltjes in een rechte lijn met ongeveer één grote kinderstap tussen elk kegeltje.",
       safety:
@@ -275,6 +280,7 @@ export const parcours = {
       emoji: "⭕",
       accent: "blue",
       material: ["5–8 hoepels"],
+      optionalMaterial: ["Kersepitzakjes"],
       preparation:
         "Leg de hoepels als eilanden op de grond. Wissel links, rechts, dichtbij en iets verder weg af.",
       safety:
@@ -364,6 +370,56 @@ export const parcours = {
           instruction:
             "Mik het zakje in de hoepel of bak met de kleur die de lesgever noemt.",
           level: "Rustig",
+        },
+      ],
+    },
+    {
+      id: "tunnel",
+      name: "Tunnel",
+      emoji: "🕳️",
+      accent: "green",
+      material: ["1 turnbank", "Blauwe afscheidingswand"],
+      optionalMaterial: ["Kersepitzakjes", "Zachte bal", "Mat aan de uitgang"],
+      preparation:
+        "Zet de turnbank stabiel en leg de blauwe afscheidingswand er stevig overheen. Maak een vrije, brede tunnel van ongeveer 50 centimeter hoog met een duidelijke ingang en uitgang.",
+      safety:
+        "Test zelf of de wand nergens kan schuiven of kantelen. Laat één kind tegelijk in dezelfde richting door de tunnel gaan en hou de uitgang volledig vrij.",
+      variations: [
+        {
+          title: "Poes door de tunnel",
+          instruction:
+            "Kruip op handen en knieën rustig door de tunnel en kijk naar de uitgang.",
+          level: "Rustig",
+        },
+        {
+          title: "Slang op de buik",
+          instruction:
+            "Ga op je buik liggen en trek jezelf met je armen door de tunnel.",
+          level: "Actief",
+        },
+        {
+          title: "Muisje zonder geluid",
+          instruction:
+            "Kruip zo stil mogelijk door de tunnel. Aan de uitgang piep je één keer als een muis.",
+          level: "Rustig",
+        },
+        {
+          title: "Pakje op de rug",
+          instruction:
+            "Leg een kersepitzakje op je rug en kruip door de tunnel zonder het pakje te verliezen.",
+          level: "Uitdaging",
+        },
+        {
+          title: "Bal op verkenning",
+          instruction:
+            "Rol eerst een zachte bal door de tunnel en kruip er daarna zelf achteraan.",
+          level: "Actief",
+        },
+        {
+          title: "Tunnel en standbeeld",
+          instruction:
+            "Kruip door de tunnel, sta op de mat recht en blijf drie tellen als een standbeeld staan.",
+          level: "Uitdaging",
         },
       ],
     },

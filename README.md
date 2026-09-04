@@ -4,15 +4,18 @@ Een praktische lesgeverstool voor Multimove-kinderen van 3 tot 6 jaar, met losse
 
 ## Functionaliteit
 
-- 17 losse, thematische kleuteroefeningen van ongeveer 10 minuten.
-- 166 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
+- 18 losse, thematische kleuteroefeningen en de dierentimer als extra oefening.
+- 178 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
 - Compacte mobiele oefeningskaarten met direct zichtbare materiaalpictogrammen.
 - Info over leeftijd, groepsgrootte, opstelling, materiaal en lesgevertips.
-- Een apart parcours met 7 voorbereide stations en 42 combineerbare uitvoeringen.
+- Een apart parcours met 8 voorbereide stations en 48 combineerbare uitvoeringen.
 - Een compact stationsoverzicht met veegbare uitvoeringen per station.
-- De actieve oefening, opdracht, het actieve station en de uitvoering blijven tijdens de browsersessie bewaard.
+- Oefeningen en stations zijn aanvinkbaar in een geordende dagplanning.
+- De dagplanning bundelt noodzakelijk en optioneel materiaal afzonderlijk.
+- Een deelbare URL laadt dezelfde dagplanning en volgorde bij iemand anders in.
+- De laatst gekozen opdracht en uitvoering blijven tijdens de browsersessie bewaard.
 - Een mobiel geoptimaliseerde interface die ook schaalt naar tablet en desktop.
-- De bestaande dierentimer met afstandskeuze, dierengeluiden en opgeslagen tijden.
+- De dierentimer met afstandskeuze, dierengeluiden en opgeslagen tijden.
 
 ## Ontwikkelen
 

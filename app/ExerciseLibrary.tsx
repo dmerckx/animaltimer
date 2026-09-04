@@ -1,5 +1,9 @@
 "use client";
 
+import { AnimalTimer } from "@/app/AnimalTimer";
+import { getMaterialIcon } from "@/app/materials";
+import { PlanToggleButton } from "@/app/PlanToggleButton";
+import { useDayPlan } from "@/app/useDayPlan";
 import { useSessionStorageValue } from "@/app/useSessionStorage";
 import { exercises, type Exercise } from "@/data/exercises";
 
@@ -50,22 +54,47 @@ export function ExerciseLibrary({
   onOpenExercise,
   onCloseExercise,
 }: ExerciseLibraryProps) {
+  const { isPlanned, toggleItem } = useDayPlan();
+
   if (selectedExercise) {
+    if (selectedExercise.kind === "animal-timer") {
+      return (
+        <AnimalTimer
+          onBack={onCloseExercise}
+          planned={isPlanned("exercise", selectedExercise.id)}
+          onTogglePlan={() => toggleItem("exercise", selectedExercise.id)}
+        />
+      );
+    }
+
     return (
       <ExerciseDetail
         key={selectedExercise.id}
         exercise={selectedExercise}
         onBack={onCloseExercise}
+        planned={isPlanned("exercise", selectedExercise.id)}
+        onTogglePlan={() => toggleItem("exercise", selectedExercise.id)}
       />
     );
   }
 
-  return <ExerciseOverview onOpenExercise={onOpenExercise} />;
+  return (
+    <ExerciseOverview
+      onOpenExercise={onOpenExercise}
+      isPlanned={(id) => isPlanned("exercise", id)}
+      onTogglePlan={(id) => toggleItem("exercise", id)}
+    />
+  );
 }
 
 function ExerciseOverview({
   onOpenExercise,
-}: Pick<ExerciseLibraryProps, "onOpenExercise">) {
+  isPlanned,
+  onTogglePlan,
+}: Pick<ExerciseLibraryProps, "onOpenExercise"> & {
+  isPlanned: (id: string) => boolean;
+  onTogglePlan: (id: string) => void;
+}) {
   return (
     <main className="mx-auto w-full max-w-[1200px] px-3 pb-8 pt-3 sm:px-6 lg:px-10 lg:pt-8">
       <h1 className="sr-only">Oefeningen</h1>
@@ -75,6 +104,8 @@ function ExerciseOverview({
             key={exercise.id}
             exercise={exercise}
             onOpen={() => onOpenExercise(exercise)}
+            planned={isPlanned(exercise.id)}
+            onTogglePlan={() => onTogglePlan(exercise.id)}
           />
         ))}
       </div>
@@ -85,56 +116,72 @@ function ExerciseOverview({
 function ExerciseCard({
   exercise,
   onOpen,
+  planned,
+  onTogglePlan,
 }: {
   exercise: Exercise;
   onOpen: () => void;
+  planned: boolean;
+  onTogglePlan: () => void;
 }) {
   const colors = accentClasses[exercise.accent];
 
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="group w-full rounded-[20px] border border-[#dedbd3] bg-white p-4 text-left shadow-[0_5px_18px_rgba(43,52,47,0.035)] transition hover:border-[#c4c1b8] hover:shadow-[0_10px_28px_rgba(43,52,47,0.08)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#ed765d]"
+    <article
+      className={`relative overflow-hidden rounded-[20px] border bg-white shadow-[0_5px_18px_rgba(43,52,47,0.035)] transition hover:shadow-[0_10px_28px_rgba(43,52,47,0.08)] ${
+        planned ? "border-[#a9cbb3] ring-1 ring-[#d5e8da]" : "border-[#dedbd3]"
+      }`}
     >
-      <div className="flex items-start gap-3">
-        <span
-          className={`flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ${colors.icon}`}
-          aria-hidden="true"
-        >
-          {exercise.emoji}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-[9px] font-black uppercase tracking-[0.13em] text-[#949a95]">
-            {exercise.category}
+      <button
+        type="button"
+        onClick={onOpen}
+        className="group w-full p-4 text-left focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[#ed765d]"
+      >
+        <div className="flex items-start gap-3 pr-11">
+          <span
+            className={`flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ${colors.icon}`}
+            aria-hidden="true"
+          >
+            {exercise.emoji}
           </span>
-          <span className="mt-1 block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
-            {exercise.title}
+          <span className="min-w-0 flex-1">
+            <span className="block text-[9px] font-black uppercase tracking-[0.13em] text-[#949a95]">
+              {exercise.category}
+            </span>
+            <span className="mt-1 block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
+              {exercise.title}
+            </span>
+            <span className="mt-1 line-clamp-1 block text-xs leading-5 text-[#747d76]">
+              {exercise.summary}
+            </span>
           </span>
-          <span className="mt-1 line-clamp-1 block text-xs leading-5 text-[#747d76]">
-            {exercise.summary}
-          </span>
-        </span>
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f4f2ec] text-base text-[#26372d] transition group-hover:bg-[#26372d] group-hover:text-white">
-          →
-        </span>
-      </div>
+        </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-[#ebe8e1] pt-3">
-        {exercise.material.length > 0 ? (
-          exercise.material.map((material) => (
-            <MaterialBadge key={material} material={material} />
-          ))
-        ) : (
-          <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2f4f0] px-2 py-1 text-[10px] font-bold text-[#68736c]">
-            <span aria-hidden="true">🙌</span> Geen materiaal
+        <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-[#ebe8e1] pt-3">
+          {exercise.material.length > 0 ? (
+            exercise.material.map((material) => (
+              <MaterialBadge key={material} material={material} />
+            ))
+          ) : (
+            <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2f4f0] px-2 py-1 text-[10px] font-bold text-[#68736c]">
+              <span aria-hidden="true">🙌</span> Geen materiaal
+            </span>
+          )}
+          <span className="ml-auto whitespace-nowrap text-[10px] font-black text-[#929892]">
+            {exercise.kind === "animal-timer"
+              ? "Minigame"
+              : `${exercise.assignments.length} opdrachten`}
           </span>
-        )}
-        <span className="ml-auto whitespace-nowrap text-[10px] font-black text-[#929892]">
-          {exercise.assignments.length} opdrachten
-        </span>
+        </div>
+      </button>
+      <div className="absolute right-3 top-3 z-10">
+        <PlanToggleButton
+          selected={planned}
+          label={exercise.title}
+          onToggle={onTogglePlan}
+        />
       </div>
-    </button>
+    </article>
   );
 }
 
@@ -149,33 +196,16 @@ function MaterialBadge({ material }: { material: string }) {
   );
 }
 
-function getMaterialIcon(material: string) {
-  const value = material.toLocaleLowerCase("nl-BE");
-
-  if (value.includes("parachute")) return "🪂";
-  if (value.includes("touw")) return "🪢";
-  if (value.includes("hoepel")) return "⭕";
-  if (value.includes("kegel") || value.includes("marker")) return "🔶";
-  if (value.includes("kersepit")) return "🫘";
-  if (value.includes("bal")) return "⚽";
-  if (value.includes("bank")) return "➖";
-  if (value.includes("mat")) return "▰";
-  if (value.includes("plint")) return "▤";
-  if (value.includes("ladder")) return "🪜";
-  if (value.includes("goal")) return "🥅";
-  if (value.includes("muur")) return "🧱";
-  if (value.includes("meetlint")) return "📏";
-  if (value.includes("vest")) return "🦺";
-  if (value.includes("knuffel")) return "🧸";
-  return "🎒";
-}
-
 function ExerciseDetail({
   exercise,
   onBack,
+  planned,
+  onTogglePlan,
 }: {
   exercise: Exercise;
   onBack: () => void;
+  planned: boolean;
+  onTogglePlan: () => void;
 }) {
   const storageKey = `multimove:exercise:${exercise.id}:assignment`;
   const [storedIndex, setStoredIndex] = useSessionStorageValue(storageKey);
@@ -217,14 +247,22 @@ function ExerciseDetail({
 
   return (
     <div className="mx-auto w-full max-w-[1280px] px-5 pb-20 pt-6 sm:px-8 lg:px-10 lg:pt-9">
-      <button
-        type="button"
-        onClick={onBack}
-        className="group inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-extrabold text-[#58655d] transition hover:bg-white hover:text-[#203028]"
-      >
-        <span className="text-lg transition group-hover:-translate-x-0.5">←</span>
-        Alle oefeningen
-      </button>
+      <div className="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={onBack}
+          className="group inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-extrabold text-[#58655d] transition hover:bg-white hover:text-[#203028]"
+        >
+          <span className="text-lg transition group-hover:-translate-x-0.5">←</span>
+          Alle oefeningen
+        </button>
+        <PlanToggleButton
+          selected={planned}
+          label={exercise.title}
+          onToggle={onTogglePlan}
+          showText
+        />
+      </div>
 
       <div className="mt-5 grid gap-7 lg:grid-cols-[minmax(0,1fr)_310px]">
         <main>
@@ -313,21 +351,36 @@ function ExerciseDetail({
                 <span className="hidden sm:inline">Vorige</span>
               </button>
 
-              <div className="no-scrollbar flex flex-1 justify-center gap-1.5 overflow-x-auto px-2">
-                {exercise.assignments.map((item, index) => (
-                  <button
-                    type="button"
-                    key={item.title}
-                    onClick={() => updateAssignmentIndex(() => index)}
-                    className={`h-2.5 shrink-0 rounded-full transition-all ${
-                      index === assignmentIndex
-                        ? `w-8 ${colors.line}`
-                        : "w-2.5 bg-[#d6d5cf] hover:bg-[#b9bab5]"
-                    }`}
-                    aria-label={`Ga naar opdracht ${index + 1}: ${item.title}`}
-                    aria-current={index === assignmentIndex ? "step" : undefined}
-                  />
-                ))}
+              <div className="flex min-w-0 flex-1 items-center justify-center gap-1.5 px-1">
+                {getVisibleAssignmentIndexes(
+                  exercise.assignments.length,
+                  assignmentIndex,
+                ).map((index, slot) =>
+                  index === null ? (
+                    <span
+                      key={`ellipsis-${slot}`}
+                      className="w-2.5 shrink-0 text-center text-xs font-black leading-none text-[#a5aaa5]"
+                      aria-hidden="true"
+                    >
+                      …
+                    </span>
+                  ) : (
+                    <button
+                      type="button"
+                      key={exercise.assignments[index].title}
+                      onClick={() => updateAssignmentIndex(() => index)}
+                      className={`h-2.5 shrink-0 rounded-full transition-all ${
+                        index === assignmentIndex
+                          ? `w-7 ${colors.line}`
+                          : "w-2.5 bg-[#d6d5cf] hover:bg-[#b9bab5]"
+                      }`}
+                      aria-label={`Ga naar opdracht ${index + 1}: ${exercise.assignments[index].title}`}
+                      aria-current={
+                        index === assignmentIndex ? "step" : undefined
+                      }
+                    />
+                  ),
+                )}
               </div>
 
               <button
@@ -388,6 +441,22 @@ function ExerciseDetail({
       </div>
     </div>
   );
+}
+
+function getVisibleAssignmentIndexes(total: number, current: number) {
+  if (total <= 7) {
+    return Array.from({ length: total }, (_, index) => index);
+  }
+
+  if (current <= 3) {
+    return [0, 1, 2, 3, 4, null, total - 1];
+  }
+
+  if (current >= total - 4) {
+    return [0, null, total - 5, total - 4, total - 3, total - 2, total - 1];
+  }
+
+  return [0, null, current - 1, current, current + 1, null, total - 1];
 }
 
 function InfoCard({

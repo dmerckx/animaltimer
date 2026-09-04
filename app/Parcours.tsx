@@ -1,5 +1,7 @@
 "use client";
 
+import { PlanToggleButton } from "@/app/PlanToggleButton";
+import { useDayPlan } from "@/app/useDayPlan";
 import { useSessionStorageValue } from "@/app/useSessionStorage";
 import { parcours, type ParcoursStation } from "@/data/parcours";
 import { useEffect, useRef } from "react";
@@ -46,6 +48,7 @@ const accentClasses: Record<
 };
 
 export function ParcoursPage() {
+  const { isPlanned, toggleItem } = useDayPlan();
   const [selectedStationId, setSelectedStationId] = useSessionStorageValue(
     storageKeys.station,
   );
@@ -83,6 +86,8 @@ export function ParcoursPage() {
         stationIndex={selectedStationIndex}
         variationIndex={variationIndexes[selectedStationIndex]}
         onBack={closeStation}
+        planned={isPlanned("station", station.id)}
+        onTogglePlan={() => toggleItem("station", station.id)}
         onSelect={(variationIndex) =>
           selectVariation(selectedStationIndex, variationIndex)
         }
@@ -90,7 +95,13 @@ export function ParcoursPage() {
     );
   }
 
-  return <StationOverview onOpenStation={openStation} />;
+  return (
+    <StationOverview
+      onOpenStation={openStation}
+      isPlanned={(id) => isPlanned("station", id)}
+      onTogglePlan={(id) => toggleItem("station", id)}
+    />
+  );
 }
 
 function getVariationIndexes(storedIndexes: string | null) {
@@ -113,8 +124,12 @@ function getVariationIndexes(storedIndexes: string | null) {
 
 function StationOverview({
   onOpenStation,
+  isPlanned,
+  onTogglePlan,
 }: {
   onOpenStation: (station: ParcoursStation) => void;
+  isPlanned: (id: string) => boolean;
+  onTogglePlan: (id: string) => void;
 }) {
   return (
     <main className="mx-auto w-full max-w-[1200px] px-3 pb-8 pt-3 sm:px-6 lg:px-10 lg:pt-8">
@@ -126,6 +141,8 @@ function StationOverview({
             station={station}
             stationIndex={index}
             onOpen={() => onOpenStation(station)}
+            planned={isPlanned(station.id)}
+            onTogglePlan={() => onTogglePlan(station.id)}
           />
         ))}
       </div>
@@ -137,49 +154,63 @@ function StationOverviewCard({
   station,
   stationIndex,
   onOpen,
+  planned,
+  onTogglePlan,
 }: {
   station: ParcoursStation;
   stationIndex: number;
   onOpen: () => void;
+  planned: boolean;
+  onTogglePlan: () => void;
 }) {
   const colors = accentClasses[station.accent];
 
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="group w-full rounded-[20px] border border-[#dedbd3] bg-white p-4 text-left shadow-[0_5px_18px_rgba(43,52,47,0.035)] transition hover:border-[#c4c1b8] hover:shadow-[0_10px_28px_rgba(43,52,47,0.08)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#568fc4]"
+    <article
+      className={`relative overflow-hidden rounded-[20px] border bg-white shadow-[0_5px_18px_rgba(43,52,47,0.035)] transition hover:shadow-[0_10px_28px_rgba(43,52,47,0.08)] ${
+        planned ? "border-[#a9cbb3] ring-1 ring-[#d5e8da]" : "border-[#dedbd3]"
+      }`}
     >
-      <span className="flex items-start gap-3">
-        <span
-          className={`flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ${colors.icon}`}
-          aria-hidden="true"
-        >
-          {station.emoji}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-[9px] font-black uppercase tracking-[0.13em] text-[#949a95]">
-            Station {stationIndex + 1}
+      <button
+        type="button"
+        onClick={onOpen}
+        className="group w-full p-4 text-left focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[#568fc4]"
+      >
+        <span className="flex items-start gap-3 pr-11">
+          <span
+            className={`flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ${colors.icon}`}
+            aria-hidden="true"
+          >
+            {station.emoji}
           </span>
-          <span className="mt-1 block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
-            {station.name}
+          <span className="min-w-0 flex-1">
+            <span className="block text-[9px] font-black uppercase tracking-[0.13em] text-[#949a95]">
+              Station {stationIndex + 1}
+            </span>
+            <span className="mt-1 block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
+              {station.name}
+            </span>
+            <span className="mt-1 line-clamp-1 block text-xs leading-5 text-[#747d76]">
+              {station.material.join(" · ")}
+            </span>
           </span>
-          <span className="mt-1 line-clamp-1 block text-xs leading-5 text-[#747d76]">
-            {station.material.join(" · ")}
+        </span>
+        <span className="mt-3 flex items-center border-t border-[#ebe8e1] pt-3 text-[10px] font-black text-[#929892]">
+          <span className="rounded-lg bg-[#f2f4f0] px-2 py-1 text-[#5f6b63]">
+            {station.material.length}{" "}
+            {station.material.length === 1 ? "benodigdheid" : "benodigdheden"}
           </span>
+          <span className="ml-auto">{station.variations.length} uitvoeringen</span>
         </span>
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f4f2ec] text-base text-[#26372d] transition group-hover:bg-[#26372d] group-hover:text-white">
-          →
-        </span>
-      </span>
-      <span className="mt-3 flex items-center border-t border-[#ebe8e1] pt-3 text-[10px] font-black text-[#929892]">
-        <span className="rounded-lg bg-[#f2f4f0] px-2 py-1 text-[#5f6b63]">
-          {station.material.length}{" "}
-          {station.material.length === 1 ? "benodigdheid" : "benodigdheden"}
-        </span>
-        <span className="ml-auto">{station.variations.length} uitvoeringen</span>
-      </span>
-    </button>
+      </button>
+      <div className="absolute right-3 top-3 z-10">
+        <PlanToggleButton
+          selected={planned}
+          label={station.name}
+          onToggle={onTogglePlan}
+        />
+      </div>
+    </article>
   );
 }
 
@@ -189,12 +220,16 @@ function StationDetail({
   variationIndex,
   onBack,
   onSelect,
+  planned,
+  onTogglePlan,
 }: {
   station: ParcoursStation;
   stationIndex: number;
   variationIndex: number;
   onBack: () => void;
   onSelect: (variationIndex: number) => void;
+  planned: boolean;
+  onTogglePlan: () => void;
 }) {
   const colors = accentClasses[station.accent];
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -251,14 +286,22 @@ function StationDetail({
 
   return (
     <div className="mx-auto w-full max-w-[900px] px-3 pb-20 pt-3 sm:px-6 lg:px-10 lg:pt-8">
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-extrabold text-[#58655d] transition hover:bg-white hover:text-[#203028]"
-      >
-        <span className="text-lg">←</span>
-        Alle stations
-      </button>
+      <div className="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={onBack}
+          className="inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-extrabold text-[#58655d] transition hover:bg-white hover:text-[#203028]"
+        >
+          <span className="text-lg">←</span>
+          Alle stations
+        </button>
+        <PlanToggleButton
+          selected={planned}
+          label={station.name}
+          onToggle={onTogglePlan}
+          showText
+        />
+      </div>
 
       <header className="mt-3 flex items-start gap-3 rounded-[22px] border border-[#dedbd3] bg-white p-4 shadow-[0_6px_22px_rgba(43,52,47,0.04)]">
         <span

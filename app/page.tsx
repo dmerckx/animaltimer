@@ -1,16 +1,20 @@
 "use client";
 
-import { AnimalTimer } from "@/app/AnimalTimer";
+import { DayPlan } from "@/app/DayPlan";
 import { ExerciseLibrary } from "@/app/ExerciseLibrary";
 import { ParcoursPage } from "@/app/Parcours";
+import { dayPlanStorageKey, decodeDayPlan } from "@/app/useDayPlan";
 import { useSessionStorageValue } from "@/app/useSessionStorage";
 import { exercises, type Exercise } from "@/data/exercises";
+import { parcours, type ParcoursStation } from "@/data/parcours";
+import { useEffect } from "react";
 
-type View = "exercises" | "parcours" | "timer";
+type View = "exercises" | "parcours" | "planning";
 
 const storageKeys = {
   view: "multimove:view",
   exercise: "multimove:exercise",
+  station: "multimove:parcours:station",
 };
 
 export default function Home() {
@@ -18,34 +22,64 @@ export default function Home() {
   const [selectedExerciseId, setSelectedExerciseId] = useSessionStorageValue(
     storageKeys.exercise,
   );
+  const [, setSelectedStationId] = useSessionStorageValue(storageKeys.station);
+  const [, setDayPlan] = useSessionStorageValue(dayPlanStorageKey);
   const view: View =
-    storedView === "parcours" || storedView === "timer"
+    storedView === "parcours" || storedView === "planning"
       ? storedView
       : "exercises";
   const selectedExercise =
     exercises.find((exercise) => exercise.id === selectedExerciseId) ?? null;
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const sharedPlan = url.searchParams.get("planning");
+    if (!sharedPlan) return;
+
+    const validItems = decodeDayPlan(sharedPlan).filter((item) =>
+      item.type === "exercise"
+        ? exercises.some((exercise) => exercise.id === item.id)
+        : parcours.stations.some((station) => station.id === item.id),
+    );
+    if (validItems.length > 0) {
+      setDayPlan(JSON.stringify(validItems));
+      setStoredView("planning");
+    }
+
+    url.searchParams.delete("planning");
+    window.history.replaceState(null, "", url);
+  }, [setDayPlan, setStoredView]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const showExercises = () => {
+    setSelectedExerciseId(null);
     setStoredView("exercises");
     scrollToTop();
   };
 
-  const showTimer = () => {
-    setStoredView("timer");
+  const showPlanning = () => {
+    setStoredView("planning");
     scrollToTop();
   };
 
   const showParcours = () => {
+    setSelectedStationId(null);
     setStoredView("parcours");
     scrollToTop();
   };
 
   const openExercise = (exercise: Exercise) => {
     setSelectedExerciseId(exercise.id);
+    setStoredView("exercises");
+    scrollToTop();
+  };
+
+  const openStation = (station: ParcoursStation) => {
+    setSelectedStationId(station.id);
+    setStoredView("parcours");
     scrollToTop();
   };
 
@@ -55,7 +89,7 @@ export default function Home() {
         view={view}
         onExercises={showExercises}
         onParcours={showParcours}
-        onTimer={showTimer}
+        onPlanning={showPlanning}
       />
 
       <aside className="fixed inset-y-0 left-0 z-20 hidden w-64 flex-col border-r border-[#dcd9d1] bg-[#f0eee7] lg:flex">
@@ -77,11 +111,11 @@ export default function Home() {
             onClick={showParcours}
           />
           <NavButton
-            active={view === "timer"}
-            icon={<TimerIcon />}
-            label="Dierentimer"
-            description="Meet een loopje"
-            onClick={showTimer}
+            active={view === "planning"}
+            icon={<PlanIcon />}
+            label="Dagplanning"
+            description="Open je les snel"
+            onClick={showPlanning}
           />
         </nav>
 
@@ -116,7 +150,10 @@ export default function Home() {
         ) : view === "parcours" ? (
           <ParcoursPage />
         ) : (
-          <AnimalTimer />
+          <DayPlan
+            onOpenExercise={openExercise}
+            onOpenStation={openStation}
+          />
         )}
       </div>
     </div>
@@ -127,12 +164,12 @@ function MobileNavigation({
   view,
   onExercises,
   onParcours,
-  onTimer,
+  onPlanning,
 }: {
   view: View;
   onExercises: () => void;
   onParcours: () => void;
-  onTimer: () => void;
+  onPlanning: () => void;
 }) {
   return (
     <nav
@@ -152,10 +189,10 @@ function MobileNavigation({
         onClick={onParcours}
       />
       <MobileNavButton
-        active={view === "timer"}
-        icon={<TimerIcon />}
-        label="Dierentimer"
-        onClick={onTimer}
+        active={view === "planning"}
+        icon={<PlanIcon />}
+        label="Dagplanning"
+        onClick={onPlanning}
       />
     </nav>
   );
@@ -274,15 +311,21 @@ function LibraryIcon() {
   );
 }
 
-function TimerIcon() {
+function PlanIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
-      <circle cx="12" cy="13" r="7.25" stroke="currentColor" strokeWidth="1.7" />
       <path
-        d="M12 13V9.25M9.5 3.75h5M16.9 6.2l1.35-1.35"
+        d="M7 4.75h10A1.75 1.75 0 0 1 18.75 6.5v12.25H5.25V6.5A1.75 1.75 0 0 1 7 4.75Z"
         stroke="currentColor"
         strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.25 9.25 9.5 10.5l2-2M13.5 9.5h2.25M8.25 14.25 9.5 15.5l2-2M13.5 14.5h2.25"
+        stroke="currentColor"
+        strokeWidth="1.5"
         strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

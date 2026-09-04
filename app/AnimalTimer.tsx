@@ -1,5 +1,6 @@
 "use client";
 
+import { PlanToggleButton } from "@/app/PlanToggleButton";
 import { speeds } from "@/data/speeds";
 import { useCallback, useState } from "react";
 import { useStopwatch } from "react-timer-hook";
@@ -39,11 +40,19 @@ const animalSounds: Record<string, string> = {
   Luipaard: "grom",
 };
 
-export function AnimalTimer() {
+export function AnimalTimer({
+  onBack,
+  planned,
+  onTogglePlan,
+}: {
+  onBack: () => void;
+  planned: boolean;
+  onTogglePlan: () => void;
+}) {
   const [meters, setMeters] = useState(50);
   const [snaps, setSnaps] = useState<Snap[]>([]);
   const { totalSeconds, seconds, minutes, isRunning, start, pause, reset } =
-    useStopwatch();
+    useStopwatch({ autoStart: false });
 
   const playSound = useCallback((target: Animal) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -93,8 +102,25 @@ export function AnimalTimer() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-5 pb-20 pt-7 sm:px-8 lg:px-10 lg:pt-10">
-      <header className="border-b border-[#dedbd3] pb-7">
+    <div className="mx-auto w-full max-w-[1280px] px-3 pb-20 pt-3 sm:px-8 lg:px-10 lg:pt-10">
+      <div className="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={onBack}
+          className="inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-extrabold text-[#58655d] transition hover:bg-white hover:text-[#203028]"
+        >
+          <span className="text-lg">←</span>
+          Alle oefeningen
+        </button>
+        <PlanToggleButton
+          selected={planned}
+          label="Dierentimer"
+          onToggle={onTogglePlan}
+          showText
+        />
+      </div>
+
+      <header className="mt-3 border-b border-[#dedbd3] pb-5">
         <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-[#7a62b6]">
           Minigame
         </p>
