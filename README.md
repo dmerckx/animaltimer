@@ -10,7 +10,8 @@ Een praktische lesgeverstool voor Multimove-kinderen van 3 tot 6 jaar, met losse
 - Info over leeftijd, groepsgrootte, opstelling, materiaal en lesgevertips.
 - Een apart parcours met 8 voorbereide stations en 48 combineerbare uitvoeringen.
 - Een compact stationsoverzicht met veegbare uitvoeringen per station.
-- Oefeningen en stations zijn aanvinkbaar in een geordende dagplanning.
+- Oefeningen en stations zijn aanvinkbaar in een dagplanning en via slepen te herschikken.
+- Geplande parcoursstations staan samen in één compact parcoursblok.
 - De dagplanning bundelt noodzakelijk en optioneel materiaal afzonderlijk.
 - Een deelbare URL laadt dezelfde dagplanning en volgorde bij iemand anders in.
 - De laatst gekozen opdracht en uitvoering blijven tijdens de browsersessie bewaard.

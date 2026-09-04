@@ -3,7 +3,11 @@
 import { DayPlan } from "@/app/DayPlan";
 import { ExerciseLibrary } from "@/app/ExerciseLibrary";
 import { ParcoursPage } from "@/app/Parcours";
-import { dayPlanStorageKey, decodeDayPlan } from "@/app/useDayPlan";
+import {
+  dayPlanStorageKey,
+  decodeDayPlan,
+  useDayPlan,
+} from "@/app/useDayPlan";
 import { useSessionStorageValue } from "@/app/useSessionStorage";
 import { exercises, type Exercise } from "@/data/exercises";
 import { parcours, type ParcoursStation } from "@/data/parcours";
@@ -24,6 +28,7 @@ export default function Home() {
   );
   const [, setSelectedStationId] = useSessionStorageValue(storageKeys.station);
   const [, setDayPlan] = useSessionStorageValue(dayPlanStorageKey);
+  const { items: dayPlanItems } = useDayPlan();
   const view: View =
     storedView === "parcours" || storedView === "planning"
       ? storedView
@@ -90,6 +95,7 @@ export default function Home() {
         onExercises={showExercises}
         onParcours={showParcours}
         onPlanning={showPlanning}
+        planningCount={dayPlanItems.length}
       />
 
       <aside className="fixed inset-y-0 left-0 z-20 hidden w-64 flex-col border-r border-[#dcd9d1] bg-[#f0eee7] lg:flex">
@@ -165,11 +171,13 @@ function MobileNavigation({
   onExercises,
   onParcours,
   onPlanning,
+  planningCount,
 }: {
   view: View;
   onExercises: () => void;
   onParcours: () => void;
   onPlanning: () => void;
+  planningCount: number;
 }) {
   return (
     <nav
@@ -193,6 +201,7 @@ function MobileNavigation({
         icon={<PlanIcon />}
         label="Dagplanning"
         onClick={onPlanning}
+        badge={planningCount}
       />
     </nav>
   );
@@ -203,24 +212,34 @@ function MobileNavButton({
   icon,
   label,
   onClick,
+  badge,
 }: {
   active: boolean;
   icon: React.ReactNode;
   label: string;
   onClick: () => void;
+  badge?: number;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`flex min-w-0 flex-col items-center justify-center gap-1 rounded-2xl px-1 py-2 text-[10px] font-black transition ${
+      className={`relative flex min-w-0 flex-col items-center justify-center gap-1 rounded-2xl px-1 py-2 text-[10px] font-black transition ${
         active
           ? "bg-white text-[#244131] shadow-sm ring-1 ring-[#dfdcd5]"
           : "text-[#7e857f]"
       }`}
-      aria-label={label}
+      aria-label={badge ? `${label}, ${badge} gepland` : label}
       aria-current={active ? "page" : undefined}
     >
+      {Boolean(badge) && (
+        <span
+          className="absolute -top-3 right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e26950] px-1 text-[10px] font-black leading-none text-white shadow-sm ring-2 ring-[#f4f2ec]"
+          aria-hidden="true"
+        >
+          {badge}
+        </span>
+      )}
       {icon}
       <span className="truncate">{label}</span>
     </button>

@@ -9,7 +9,7 @@ import {
 } from "@/app/useDayPlan";
 import { exercises, type Exercise } from "@/data/exercises";
 import { parcours, type ParcoursStation } from "@/data/parcours";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type DayPlanProps = {
   onOpenExercise: (exercise: Exercise) => void;
@@ -32,8 +32,19 @@ type MaterialNeed = {
   sources: string[];
 };
 
+type PlanBlock =
+  | { key: string; type: "exercise"; item: PlannedContent }
+  | { key: "parcours"; type: "parcours"; items: PlannedContent[] };
+
+type DragTarget = {
+  scope: "block" | "station";
+  key: string;
+};
+
 export function DayPlan({ onOpenExercise, onOpenStation }: DayPlanProps) {
-  const { items, toggleItem } = useDayPlan();
+  const { items, toggleItem, reorderItems } = useDayPlan();
+  const draggingRef = useRef<DragTarget | null>(null);
+  const [dragging, setDragging] = useState<DragTarget | null>(null);
   const [generatedLink, setGeneratedLink] = useState<{
     plan: string;
     url: string;
@@ -76,13 +87,103 @@ export function DayPlan({ onOpenExercise, onOpenStation }: DayPlanProps) {
         ]
       : [];
   });
+  const planBlocks = groupPlanBlocks(plannedContent);
   const { necessary, optional } = collectMaterials(plannedContent);
   const encodedPlan = encodeDayPlan(items);
   const currentLink =
     generatedLink?.plan === encodedPlan ? generatedLink : null;
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const saveBlocks = (blocks: PlanBlock[]) => {
+    const nextItems = blocks.flatMap((block) =>
+      block.type === "exercise" ? [block.item] : block.items,
+    );
+    reorderItems(
+      nextItems.map(({ type, id }) => ({ type, id })),
+    );
+  };
+
+  const moveBlock = (draggedKey: string, targetKey: string) => {
+    if (draggedKey === targetKey) return;
+    const fromIndex = planBlocks.findIndex((block) => block.key === draggedKey);
+    const toIndex = planBlocks.findIndex((block) => block.key === targetKey);
+    if (fromIndex < 0 || toIndex < 0) return;
+    const nextBlocks = [...planBlocks];
+    const [moved] = nextBlocks.splice(fromIndex, 1);
+    nextBlocks.splice(toIndex, 0, moved);
+    saveBlocks(nextBlocks);
+  };
+
+  const moveStation = (draggedKey: string, targetKey: string) => {
+    if (draggedKey === targetKey) return;
+    const parcoursBlock = planBlocks.find(
+      (block): block is Extract<PlanBlock, { type: "parcours" }> =>
+        block.type === "parcours",
+    );
+    if (!parcoursBlock) return;
+    const fromIndex = parcoursBlock.items.findIndex(
+      (item) => item.key === draggedKey,
+    );
+    const toIndex = parcoursBlock.items.findIndex(
+      (item) => item.key === targetKey,
+    );
+    if (fromIndex < 0 || toIndex < 0) return;
+    const nextStations = [...parcoursBlock.items];
+    const [moved] = nextStations.splice(fromIndex, 1);
+    nextStations.splice(toIndex, 0, moved);
+    saveBlocks(
+      planBlocks.map((block) =>
+        block.type === "parcours"
+          ? { ...block, items: nextStations }
+          : block,
+      ),
+    );
+  };
+
+  const moveBlockByOffset = (key: string, offset: number) => {
+    const index = planBlocks.findIndex((block) => block.key === key);
+    const target = planBlocks[index + offset];
+    if (target) moveBlock(key, target.key);
+  };
+
+  const moveStationByOffset = (key: string, offset: number) => {
+    const stations = planBlocks.find((block) => block.type === "parcours")
+      ?.items;
+    if (!stations) return;
+    const index = stations.findIndex((item) => item.key === key);
+    const target = stations[index + offset];
+    if (target) moveStation(key, target.key);
+  };
+
+  const startDragging = (target: DragTarget) => {
+    draggingRef.current = target;
+    setDragging(target);
+  };
+
+  const stopDragging = () => {
+    draggingRef.current = null;
+    setDragging(null);
+  };
+
+  const dragOverTarget = (scope: DragTarget["scope"], key: string) => {
+    const current = draggingRef.current;
+    if (!current || current.scope !== scope || current.key === key) return;
+    if (scope === "block") moveBlock(current.key, key);
+    else moveStation(current.key, key);
+  };
+
+  const dragAtPoint = (
+    scope: DragTarget["scope"],
+    clientX: number,
+    clientY: number,
+  ) => {
+    if (clientY < 80) window.scrollBy({ top: -14 });
+    if (clientY > window.innerHeight - 100) window.scrollBy({ top: 14 });
+    const attribute = scope === "block" ? "data-plan-block" : "data-plan-station";
+    const target = document
+      .elementFromPoint(clientX, clientY)
+      ?.closest<HTMLElement>(`[${attribute}]`);
+    const key = target?.getAttribute(attribute);
+    if (key) dragOverTarget(scope, key);
   };
 
   const copyLink = async (url: string, plan: string) => {
@@ -94,138 +195,205 @@ export function DayPlan({ onOpenExercise, onOpenStation }: DayPlanProps) {
     }
   };
 
-  const createShareLink = () => {
+  const sharePlan = async () => {
     const url = new URL(window.location.href);
     url.search = "";
     url.hash = "";
     url.searchParams.set("planning", encodedPlan);
     const shareUrl = url.toString();
     setGeneratedLink({ plan: encodedPlan, url: shareUrl, copied: false });
-    void copyLink(shareUrl, encodedPlan);
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Mijn Multimove-dagplanning",
+          text: "Open deze Multimove-dagplanning.",
+          url: shareUrl,
+        });
+        return;
+      } catch {
+        return;
+      }
+    }
+
+    await copyLink(shareUrl, encodedPlan);
   };
 
   return (
     <main className="mx-auto w-full max-w-[900px] px-3 pb-20 pt-3 sm:px-6 lg:px-10 lg:pt-8">
-      <header className="flex items-end justify-between gap-4 px-1 py-2">
-        <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#e06951]">
-            Vandaag
-          </p>
-          <h1 className="mt-1 text-2xl font-black tracking-[-0.035em] text-[#1e2d25]">
-            Dagplanning
-          </h1>
-        </div>
-        <span className="rounded-full bg-white px-3 py-1.5 text-xs font-black text-[#68736c] shadow-sm ring-1 ring-[#dfdcd5]">
-          {plannedContent.length} gepland
-        </span>
-      </header>
-
-      <nav className="mt-3 grid grid-cols-2 gap-2" aria-label="Dagplanning bekijken">
-        <button
-          type="button"
-          onClick={() => scrollTo("planning")}
-          className="rounded-xl bg-[#203a2d] px-3 py-2.5 text-xs font-black text-white"
-        >
-          Planning · {plannedContent.length}
-        </button>
-        <button
-          type="button"
-          onClick={() => scrollTo("materiaal")}
-          className="rounded-xl border border-[#d9d6ce] bg-white px-3 py-2.5 text-xs font-black text-[#526058]"
-        >
-          Materiaal · {necessary.length + optional.length}
-        </button>
-      </nav>
-
-      <section className="mt-3 rounded-[18px] border border-[#d9d6ce] bg-white p-3">
-        <div className="flex items-center gap-3">
-          <span
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#eef3f8] text-lg"
-            aria-hidden="true"
-          >
-            ↗
-          </span>
-          <div className="min-w-0 flex-1">
-            <h2 className="text-sm font-black text-[#2c3b33]">
-              Deel deze planning
-            </h2>
-            <p className="mt-0.5 text-[11px] leading-4 text-[#7a827c]">
-              De link opent dezelfde selectie en volgorde.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={createShareLink}
-            disabled={items.length === 0}
-            className="shrink-0 rounded-xl bg-[#203a2d] px-3 py-2.5 text-xs font-black text-white disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            Maak link
-          </button>
-        </div>
-
-        {currentLink && (
-          <div className="mt-3 flex gap-2 border-t border-[#ebe8e1] pt-3">
-            <input
-              type="text"
-              readOnly
-              value={currentLink.url}
-              onFocus={(event) => event.currentTarget.select()}
-              aria-label="Deellink voor deze dagplanning"
-              className="h-10 min-w-0 flex-1 rounded-xl border border-[#ddd9d1] bg-[#f8f7f3] px-3 text-xs text-[#59645d] outline-none focus:border-[#789e84]"
-            />
-            <button
-              type="button"
-              onClick={() => void copyLink(currentLink.url, currentLink.plan)}
-              className="h-10 shrink-0 rounded-xl border border-[#cfd8d1] bg-[#edf5ef] px-3 text-xs font-black text-[#315440]"
-            >
-              {currentLink.copied ? "Gekopieerd" : "Kopieer"}
-            </button>
-          </div>
-        )}
-      </section>
-
-      <section id="planning" className="scroll-mt-3 pt-5">
-        <h2 className="px-1 text-[11px] font-black uppercase tracking-[0.14em] text-[#8b928c]">
-          Snel openen
-        </h2>
-
+      <h1 className="sr-only">Dagplanning</h1>
+      <section aria-label="Geplande oefeningen en stations">
         {plannedContent.length > 0 ? (
-          <ol className="mt-3 space-y-2.5">
-            {plannedContent.map((item, index) => (
-              <li
-                key={item.key}
-                className="flex items-center gap-2 rounded-[18px] border border-[#dedbd3] bg-white p-2.5 shadow-[0_5px_18px_rgba(43,52,47,0.035)]"
-              >
-                <button
-                  type="button"
-                  onClick={item.onOpen}
-                  className="flex min-w-0 flex-1 items-center gap-3 rounded-xl p-1.5 text-left transition hover:bg-[#f7f6f2]"
+          <ol className="space-y-2.5">
+            {planBlocks.map((block, index) =>
+              block.type === "exercise" ? (
+                <li
+                  key={block.key}
+                  data-plan-block={block.key}
+                  onDragOver={(event) => {
+                    if (draggingRef.current?.scope !== "block") return;
+                    event.preventDefault();
+                    dragOverTarget("block", block.key);
+                  }}
+                  className={`flex items-center gap-1.5 rounded-[18px] border bg-white p-2.5 shadow-[0_5px_18px_rgba(43,52,47,0.035)] transition ${
+                    dragging?.key === block.key
+                      ? "border-[#91b69c] opacity-65"
+                      : "border-[#dedbd3]"
+                  }`}
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f0eee8] text-xl">
-                    {item.emoji}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[9px] font-black uppercase tracking-[0.12em] text-[#969b96]">
-                      {index + 1}. {item.type === "exercise" ? "Oefening" : "Station"}
+                  <ReorderHandle
+                    label={`Verplaats ${block.item.title}`}
+                    onStart={() =>
+                      startDragging({ scope: "block", key: block.key })
+                    }
+                    onMove={(clientX, clientY) =>
+                      dragAtPoint("block", clientX, clientY)
+                    }
+                    onEnd={stopDragging}
+                    onMoveUp={() => moveBlockByOffset(block.key, -1)}
+                    onMoveDown={() => moveBlockByOffset(block.key, 1)}
+                  />
+                  <button
+                    type="button"
+                    onClick={block.item.onOpen}
+                    className="flex min-w-0 flex-1 items-center gap-3 rounded-xl p-1 text-left transition hover:bg-[#f7f6f2]"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f0eee8] text-xl">
+                      {block.item.emoji}
                     </span>
-                    <span className="mt-1 block truncate text-base font-black text-[#26362d]">
-                      {item.title}
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[9px] font-black uppercase tracking-[0.12em] text-[#969b96]">
+                        {index + 1}. Oefening
+                      </span>
+                      <span className="mt-1 block truncate text-base font-black text-[#26362d]">
+                        {block.item.title}
+                      </span>
                     </span>
-                  </span>
-                  <span className="text-lg text-[#405148]" aria-hidden="true">
-                    →
-                  </span>
-                </button>
-                <PlanToggleButton
-                  selected
-                  label={item.title}
-                  onToggle={() => toggleItem(item.type, item.id)}
-                />
-              </li>
-            ))}
+                    <span className="text-lg text-[#405148]" aria-hidden="true">
+                      →
+                    </span>
+                  </button>
+                  <PlanToggleButton
+                    selected
+                    label={block.item.title}
+                    onToggle={() =>
+                      toggleItem(block.item.type, block.item.id)
+                    }
+                  />
+                </li>
+              ) : (
+                <li
+                  key={block.key}
+                  data-plan-block={block.key}
+                  onDragOver={(event) => {
+                    if (draggingRef.current?.scope !== "block") return;
+                    event.preventDefault();
+                    dragOverTarget("block", block.key);
+                  }}
+                  className={`overflow-hidden rounded-[20px] border bg-white shadow-[0_5px_18px_rgba(43,52,47,0.04)] transition ${
+                    dragging?.key === block.key
+                      ? "border-[#91b69c] opacity-65"
+                      : "border-[#dedbd3]"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 border-b border-[#e7e4dd] bg-[#f2f5f1] p-3">
+                    <ReorderHandle
+                      label="Verplaats parcours"
+                      onStart={() =>
+                        startDragging({ scope: "block", key: block.key })
+                      }
+                      onMove={(clientX, clientY) =>
+                        dragAtPoint("block", clientX, clientY)
+                      }
+                      onEnd={stopDragging}
+                      onMoveUp={() => moveBlockByOffset(block.key, -1)}
+                      onMoveDown={() => moveBlockByOffset(block.key, 1)}
+                    />
+                    <span
+                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-xl shadow-sm"
+                      aria-hidden="true"
+                    >
+                      🧩
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[9px] font-black uppercase tracking-[0.12em] text-[#87918a]">
+                        {index + 1}. Onderdeel
+                      </span>
+                      <span className="mt-0.5 block text-base font-black text-[#26362d]">
+                        Parcours
+                      </span>
+                    </span>
+                    <span className="rounded-lg bg-white px-2 py-1 text-[10px] font-black text-[#68736c] shadow-sm">
+                      {block.items.length} {block.items.length === 1 ? "station" : "stations"}
+                    </span>
+                  </div>
+
+                  <ol className="divide-y divide-[#ece9e2] px-2">
+                    {block.items.map((station) => (
+                      <li
+                        key={station.key}
+                        data-plan-station={station.key}
+                        onDragOver={(event) => {
+                          if (draggingRef.current?.scope !== "station") return;
+                          event.preventDefault();
+                          event.stopPropagation();
+                          dragOverTarget("station", station.key);
+                        }}
+                        className={`flex items-center gap-1 py-2 transition ${
+                          dragging?.key === station.key ? "opacity-55" : ""
+                        }`}
+                      >
+                        <ReorderHandle
+                          label={`Verplaats ${station.title}`}
+                          compact
+                          onStart={() =>
+                            startDragging({
+                              scope: "station",
+                              key: station.key,
+                            })
+                          }
+                          onMove={(clientX, clientY) =>
+                            dragAtPoint("station", clientX, clientY)
+                          }
+                          onEnd={stopDragging}
+                          onMoveUp={() =>
+                            moveStationByOffset(station.key, -1)
+                          }
+                          onMoveDown={() =>
+                            moveStationByOffset(station.key, 1)
+                          }
+                        />
+                        <button
+                          type="button"
+                          onClick={station.onOpen}
+                          className="flex min-w-0 flex-1 items-center gap-2.5 rounded-xl p-1.5 text-left transition hover:bg-[#f7f6f2]"
+                        >
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#f0eee8] text-lg">
+                            {station.emoji}
+                          </span>
+                          <span className="min-w-0 flex-1 truncate text-sm font-black text-[#34433b]">
+                            {station.title}
+                          </span>
+                          <span className="text-base text-[#405148]" aria-hidden="true">
+                            →
+                          </span>
+                        </button>
+                        <PlanToggleButton
+                          selected
+                          label={station.title}
+                          onToggle={() =>
+                            toggleItem(station.type, station.id)
+                          }
+                        />
+                      </li>
+                    ))}
+                  </ol>
+                </li>
+              ),
+            )}
           </ol>
         ) : (
-          <div className="mt-3 rounded-[20px] border border-dashed border-[#ccc9c0] bg-white/60 px-5 py-10 text-center">
+          <div className="rounded-[20px] border border-dashed border-[#ccc9c0] bg-white/60 px-5 py-10 text-center">
             <div className="text-3xl" aria-hidden="true">
               📋
             </div>
@@ -238,7 +406,7 @@ export function DayPlan({ onOpenExercise, onOpenStation }: DayPlanProps) {
         )}
       </section>
 
-      <section id="materiaal" className="scroll-mt-3 pt-8">
+      <section className="pt-8">
         <div className="px-1">
           <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#8b928c]">
             Klaarzetten
@@ -265,7 +433,112 @@ export function DayPlan({ onOpenExercise, onOpenStation }: DayPlanProps) {
           className="border-[#eadfbd] bg-[#fff9e9]"
         />
       </section>
+
+      <section className="mt-6 border-t border-[#dfdcd5] pt-4" aria-label="Planning delen">
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={() => void sharePlan()}
+            disabled={items.length === 0}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#203a2d] px-4 text-sm font-black text-white shadow-sm transition hover:bg-[#2f513f] disabled:cursor-not-allowed disabled:opacity-40"
+            aria-label="Deel dagplanning"
+          >
+            <span className="text-lg" aria-hidden="true">↗</span>
+            Delen
+          </button>
+        </div>
+
+        {currentLink && (
+          <div className="mt-3 flex gap-2">
+            <input
+              type="text"
+              readOnly
+              value={currentLink.url}
+              onFocus={(event) => event.currentTarget.select()}
+              aria-label="Deellink voor deze dagplanning"
+              className="h-10 min-w-0 flex-1 rounded-xl border border-[#ddd9d1] bg-white px-3 text-xs text-[#59645d] outline-none focus:border-[#789e84]"
+            />
+            <button
+              type="button"
+              onClick={() => void copyLink(currentLink.url, currentLink.plan)}
+              className="h-10 shrink-0 rounded-xl border border-[#cfd8d1] bg-[#edf5ef] px-3 text-xs font-black text-[#315440]"
+            >
+              {currentLink.copied ? "Gekopieerd" : "Kopieer"}
+            </button>
+          </div>
+        )}
+      </section>
     </main>
+  );
+}
+
+function groupPlanBlocks(items: PlannedContent[]): PlanBlock[] {
+  const stations = items.filter((item) => item.type === "station");
+  let parcoursAdded = false;
+
+  return items.flatMap<PlanBlock>((item) => {
+    if (item.type === "exercise") {
+      return [{ key: item.key, type: "exercise", item }];
+    }
+    if (parcoursAdded) return [];
+    parcoursAdded = true;
+    return [{ key: "parcours", type: "parcours", items: stations }];
+  });
+}
+
+function ReorderHandle({
+  label,
+  compact = false,
+  onStart,
+  onMove,
+  onEnd,
+  onMoveUp,
+  onMoveDown,
+}: {
+  label: string;
+  compact?: boolean;
+  onStart: () => void;
+  onMove: (clientX: number, clientY: number) => void;
+  onEnd: () => void;
+  onMoveUp: () => void;
+  onMoveDown: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={`touch-none select-none rounded-lg text-[#9aa09b] transition hover:bg-[#ebece8] hover:text-[#4e5d54] active:cursor-grabbing active:bg-[#e4e8e3] ${
+        compact ? "h-9 w-7 text-base" : "h-10 w-7 text-lg"
+      }`}
+      aria-label={label}
+      aria-roledescription="Versleephandvat"
+      onPointerDown={(event) => {
+        event.currentTarget.setPointerCapture(event.pointerId);
+        onStart();
+      }}
+      onPointerMove={(event) => {
+        if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+        onMove(event.clientX, event.clientY);
+      }}
+      onPointerUp={(event) => {
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+          event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+        onEnd();
+      }}
+      onPointerCancel={onEnd}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          onMoveUp();
+        }
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          onMoveDown();
+        }
+      }}
+    >
+      ⠿
+    </button>
   );
 }
 

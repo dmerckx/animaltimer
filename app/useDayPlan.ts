@@ -42,7 +42,11 @@ export function useDayPlan() {
     setStoredItems(JSON.stringify(nextItems));
   };
 
-  return { items, isPlanned, toggleItem };
+  const reorderItems = (nextItems: DayPlanItem[]) => {
+    setStoredItems(JSON.stringify(nextItems));
+  };
+
+  return { items, isPlanned, toggleItem, reorderItems };
 }
 
 export function encodeDayPlan(items: DayPlanItem[]) {

@@ -1,5 +1,6 @@
 "use client";
 
+import { getMaterialIcon } from "@/app/materials";
 import { PlanToggleButton } from "@/app/PlanToggleButton";
 import { useDayPlan } from "@/app/useDayPlan";
 import { useSessionStorageValue } from "@/app/useSessionStorage";
@@ -83,7 +84,6 @@ export function ParcoursPage() {
       <StationDetail
         key={station.id}
         station={station}
-        stationIndex={selectedStationIndex}
         variationIndex={variationIndexes[selectedStationIndex]}
         onBack={closeStation}
         planned={isPlanned("station", station.id)}
@@ -135,11 +135,10 @@ function StationOverview({
     <main className="mx-auto w-full max-w-[1200px] px-3 pb-8 pt-3 sm:px-6 lg:px-10 lg:pt-8">
       <h1 className="sr-only">Parcoursstations</h1>
       <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-        {parcours.stations.map((station, index) => (
+        {parcours.stations.map((station) => (
           <StationOverviewCard
             key={station.id}
             station={station}
-            stationIndex={index}
             onOpen={() => onOpenStation(station)}
             planned={isPlanned(station.id)}
             onTogglePlan={() => onTogglePlan(station.id)}
@@ -152,13 +151,11 @@ function StationOverview({
 
 function StationOverviewCard({
   station,
-  stationIndex,
   onOpen,
   planned,
   onTogglePlan,
 }: {
   station: ParcoursStation;
-  stationIndex: number;
   onOpen: () => void;
   planned: boolean;
   onTogglePlan: () => void;
@@ -184,23 +181,26 @@ function StationOverviewCard({
             {station.emoji}
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-[9px] font-black uppercase tracking-[0.13em] text-[#949a95]">
-              Station {stationIndex + 1}
-            </span>
-            <span className="mt-1 block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
+            <span className="block text-lg font-black tracking-[-0.025em] text-[#1e2d25]">
               {station.name}
-            </span>
-            <span className="mt-1 line-clamp-1 block text-xs leading-5 text-[#747d76]">
-              {station.material.join(" · ")}
             </span>
           </span>
         </span>
-        <span className="mt-3 flex items-center border-t border-[#ebe8e1] pt-3 text-[10px] font-black text-[#929892]">
-          <span className="rounded-lg bg-[#f2f4f0] px-2 py-1 text-[#5f6b63]">
-            {station.material.length}{" "}
-            {station.material.length === 1 ? "benodigdheid" : "benodigdheden"}
+        <span className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-[#ebe8e1] pt-3">
+          {station.material.map((material) => (
+            <span
+              key={material}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#f2f4f0] px-2 py-1 text-[10px] font-bold text-[#5f6b63]"
+            >
+              <span className="text-sm" aria-hidden="true">
+                {getMaterialIcon(material)}
+              </span>
+              {material}
+            </span>
+          ))}
+          <span className="ml-auto whitespace-nowrap text-[10px] font-black text-[#929892]">
+            {station.variations.length} uitvoeringen
           </span>
-          <span className="ml-auto">{station.variations.length} uitvoeringen</span>
         </span>
       </button>
       <div className="absolute right-3 top-3 z-10">
@@ -216,7 +216,6 @@ function StationOverviewCard({
 
 function StationDetail({
   station,
-  stationIndex,
   variationIndex,
   onBack,
   onSelect,
@@ -224,7 +223,6 @@ function StationDetail({
   onTogglePlan,
 }: {
   station: ParcoursStation;
-  stationIndex: number;
   variationIndex: number;
   onBack: () => void;
   onSelect: (variationIndex: number) => void;
@@ -311,10 +309,7 @@ function StationDetail({
           {station.emoji}
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#949a95]">
-            Station {stationIndex + 1}
-          </p>
-          <h1 className="mt-1 text-2xl font-black tracking-[-0.035em] text-[#1e2d25]">
+          <h1 className="text-2xl font-black tracking-[-0.035em] text-[#1e2d25]">
             {station.name}
           </h1>
           <p className="mt-1 text-xs leading-5 text-[#747d76]">

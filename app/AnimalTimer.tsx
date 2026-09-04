@@ -133,7 +133,7 @@ export function AnimalTimer({
       </header>
 
       <div className="mt-7 grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
-        <main className="overflow-hidden rounded-[30px] border border-[#dedbd3] bg-white shadow-[0_14px_45px_rgba(40,48,43,0.07)]">
+        <main className="order-1 overflow-hidden rounded-[30px] border border-[#dedbd3] bg-white shadow-[0_14px_45px_rgba(40,48,43,0.07)]">
           <div className="relative overflow-hidden bg-[#f2ecff] px-5 pb-8 pt-6 sm:px-9 sm:pb-10 sm:pt-8">
             <div className="absolute -right-18 -top-18 h-58 w-58 rounded-full border-[34px] border-white/30" />
             <div className="absolute -bottom-28 -left-8 h-48 w-48 rounded-full border-[30px] border-white/30" />
@@ -213,7 +213,51 @@ export function AnimalTimer({
           </div>
         </main>
 
-        <aside className="rounded-[26px] border border-[#dedbd3] bg-white p-5 shadow-[0_10px_35px_rgba(40,48,43,0.05)]">
+        {snaps.length > 0 && (
+          <section className="order-2 lg:col-start-1">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-xl font-black text-[#24342b]">
+                Opgeslagen tijden
+              </h2>
+              <span className="text-sm font-bold text-[#848b85]">
+                {snaps.length} {snaps.length === 1 ? "loper" : "lopers"}
+              </span>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {snaps.map((snap) => (
+                <article
+                  key={snap.pos}
+                  className="flex items-center gap-4 rounded-2xl border border-[#dedbd3] bg-white p-4 shadow-[0_8px_25px_rgba(43,52,47,0.04)]"
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f1ebff] text-4xl">
+                    {snap.animal.emoji}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#969c97]">
+                      Loper {snap.pos}
+                    </p>
+                    <h3 className="truncate text-lg font-black text-[#2a3830]">
+                      {snap.animal.name}
+                    </h3>
+                    <p className="mt-0.5 font-mono text-sm font-bold text-[#6e786f]">
+                      {formatSnapTime(snap.seconds)} · {Math.round(snap.speed)} km/u
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => playSound(snap.animal)}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f4f1fa] text-sm transition hover:bg-[#e9e1f7]"
+                    aria-label={`Speel geluid van ${snap.animal.name}`}
+                  >
+                    🔊
+                  </button>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <aside className="order-3 rounded-[26px] border border-[#dedbd3] bg-white p-5 shadow-[0_10px_35px_rgba(40,48,43,0.05)] lg:col-start-2 lg:row-start-1 lg:row-span-2">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#979d98]">
@@ -252,50 +296,6 @@ export function AnimalTimer({
           </div>
         </aside>
       </div>
-
-      {snaps.length > 0 && (
-        <section className="mt-7">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xl font-black text-[#24342b]">
-              Opgeslagen tijden
-            </h2>
-            <span className="text-sm font-bold text-[#848b85]">
-              {snaps.length} {snaps.length === 1 ? "loper" : "lopers"}
-            </span>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {snaps.map((snap) => (
-              <article
-                key={snap.pos}
-                className="flex items-center gap-4 rounded-2xl border border-[#dedbd3] bg-white p-4 shadow-[0_8px_25px_rgba(43,52,47,0.04)]"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f1ebff] text-4xl">
-                  {snap.animal.emoji}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#969c97]">
-                    Loper {snap.pos}
-                  </p>
-                  <h3 className="truncate text-lg font-black text-[#2a3830]">
-                    {snap.animal.name}
-                  </h3>
-                  <p className="mt-0.5 font-mono text-sm font-bold text-[#6e786f]">
-                    {formatSnapTime(snap.seconds)} · {Math.round(snap.speed)} km/u
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => playSound(snap.animal)}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f4f1fa] text-sm transition hover:bg-[#e9e1f7]"
-                  aria-label={`Speel geluid van ${snap.animal.name}`}
-                >
-                  🔊
-                </button>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   );
 }
