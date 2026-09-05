@@ -81,18 +81,20 @@ export default function HelpCalendar() {
     } finally { setBusy(false); }
   }
 
+  const displayedEvents = calendar?.events.filter(date => date.slice(5, 7) === "09" || date.slice(5, 7) === "10");
+
   return (
     <section className="mt-10" aria-labelledby="calendar-title">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div><h2 id="calendar-title" className="text-2xl font-black">Wie helpt er mee?</h2><p className="mt-2 text-sm text-[#68766d]">Eén helper per les. Kies gerust meerdere maandagen.</p></div>
-        {calendar && <span className="rounded-full bg-[#e7eddf] px-4 py-2 text-xs font-bold">{calendar.events.filter(date => !calendar.registrations.some(r => r.date === date)).length} vrije plekjes</span>}
+        {calendar && <span className="rounded-full bg-[#e7eddf] px-4 py-2 text-xs font-bold">{displayedEvents?.filter(date => !calendar.registrations.some(r => r.date === date)).length} vrije plekjes</span>}
       </div>
       {storageWarning && <p className="mb-4 rounded-xl bg-amber-100 p-4 text-sm">Je browser kan je naam en inschrijvingen niet onthouden. Annuleren kan dan alleen zolang deze pagina open blijft.</p>}
       {error && <div role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-red-800">{error} <button onClick={() => void refresh()} className="font-bold underline">Opnieuw proberen</button></div>}
       <p role="status" className="mb-4 text-sm text-[#294e38]">{notice}</p>
-      {!calendar ? <p role="status">De maandagen worden opgehaald…</p> : calendar.events.length === 0 ? <p className="rounded-2xl bg-white p-8">Alle lessen van dit seizoen zijn voorbij. Bedankt aan alle helpers!</p> : (
+      {!calendar ? <p role="status">De maandagen worden opgehaald…</p> : displayedEvents?.length === 0 ? <p className="rounded-2xl bg-white p-8">Alle lessen van dit seizoen zijn voorbij. Bedankt aan alle helpers!</p> : (
         <ul className="space-y-3">
-          {calendar.events.map(date => {
+          {displayedEvents?.map(date => {
             const registration = calendar.registrations.find(r => r.date === date);
             return <li key={date} className="flex flex-col gap-4 rounded-2xl border border-[#dedfd5] bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
