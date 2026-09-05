@@ -10,6 +10,7 @@ import {
 import { exercises, type Exercise } from "@/data/exercises";
 import { parcours, type ParcoursStation } from "@/data/parcours";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 type DayPlanProps = {
   onOpenExercise: (exercise: Exercise) => void;
@@ -468,6 +469,12 @@ export function DayPlan({ onOpenExercise, onOpenStation }: DayPlanProps) {
           </div>
         )}
       </section>
+      <div className="mt-8 text-center">
+        <Link href="/helpen" className="inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-[#53695b] underline decoration-[#b8c4b8] underline-offset-4 hover:text-[#203a2d]">
+          <span aria-hidden="true">🙌</span>
+          Een handje helpen bij Multimove?
+        </Link>
+      </div>
     </main>
   );
 }
