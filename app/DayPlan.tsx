@@ -1,6 +1,6 @@
 "use client";
 
-import { getMaterialIcon } from "@/app/materials";
+import { collectMaterials, getMaterialIcon, type MaterialNeed } from "@/app/materials";
 import { PlanToggleButton } from "@/app/PlanToggleButton";
 import {
   encodeDayPlan,
@@ -26,11 +26,6 @@ type PlannedContent = {
   material: string[];
   optionalMaterial: string[];
   onOpen: () => void;
-};
-
-type MaterialNeed = {
-  name: string;
-  sources: string[];
 };
 
 type PlanBlock =
@@ -605,38 +600,4 @@ function MaterialList({
       )}
     </div>
   );
-}
-
-function collectMaterials(items: PlannedContent[]) {
-  const necessary = new Map<string, MaterialNeed>();
-  const optional = new Map<string, MaterialNeed>();
-
-  const addMaterial = (
-    collection: Map<string, MaterialNeed>,
-    material: string,
-    source: string,
-  ) => {
-    const key = material.toLocaleLowerCase("nl-BE");
-    const current = collection.get(key);
-    if (current) {
-      if (!current.sources.includes(source)) current.sources.push(source);
-    } else {
-      collection.set(key, { name: material, sources: [source] });
-    }
-  };
-
-  items.forEach((item) => {
-    item.material.forEach((material) =>
-      addMaterial(necessary, material, item.title),
-    );
-    item.optionalMaterial.forEach((material) =>
-      addMaterial(optional, material, item.title),
-    );
-  });
-
-  necessary.forEach((_, key) => optional.delete(key));
-  return {
-    necessary: [...necessary.values()],
-    optional: [...optional.values()],
-  };
 }

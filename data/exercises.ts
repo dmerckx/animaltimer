@@ -1153,10 +1153,10 @@ export const exercises: Exercise[] = [
     duration: "± 10 min",
     ages: "3–6 jaar",
     groupSize: "6–24 kinderen",
-    material: ["Lang, stevig touw", "Middenlint", "3 markeringslijnen"],
+    material: ["Lang, stevig touw met middenlint", "Kegeltjes voor 3 markeringslijnen"],
     optionalMaterial: ["Partijvestjes", "Knuffel als mascotte"],
     setup:
-      "Markeer het midden van het touw en leg dicht bij het midden twee winlijnen. Maak kleine, evenwichtige teams en laat de andere kinderen op veilige afstand wachten of dierenbewegingen doen.",
+      "Gebruik het middenlint dat al aan het touw hangt. Zet met kegeltjes een middenlijn en twee winlijnen dicht bij het midden uit. Maak kleine, evenwichtige teams en laat de andere kinderen op veilige afstand wachten of dierenbewegingen doen.",
     tip:
       "Hou rondes kort en trek alleen onder direct toezicht. Wikkel het touw nooit rond handen of lichaam, zet geen kind als anker achteraan en oefen eerst: bij ‘stop’ blijft iedereen staan en legt het touw rustig neer.",
     assignments: [
