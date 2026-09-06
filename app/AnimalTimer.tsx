@@ -1,6 +1,7 @@
 "use client";
 
 import { PlanToggleButton } from "@/app/PlanToggleButton";
+import { type Assignment } from "@/data/exercises";
 import { speeds } from "@/data/speeds";
 import { useCallback, useState } from "react";
 import { useStopwatch } from "react-timer-hook";
@@ -44,10 +45,12 @@ export function AnimalTimer({
   onBack,
   planned,
   onTogglePlan,
+  assignments,
 }: {
   onBack: () => void;
   planned: boolean;
   onTogglePlan: () => void;
+  assignments: Assignment[];
 }) {
   const [meters, setMeters] = useState(50);
   const [snaps, setSnaps] = useState<Snap[]>([]);
@@ -296,6 +299,17 @@ export function AnimalTimer({
           </div>
         </aside>
       </div>
+      <section className="mt-6 rounded-[26px] border border-[#dedbd3] bg-white p-5">
+        <h2 className="text-lg font-black text-[#26362d]">Variaties</h2>
+        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+          {assignments.map((assignment) => (
+            <li key={assignment.title} className="rounded-xl bg-[#f5f3ee] p-4">
+              <h3 className="text-sm font-black text-[#26362d]">{assignment.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#68736d]">{assignment.instruction}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }

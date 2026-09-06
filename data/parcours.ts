@@ -73,6 +73,18 @@ export const parcours = {
             "Zet je handen op de bank en spring met twee voeten samen van links naar rechts.",
           level: "Actief",
         },
+        {
+          title: "Stap en pauze",
+          instruction:
+            "Wandel over de bank en zet na twee stappen beide voeten naast elkaar. Blijf even stil en stap weer verder. Een begeleider blijft binnen armbereik.",
+          level: "Rustig",
+        },
+        {
+          title: "Zittend schuiven",
+          instruction:
+            "Zit schrijlings op de bank met je voeten op de grond. Schuif met kleine stapjes naar het einde en sta naast de bank op.",
+          level: "Rustig",
+        },
       ],
     },
     {
@@ -123,6 +135,18 @@ export const parcours = {
             "Schuif op je rug vooruit zonder het kersepitzakje op je buik te verliezen.",
           level: "Uitdaging",
         },
+        {
+          title: "Rups",
+          instruction:
+            "Begin op handen en knieën. Wandel je handen een klein stukje vooruit en schuif dan je knieën ernaartoe. Herhaal tot het einde van de mat.",
+          level: "Actief",
+        },
+        {
+          title: "Sterrensprongen vooruit",
+          instruction:
+            "Maak een kleine sprong vooruit en land met je voeten een beetje uit elkaar. Spring daarna met de voeten samen. Wissel af en blijf binnen de mat.",
+          level: "Actief",
+        },
       ],
     },
     {
@@ -171,6 +195,18 @@ export const parcours = {
           title: "Door de tunnel",
           instruction:
             "Kruip door een veilige, open plintopstelling en kom aan de andere zijde weer recht.",
+          level: "Uitdaging",
+        },
+        {
+          title: "Zittend oversteken",
+          instruction:
+            "Klim met hulp op de lage plint en ga zitten. Schuif zittend naar de afstapzijde en draai met hulp naar je buik om achterwaarts af te dalen op de mat.",
+          level: "Rustig",
+        },
+        {
+          title: "Pakje verplaatsen",
+          instruction:
+            "Leg twee zakjes boven op de lage plint. Klim met hulp op, blijf op je knieën en leg de zakjes één voor één aan de andere kant binnen handbereik. Daal met hulp weer af.",
           level: "Uitdaging",
         },
       ],
@@ -223,6 +259,18 @@ export const parcours = {
             "Loop voorwaarts door de slalom en wandel langs de vrije zijde voorzichtig achteruit terug.",
           level: "Uitdaging",
         },
+        {
+          title: "Groot en klein",
+          instruction:
+            "Wandel langs de rij. Maak je bij de eerste kegel lang en hurk bij de volgende even neer. Blijf afwisselen zonder de kegeltjes aan te raken.",
+          level: "Rustig",
+        },
+        {
+          title: "Achtje wandelen",
+          instruction:
+            "Gebruik twee kegeltjes die ruim uit elkaar staan. Wandel er één achtje omheen en vervolg dan de slalom. Het volgende kind wacht tot het achtje vrij is.",
+          level: "Uitdaging",
+        },
       ],
     },
     {
@@ -271,6 +319,18 @@ export const parcours = {
           instruction:
             "Kijk naar de zijmuur en stap met beide voeten zijwaarts door ieder vak.",
           level: "Uitdaging",
+        },
+        {
+          title: "Spring en land",
+          instruction:
+            "Spring met twee voeten samen naar het volgende vak. Sta even stevig voordat je verder springt. Stap als een vak te ver ligt.",
+          level: "Actief",
+        },
+        {
+          title: "Stap op de klap",
+          instruction:
+            "Zet bij elke rustige klap één voet in het volgende vak. Stopt het klappen, blijf dan staan tot je het weer hoort.",
+          level: "Rustig",
         },
       ],
     },
@@ -322,6 +382,18 @@ export const parcours = {
             "Zet in elke hoepel afwisselend twee voeten, één hand of twee handen.",
           level: "Uitdaging",
         },
+        {
+          title: "Eilandstandbeeld",
+          instruction:
+            "Stap in een hoepel en maak een houding met je armen. Blijf twee tellen staan en stap naar het volgende eiland voor een nieuwe houding.",
+          level: "Rustig",
+        },
+        {
+          title: "Zakje als dienblad",
+          instruction:
+            "Draag een kersepitzakje op twee open handpalmen en stap van hoepel naar hoepel. Hou het zakje stil; valt het, raap het op en wandel verder.",
+          level: "Uitdaging",
+        },
       ],
     },
     {
@@ -369,6 +441,18 @@ export const parcours = {
           title: "Kleurendoel",
           instruction:
             "Mik het zakje in de hoepel of bak met de kleur die de lesgever noemt.",
+          level: "Rustig",
+        },
+        {
+          title: "Andere hand",
+          instruction:
+            "Gooi een zakje onderhands naar het doel met je ene hand en probeer daarna de andere. Begin dichtbij en haal pas op wanneer alle worpen gedaan zijn.",
+          level: "Uitdaging",
+        },
+        {
+          title: "Rollend mikken",
+          instruction:
+            "Gebruik de goal of een liggende hoepel als doel. Rol een zachte bal met twee handen ernaartoe. Bij de hoepel probeer je de bal erin te laten stilvallen.",
           level: "Rustig",
         },
       ],
@@ -419,6 +503,18 @@ export const parcours = {
           title: "Tunnel en standbeeld",
           instruction:
             "Kruip door de tunnel, sta op de mat recht en blijf drie tellen als een standbeeld staan.",
+          level: "Uitdaging",
+        },
+        {
+          title: "Pakje vooruit",
+          instruction:
+            "Leg een kersepitzakje vlak voor je in de tunnel. Schuif het met één hand een klein stukje vooruit, kruip ernaartoe en herhaal tot je buiten bent.",
+          level: "Actief",
+        },
+        {
+          title: "Tik links en rechts",
+          instruction:
+            "Kruip rustig door de tunnel. Tik na elke twee kruipstappen met één hand de vloer naast je aan, eerst links en daarna rechts. Blijf laag en kijk vooruit.",
           level: "Uitdaging",
         },
       ],

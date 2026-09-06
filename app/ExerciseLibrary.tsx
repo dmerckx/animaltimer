@@ -60,6 +60,7 @@ export function ExerciseLibrary({
     if (selectedExercise.kind === "animal-timer") {
       return (
         <AnimalTimer
+          assignments={selectedExercise.assignments}
           onBack={onCloseExercise}
           planned={isPlanned("exercise", selectedExercise.id)}
           onTogglePlan={() => toggleItem("exercise", selectedExercise.id)}

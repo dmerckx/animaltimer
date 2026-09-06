@@ -97,6 +97,18 @@ export const exercises: Exercise[] = [
           "Twee kinderen vertrekken hand in hand en moeten samen beslissen welke kegel ze optillen.",
         level: "Uitdaging",
       },
+      {
+        title: "Onthoud de schuilplaats",
+        instruction:
+          "Laat zien onder welke kegel je het balletje legt. Iedereen draait één rondje op de startplek en wijst daarna de schuilplaats aan. Eén kind gaat kijken.",
+        level: "Rustig",
+      },
+      {
+        title: "Zoek met een omweg",
+        instruction:
+          "Wijs een lege kegel aan waar de zoeker eerst omheen wandelt. Daarna mag die naar de schuilplaats zoeken. Keer langs de vrije zijkant terug.",
+        level: "Actief",
+      },
     ],
   },
   {
@@ -162,6 +174,18 @@ export const exercises: Exercise[] = [
         instruction:
           "De gooiers wachten achter de lijn zodra het stopsignaal klinkt. Pas dan zet het andere groepje de kegels weer recht. Daarna wisselen jullie.",
         level: "Actief",
+      },
+      {
+        title: "Kegels op de vloer",
+        instruction:
+          "Zet de kegels vóór de bank op de grond. Rol met twee handen een bal om ze om te krijgen. Iedereen haalt pas op wanneer de lesgever het aangeeft.",
+        level: "Rustig",
+      },
+      {
+        title: "Wijs en mik",
+        instruction:
+          "Wijs vóór je worp aan welke kegel je wilt raken en kijk ernaar terwijl je onderhands gooit. Haal de ballen pas op het gezamenlijke stopsignaal op.",
+        level: "Uitdaging",
       },
     ],
   },
@@ -239,6 +263,18 @@ export const exercises: Exercise[] = [
         title: "Muzikale eilanden",
         instruction:
           "Loop rond de hoepels. Op het stopsignaal zoekt iedereen snel een eiland om in te staan.",
+        level: "Actief",
+      },
+      {
+        title: "Spiegel in de hoepel",
+        instruction:
+          "Eén kind staat in de hoepel en toont een houding met armen en benen. De partner staat ervoor en doet die na. Wissel na drie houdingen.",
+        level: "Rustig",
+      },
+      {
+        title: "Rond het eiland",
+        instruction:
+          "Leg de hoepel plat en wandel zijwaarts rond de buitenrand met je gezicht naar het midden. Stop op het signaal en wandel dan de andere kant op.",
         level: "Actief",
       },
     ],
@@ -330,6 +366,18 @@ export const exercises: Exercise[] = [
           "Maak piepkleine, snelle pasjes en probeer muisstil te blijven.",
         level: "Rustig",
       },
+      {
+        title: "Schildpad",
+        instruction:
+          "Kruip langzaam op handen en knieën. Bij ‘in je schild’ blijf je op je plek en maak je je klein. Bij ‘verder’ kruip je weer door.",
+        level: "Rustig",
+      },
+      {
+        title: "Vlinder",
+        instruction:
+          "Wandel met brede, rustige armbewegingen naar de overkant. Bij ‘bloem’ hurk je even neer. Hou genoeg ruimte voor je vleugels.",
+        level: "Actief",
+      },
     ],
   },
   {
@@ -416,6 +464,18 @@ export const exercises: Exercise[] = [
           "Ga per twee. De achterste kopieert precies hoe de voorste beweegt.",
         level: "Uitdaging",
       },
+      {
+        title: "Marcheren op de maat",
+        instruction:
+          "Stap naar de overkant op het rustige klappen van de lesgever. Eén klap is één stap. Stopt het klappen, dan blijven je voeten stil.",
+        level: "Rustig",
+      },
+      {
+        title: "Knie en overkant",
+        instruction:
+          "Wandel vooruit en raak bij elke stap je opgetilde knie aan met de andere hand. Begin traag en doe mee met de lesgever.",
+        level: "Uitdaging",
+      },
     ],
   },
   {
@@ -482,6 +542,18 @@ export const exercises: Exercise[] = [
           "Een kind bedenkt de volgende manier van oversteken en toont die eerst aan de groep.",
         level: "Rustig",
       },
+      {
+        title: "Slapende schipper",
+        instruction:
+          "De schipper staat stil met de handen voor de ogen. Iedereen wandelt over. Bij ‘wakker’ kijkt de schipper en bevriest de groep. Er wordt deze ronde niet getikt.",
+        level: "Rustig",
+      },
+      {
+        title: "De schipper vaart mee",
+        instruction:
+          "De schipper toont vooraan een beweging en steekt met de groep over zonder te tikken. In de andere haven mag een nieuw kind schipper zijn.",
+        level: "Rustig",
+      },
     ],
   },
   {
@@ -536,6 +608,18 @@ export const exercises: Exercise[] = [
         instruction:
           "Leg alle lichaamslengtes na elkaar. Kan de groep de hele afstand met gezamenlijke sprongen afleggen?",
         level: "Actief",
+      },
+      {
+        title: "Stille landing",
+        instruction:
+          "Kies een korte afstand tussen twee potjes naast de springbaan. Spring met twee voeten vooruit en probeer zo stil mogelijk te landen. Blijf daarna twee tellen staan.",
+        level: "Rustig",
+      },
+      {
+        title: "Voorspel je sprongen",
+        instruction:
+          "Denk hoeveel kleine sprongen je nodig hebt voor je gemarkeerde lichaamslengte. Spring de afstand en tel samen. Probeer opnieuw met iets grotere sprongen.",
+        level: "Uitdaging",
       },
     ],
   },
@@ -603,6 +687,18 @@ export const exercises: Exercise[] = [
         instruction:
           "Rol naast elkaar in hetzelfde tempo en probeer tegelijk te stoppen.",
         level: "Uitdaging",
+      },
+      {
+        title: "Rol terug naar huis",
+        instruction:
+          "Maak één rustige boomstamrol naar de zijkant, stop en rol langs dezelfde weg terug. Begin midden op een brede mat zodat je erop blijft.",
+        level: "Rustig",
+      },
+      {
+        title: "Van klein naar lang",
+        instruction:
+          "Lig op je zij als een klein bolletje. Strek je uit, maak een halve zijrol en maak je weer klein. Herhaal rustig terwijl je op de mat blijft.",
+        level: "Actief",
       },
     ],
   },
@@ -681,6 +777,18 @@ export const exercises: Exercise[] = [
           "Spring aan het einde met twee voeten op de mat en blijf als een standbeeld staan.",
         level: "Actief",
       },
+      {
+        title: "Zittend vooruit",
+        instruction:
+          "Zit schrijlings op de bank met je voeten aan weerszijden op de grond. Schuif met kleine stapjes vooruit en sta pas naast het einde op.",
+        level: "Rustig",
+      },
+      {
+        title: "Stap en sluit aan",
+        instruction:
+          "Stap vooruit op de bank en zet je andere voet ernaast. Herhaal tot het einde met een begeleider binnen armbereik. Stap rustig af op de mat.",
+        level: "Uitdaging",
+      },
     ],
   },
   {
@@ -747,6 +855,18 @@ export const exercises: Exercise[] = [
         instruction:
           "Maak drie passen en rol de bal daarna naar een teamgenoot in een hoepel. Dat is samen één punt.",
         level: "Uitdaging",
+      },
+      {
+        title: "Volg je pas",
+        instruction:
+          "Maak zonder verdediger een ruime kring. Rol naar een kind dat klaarstaat en wandel daarna buiten de kring naar diens plek. Dat kind rolt eerst door voor het zelf vertrekt.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Doorgeefslang",
+        instruction:
+          "Sta met je team op een rij op een armlengte van elkaar. Geef de bal met twee handen aan het volgende kind. Bij het laatste kind gaat de bal langs dezelfde weg terug.",
+        level: "Rustig",
       },
     ],
   },
@@ -825,6 +945,18 @@ export const exercises: Exercise[] = [
         instruction:
           "Tel elke pas samen tot tien. Rolt of valt de bal weg, haal hem op en tel gewoon verder.",
         level: "Actief",
+      },
+      {
+        title: "Zijwaarts naar de bal",
+        instruction:
+          "Rol de bal een klein stukje links of rechts van je partner, binnen jullie eigen vak. Die zet een zijstap, stopt de bal met twee handen en rolt terug.",
+        level: "Actief",
+      },
+      {
+        title: "Overhandigen en stappen",
+        instruction:
+          "Sta dicht bij elkaar en geef de bal met twee handen aan je partner. Zet allebei één stap achteruit en rol hem terug. Stap weer naar elkaar toe en herhaal.",
+        level: "Rustig",
       },
     ],
   },
@@ -905,6 +1037,18 @@ export const exercises: Exercise[] = [
           "Klem de bal per twee tussen jullie rug of buik en bereik de overkant zonder handen.",
         level: "Uitdaging",
       },
+      {
+        title: "Rol en parkeer",
+        instruction:
+          "Duw de bal met twee handen een klein stukje vooruit. Wandel erachteraan, stop hem met twee handen en rol weer verder tot de eindzone.",
+        level: "Rustig",
+      },
+      {
+        title: "Wisselvoet",
+        instruction:
+          "Tik de bal zacht met je linkervoet en stop hem. Doe hetzelfde met rechts en blijf afwisselen naar de overkant. De bal blijft vlak voor je.",
+        level: "Uitdaging",
+      },
     ],
   },
   {
@@ -975,6 +1119,18 @@ export const exercises: Exercise[] = [
         title: "Duo om de beurt",
         instruction:
           "De ene gooit tegen de muur, de andere vangt. Wissel na elke worp van rol.",
+        level: "Actief",
+      },
+      {
+        title: "Zittend terugrollen",
+        instruction:
+          "Zit met gespreide benen dicht bij je eigen muurzone. Rol de bal tegen de muur en vang hem tussen je handen wanneer hij terugrolt.",
+        level: "Rustig",
+      },
+      {
+        title: "Dichtbij en verder",
+        instruction:
+          "Rol de bal tegen de muur en stop hem. Lukt dat twee keer, zet dan één stap achteruit. Kom weer dichterbij als de bal niet meer tot bij je terugrolt.",
         level: "Actief",
       },
     ],
@@ -1055,6 +1211,18 @@ export const exercises: Exercise[] = [
         instruction:
           "Hoeveel gerichte doelpogingen kan de hele groep in één minuut uitvoeren? Iedereen blijft bewegen.",
         level: "Actief",
+      },
+      {
+        title: "Rollend scoren",
+        instruction:
+          "Rol de bal met twee handen over de grond naar een vrije plek in het doel. De keeper probeert hem rechtstaand of gehurkt te stoppen, zonder te duiken.",
+        level: "Rustig",
+      },
+      {
+        title: "Keeper als helper",
+        instruction:
+          "De keeper wijst een vrije plek naast zich aan. De gooier kijkt, rolt daarheen en de keeper laat de bal door. Kies bij de volgende beurt een andere plek.",
+        level: "Rustig",
       },
     ],
   },
@@ -1139,6 +1307,18 @@ export const exercises: Exercise[] = [
         title: "Tegen de zandloper",
         instruction:
           "Kan het team rustig aankomen voor de zandloper leeg is? Niet sneller lopen: samen blijven en niets verliezen is het doel.",
+        level: "Actief",
+      },
+      {
+        title: "Samen parkeren",
+        instruction:
+          "Kies een bestaande vloerlijn als parkeerplek. Draag de lege mat ernaartoe en zet ze op een gezamenlijk ‘één, twee, drie’ zacht neer met de rand langs de lijn.",
+        level: "Rustig",
+      },
+      {
+        title: "Pakjes afleveren",
+        instruction:
+          "Leg twee kersepitzakjes op de mat. Zet de mat halverwege volledig neer en laat één kind een zakje afladen. Draag samen verder en lever het tweede zakje aan de overkant af.",
         level: "Actief",
       },
     ],
@@ -1231,6 +1411,18 @@ export const exercises: Exercise[] = [
         instruction:
           "De twee rijen houden het touw losjes vast en maken samen kleine, daarna grote golven zonder te trekken.",
         level: "Rustig",
+      },
+      {
+        title: "Startklaar",
+        instruction:
+          "Oefen eerst zonder wedstrijd: bij ‘klaar’ pakt iedereen het touw met twee handen en zet de voeten stevig. Op ‘trek’ trekken beide teams zacht; op ‘stop’ staan ze stil en leggen samen neer.",
+        level: "Rustig",
+      },
+      {
+        title: "Samen naar de lijn",
+        instruction:
+          "Een klein groepje trekt tegen een begeleider die langzaam meegeeft. Probeer het middenlint precies bij de dichtstbijzijnde lijn te stoppen. Op het signaal legt iedereen het touw samen neer.",
+        level: "Uitdaging",
       },
     ],
   },
@@ -1335,6 +1527,18 @@ export const exercises: Exercise[] = [
           "Hou de parachute op heuphoogte en wandel allemaal in dezelfde richting. Wissel op het signaal rustig van richting.",
         level: "Rustig",
       },
+      {
+        title: "Golf doorgeven",
+        instruction:
+          "Eén kind heft de rand een stukje op en laat hem weer zakken. De buur doet hetzelfde, zodat een golf de kring rondgaat. De lesgever wijst telkens aan wie volgt.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Bal op bezoek",
+        instruction:
+          "Leg één zachte bal op het doek en noem een kind. Hef samen de tegenoverliggende rand een beetje op zodat de bal rustig naar dat kind rolt. Stuur hem daarna naar iemand anders.",
+        level: "Uitdaging",
+      },
     ],
   },
   {
@@ -1426,6 +1630,18 @@ export const exercises: Exercise[] = [
           "Bedenk één beweging die je op dezelfde plaats met de bal kunt doen. De groep probeert ze na.",
         level: "Uitdaging",
       },
+      {
+        title: "Bal als stempel",
+        instruction:
+          "Blijf op je eigen oefenplek. Druk de bal zacht tegen je buik, daarna tegen je linkerknie en je rechterknie. Gooi hem onderhands terug en volg de vaste looproute.",
+        level: "Rustig",
+      },
+      {
+        title: "Rol onder de brug",
+        instruction:
+          "Zit op je oefenplek met opgetrokken knieën en je voeten op de grond. Rol de bal onder je knieën van de ene hand naar de andere. Sta op, gooi hem terug en volg de looproute.",
+        level: "Uitdaging",
+      },
     ],
   },
   {
@@ -1445,6 +1661,19 @@ export const exercises: Exercise[] = [
       "Markeer een korte, rechte loopafstand met twee potjes en kies die afstand in de timer. Voorzie naast de loopbaan een vrije terugweg.",
     tip:
       "Laat één kind lopen terwijl de volgende klaarstaat. Vergelijk met dieren, niet met andere kinderen: elk resultaat is een leuke ontdekking.",
-    assignments: [],
+    assignments: [
+      {
+        title: "Wandelen en lopen",
+        instruction:
+          "Leg dezelfde afstand eerst wandelend en daarna lopend af. Meet elke beurt apart en bekijk welke dieren erbij passen. Wandel langs de vrije terugweg terug en rust even tussen de beurten.",
+        level: "Actief",
+      },
+      {
+        title: "Raad je dier",
+        instruction:
+          "Kies vóór je start welk dier je denkt te ontmoeten. Loop de gemarkeerde afstand en bekijk samen het resultaat. Doe daarna naast de loopbaan even de beweging van dat dier na.",
+        level: "Rustig",
+      },
+    ],
   },
 ];
