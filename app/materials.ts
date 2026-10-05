@@ -63,6 +63,7 @@ export function getMaterialIcon(material: string) {
   if (value.includes("hoepel")) return "⭕";
   if (value.includes("kegel") || value.includes("marker")) return "🔶";
   if (value.includes("kersepit")) return "🫘";
+  if (value.includes("ballon")) return "🎈";
   if (value.includes("bal")) return "⚽";
   if (value.includes("bank")) return "➖";
   if (value.includes("mat")) return "▰";

@@ -1052,6 +1052,97 @@ export const exercises: Exercise[] = [
     ],
   },
   {
+    id: "overlopen-met-ballonnen",
+    title: "Overlopen met ballonnen",
+    summary: "Breng een ballon naar de overkant: alleen of samen met een partner.",
+    category: "Gooien & vangen",
+    emoji: "🎈",
+    accent: "blue",
+    duration: "± 10 min",
+    ages: "3–6 jaar",
+    groupSize: "4–24 kinderen",
+    material: ["1 ballon per kind"],
+    optionalMaterial: ["Kegels", "2 matten", "Reserveballonnen"],
+    setup:
+      "Baken een brede start- en eindzone af. Blaas de ballonnen vooraf op en laat de kinderen in golven vertrekken met voldoende tussenruimte.",
+    tip:
+      "Ballonnen bewegen traag, zodat ook de jongste kinderen ze goed kunnen volgen. Hou reserveballonnen klaar en ruim stukjes van een gesprongen ballon meteen op.",
+    assignments: [
+      {
+        title: "Petsen",
+        instruction:
+          "Pets de ballon met je hand omhoog en loop erachteraan. Probeer hem tot aan de overkant in de lucht te houden.",
+        level: "Actief",
+      },
+      {
+        title: "Rollen",
+        instruction:
+          "Rol de ballon met je handen over de grond naar de overkant. Hou hem dicht bij je.",
+        level: "Rustig",
+      },
+      {
+        title: "Shotten",
+        instruction:
+          "Trap de ballon met je voet vooruit, loop erachteraan en shot opnieuw tot je de overkant bereikt.",
+        level: "Actief",
+      },
+      {
+        title: "Hoofdje",
+        instruction:
+          "Gooi de ballon op en tik hem met je hoofd verder. Vang hem en probeer opnieuw.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Blazen",
+        instruction:
+          "Kruip op handen en voeten en blaas de ballon over de grond naar de overkant.",
+        level: "Rustig",
+      },
+      {
+        title: "Lichaamsdelen",
+        instruction:
+          "Hou de ballon in de lucht met het lichaamsdeel dat de lesgever roept: hand, elleboog, knie of schouder.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Ballon tussen de knieën",
+        instruction:
+          "Klem de ballon tussen je knieën en spring of waggel als een pinguïn naar de overkant.",
+        level: "Actief",
+      },
+      {
+        title: "Buik aan buik",
+        instruction:
+          "Ga per twee tegenover elkaar staan en klem de ballon tussen jullie buiken. Schuif zijwaarts naar de overkant zonder handen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Rug aan rug",
+        instruction:
+          "Ga per twee rug aan rug staan met de ballon ertussen. Schuif samen zijwaarts naar de overkant zonder dat hij valt.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Schouder aan schouder",
+        instruction:
+          "Ga per twee naast elkaar staan en klem de ballon tussen jullie schouders. Wandel samen vooruit naar de overkant.",
+        level: "Actief",
+      },
+      {
+        title: "Voorhoofd aan voorhoofd",
+        instruction:
+          "Klem de ballon per twee tussen jullie voorhoofden. Hou elkaars handen vast en schuifel samen naar de overkant.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Over en weer petsen",
+        instruction:
+          "Loop per twee naast elkaar naar de overkant en pets de ballon telkens naar je partner.",
+        level: "Actief",
+      },
+    ],
+  },
+  {
     id: "bal-tegen-de-muur",
     title: "Bal tegen de muur",
     summary: "Gooien, reageren en vangen met een veilige eigen muurzone.",
