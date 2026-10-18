@@ -81,7 +81,7 @@ export default function HelpCalendar() {
     } finally { setBusy(false); }
   }
 
-  const displayedEvents = calendar?.events.filter(date => date.slice(5, 7) === "09" || date.slice(5, 7) === "10");
+  const displayedEvents = calendar?.events.filter(date => date <= "2026-12-31");
 
   return (
     <section className="mt-10" aria-labelledby="calendar-title">
