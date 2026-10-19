@@ -1,6 +1,7 @@
 export const categories = [
   "Lopen & bewegen",
   "Gooien & vangen",
+  "Bal passen",
   "Balans & rollen",
   "Samen spelen",
 ] as const;
@@ -32,6 +33,97 @@ export type Exercise = {
 };
 
 export const exercises: Exercise[] = [
+  {
+    id: "bal-passen",
+    title: "Bal passen",
+    summary: "Geef één bal de kring rond met je handen of voeten, ook met een zotteke.",
+    category: "Bal passen",
+    emoji: "⚽",
+    accent: "blue",
+    duration: "± 10 min",
+    ages: "3–6 jaar",
+    groupSize: "4–5 kinderen per kring",
+    material: ["1 grote, zachte bal per kring"],
+    optionalMaterial: ["Vloermarkeringen"],
+    setup:
+      "Maak groepjes van vier of vijf kinderen. Laat elk groepje in een kleine kring staan, met ongeveer één armlengte tussen de buren en voldoende ruimte tussen de kringen. Gebruik één bal per kring. Wijs aan naar welke buur de bal telkens gaat: iedereen komt aan de beurt en de bal gaat rond. Bij het zotteke gaat één kind uit de kring in het midden staan; de andere drie of vier maken de kring weer rond.",
+    tip:
+      "Toon telkens één opdracht en begin met doorgeven van hand tot hand. Maak de kring kleiner als passen moeilijk is; zittend rollen mag ook. Wacht tot de buur klaar is en laat een gevallen bal rustig oprapen. Bij het zotteke blijft de bal op de grond: alleen de bal onderscheppen, nooit afpakken uit handen, duwen of naar voeten trappen. Wissel het middenkind na één rondje, ook zonder onderschepping. Niemand valt af.",
+    assignments: [
+      {
+        title: "Geef maar door",
+        instruction:
+          "Hou de bal met twee handen vast en geef hem aan je buur. Laat pas los als je buur hem vastheeft. Ga zo de hele kring rond.",
+        level: "Rustig",
+      },
+      {
+        title: "Rol naar je buur",
+        instruction:
+          "Buig door je knieën en rol de bal zacht met twee handen naar je buur. Die stopt hem met twee handen en rolt verder naar de volgende. Ga indien nodig samen zitten.",
+        level: "Rustig",
+      },
+      {
+        title: "Zeg de naam",
+        instruction:
+          "Noem de naam van je buur of wijs je buur aan. Wacht tot die kijkt en geef dan de bal met twee handen door. Herhaal de hele kring rond.",
+        level: "Rustig",
+      },
+      {
+        title: "De andere kant op",
+        instruction:
+          "Geef de bal één rondje door. Stop dan met de bal in je handen. De lesgever wijst de andere richting aan: geef nu aan je andere buur door.",
+        level: "Rustig",
+      },
+      {
+        title: "Zachtjes passen",
+        instruction:
+          "Draai naar je buur en gooi de bal van heel dichtbij zacht onderhands naar de open handen. Je buur mag hem tegen de buik vangen of na een bots oprapen en past dan verder. Lukt gooien nog niet, geef de bal gewoon aan.",
+        level: "Rustig",
+      },
+      {
+        title: "Eén bots naar de buur",
+        instruction:
+          "Duw de bal met twee handen zacht op de grond tussen jou en je buur. Die pakt hem na de bots en doet hetzelfde naar de volgende. Rolt de bal in plaats van te botsen, dan mag dat ook.",
+        level: "Actief",
+      },
+      {
+        title: "Zachtjes shotten",
+        instruction:
+          "Leg de bal stil en draai naar je buur. Geef met de binnenkant van je voet een klein duwtje zodat de bal over de grond rolt. Je buur stopt hem eerst met twee handen, staat weer recht en shot zacht naar de volgende. Hou de bal laag.",
+        level: "Actief",
+      },
+      {
+        title: "Knuffel en geef door",
+        instruction:
+          "Pak de bal met twee handen, knuffel hem even tegen je buik en geef hem aan je buur. Iedereen doet hetzelfde tot de bal weer bij het eerste kind is.",
+        level: "Rustig",
+      },
+      {
+        title: "Tik en rol",
+        instruction:
+          "Stop de bal met twee handen. Tik er één keer zacht bovenop en rol hem dan naar je buur. Wacht rustig tot de bal opnieuw bij jou komt.",
+        level: "Rustig",
+      },
+      {
+        title: "Zotteke als helper",
+        instruction:
+          "Rol de bal naar het zotteke in het midden. Die stopt hem met twee handen en rolt naar het volgende kind in de kring; de lesgever wijst wie dat is. Zo komt iedereen via het midden aan de beurt. Wissel na één rondje.",
+        level: "Rustig",
+      },
+      {
+        title: "Zotteke vangt een rolbal",
+        instruction:
+          "Rol de bal zacht naar je buur, de kring rond. Het zotteke wandelt en probeert de rollende bal met twee handen te stoppen. Laat het eerst één rolbeurt wachten voor het mag bewegen. Bij een onderschepping krijgt de bedoelde buur de bal terug en spelen jullie verder. Wissel het zotteke na één rondje.",
+        level: "Actief",
+      },
+      {
+        title: "Zotteke stopt een shot",
+        instruction:
+          "Duw de bal zacht met je voet naar je buur. Het zotteke probeert de bal met een voet tegen te houden, zonder naar de bal te trappen. Iedereen blijft rechtstaan en wandelt alleen. Na een stop rolt de lesgever de bal naar de bedoelde buur. Wissel na één rondje. Is dit nog moeilijk, speel dan de rolvariant met de handen.",
+        level: "Actief",
+      },
+    ],
+  },
   {
     id: "balletje-verstoppen",
     title: "Balletje verstoppen",
