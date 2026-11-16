@@ -1144,6 +1144,97 @@ export const exercises: Exercise[] = [
     ],
   },
   {
+    id: "overlopen-met-kersepitzakjes",
+    title: "Overlopen met kersepitzakjes",
+    summary: "Draag, balanceer en gooi een kersepitzakje naar de overkant.",
+    category: "Lopen & bewegen",
+    emoji: "🫘",
+    accent: "green",
+    duration: "± 10 min",
+    ages: "3–6 jaar",
+    groupSize: "4–24 kinderen",
+    material: ["1 kersepitzakje per kind"],
+    optionalMaterial: ["Kegels"],
+    setup:
+      "Baken een brede start- en eindzone af met voldoende ruimte tussen de kinderen. Laat iedereen in kleine golven in dezelfde richting oversteken. Wandel langs de zijkant terug en wacht tot de baan vrij is voor de volgende golf.",
+    tip:
+      "Begin met een korte afstand en toon elke opdracht voor. Valt het zakje, dan raapt het kind het rustig op en gaat verder. De jongste kinderen mogen het zakje met één hand ondersteunen. Gooi alleen laag vooruit in de eigen vrije baan.",
+    assignments: [
+      {
+        title: "Op een dienblad",
+        instruction:
+          "Leg het zakje op twee open handpalmen en wandel naar de overkant. Hou je handen zo stil mogelijk.",
+        level: "Rustig",
+      },
+      {
+        title: "Op je hoofd",
+        instruction:
+          "Leg het zakje op je hoofd en stap rustig vooruit. Kijk naar de overkant en ondersteun het zakje met één hand als dat nodig is.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Op je schouder",
+        instruction:
+          "Draag het zakje op je schouder naar de overkant. Stop halverwege en leg het op je andere schouder.",
+        level: "Rustig",
+      },
+      {
+        title: "Van hand tot hand",
+        instruction:
+          "Wandel vooruit en geef het zakje voor je buik telkens van je ene hand naar je andere hand door.",
+        level: "Rustig",
+      },
+      {
+        title: "Rond je middel",
+        instruction:
+          "Stap rustig naar de overkant en geef het zakje rond je middel door, voor je buik en achter je rug.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Grote reuzenstappen",
+        instruction:
+          "Hou het zakje met twee handen tegen je buik en zet grote stappen naar de overkant. Wissel af met kleine muizenstapjes wanneer de lesgever het roept.",
+        level: "Actief",
+      },
+      {
+        title: "Zijwaarts dragen",
+        instruction:
+          "Leg het zakje op twee open handpalmen en schuif met zijstappen naar de overkant. Hou je voeten naast elkaar zonder ze te kruisen.",
+        level: "Actief",
+      },
+      {
+        title: "Pinguïnpasjes",
+        instruction:
+          "Klem het zakje tussen je knieën en waggel met kleine stapjes vooruit. Valt het, leg het terug en stap verder.",
+        level: "Actief",
+      },
+      {
+        title: "Kruiptransport",
+        instruction:
+          "Ga op handen en knieën zitten en laat de lesgever het zakje op je rug leggen. Kruip langzaam naar de overkant zonder het te verliezen.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Gooi en haal",
+        instruction:
+          "Stop en gooi het zakje onderhands een klein stukje vooruit in je eigen vrije baan. Wandel ernaartoe, raap het op en herhaal tot aan de eindzone.",
+        level: "Actief",
+      },
+      {
+        title: "Gooi en vang",
+        instruction:
+          "Zet twee stappen en stop. Gooi het zakje een klein stukje omhoog en vang het met twee handen. Stap daarna weer verder; oprapen mag ook.",
+        level: "Uitdaging",
+      },
+      {
+        title: "Slalom met je zakje",
+        instruction:
+          "Draag het zakje op een open handpalm en wandel tussen de kegels door. Wissel aan elke kegel van hand. Zonder kegels volg je de lesgever in een slingerlijn.",
+        level: "Uitdaging",
+      },
+    ],
+  },
+  {
     id: "overlopen-met-ballonnen",
     title: "Overlopen met ballonnen",
     summary: "Breng een ballon naar de overkant: alleen of samen met een partner.",
