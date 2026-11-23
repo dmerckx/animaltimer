@@ -60,6 +60,26 @@ const musicSongs = {
     artist: "Kinderliedjes",
     url: "https://open.spotify.com/track/5yvvXdxDrVfldROhJUdyW0",
   },
+  oya: {
+    title: "Oya Lélé",
+    artist: "K3",
+    url: "https://open.spotify.com/track/6iueJjaTNB1bXIvgRJ0IKY",
+  },
+  elfjes: {
+    title: "Elfjesdans",
+    artist: "DD Company",
+    url: "https://open.spotify.com/track/4zS3snCAPVBgmkyLqnj56J",
+  },
+  kopje: {
+    title: "Ik Ben Een Kopje",
+    artist: "DD Company & Minidisco",
+    url: "https://open.spotify.com/track/0gVF2Hkv814IO9b5Nbmiku",
+  },
+  bus: {
+    title: "De Wielen Van De Bus",
+    artist: "DD Company & Minidisco",
+    url: "https://open.spotify.com/track/5mDKUuj6HOfNK1gmc0DEkA",
+  },
   slaap: {
     title: "Slaap kindje slaap",
     artist: "Alles Kids",
@@ -152,14 +172,14 @@ export const exercises: Exercise[] = [
         instruction:
           "Dans vrij op je eigen plekje. De lesgever pauzeert onverwacht de muziek in Spotify: iedereen bevriest als een standbeeld. Start de muziek weer en dans verder. Wissel af met een gek gezicht of je armen hoog bij de stop. Niemand valt af.",
         level: "Actief",
-        songs: [musicSongs.rita, musicSongs.tsjoe],
+        songs: [musicSongs.rita],
       },
       {
         title: "Stoelendans zonder afvallers",
         instruction:
           "Zet voor elk kind een stevige stoel in een kring, met de zitting naar buiten en ruimte om rond te wandelen. Wandel allemaal dezelfde kant op terwijl de muziek speelt. Bij een pauze zoekt iedereen een vrije stoel. Hou alle stoelen staan: iedereen blijft meedoen. Zonder stoelen kan dit met één hoepel per kind.",
         level: "Actief",
-        songs: [musicSongs.rita, musicSongs.tsjoe],
+        songs: [musicSongs.oya],
       },
       {
         title: "Hoofd, schouders, knie en teen",
@@ -173,21 +193,21 @@ export const exercises: Exercise[] = [
         instruction:
           "Leg één hoepel per kind verspreid op de grond. Dans of wandel tussen de eilanden zonder erin te stappen. Pauzeer de muziek: ieder kind stapt rustig in een vrije hoepel. Start weer en vertrek naar de zee. Hou alle eilanden liggen en laat iedereen meedoen.",
         level: "Actief",
-        songs: [musicSongs.rita, musicSongs.tsjoe],
+        songs: [musicSongs.elfjes],
       },
       {
         title: "Spiegeldans",
         instruction:
-          "Sta per twee tegenover elkaar met een armlengte ruimte. Eén kind toont eenvoudige bewegingen op de muziek: klappen, zwaaien of stappen op de plaats. Het andere doet na als een spiegel. Pauzeer na een kort stukje en wissel van leider. De lesgever helpt met voorbeelden.",
+          "Sta per twee tegenover elkaar met een armlengte ruimte. Eén kind toont eenvoudige bewegingen op de muziek: klappen, zwaaien of stappen op de plaats. Het andere doet na als een spiegel. Pauzeer na een kort stukje en wissel van leider. De lesgever helpt met voorbeelden, zoals een oor maken met je arm voor een kopje of je armen rond houden voor een kom.",
         level: "Actief",
-        songs: [musicSongs.rita, musicSongs.hoofd],
+        songs: [musicSongs.kopje],
       },
       {
         title: "Muzikale doorgeefdans",
         instruction:
           "Sta in een kring en geef een zachte bal rustig van hand tot hand terwijl de muziek speelt. Pauzeer: het kind met de bal toont één beweging die iedereen nadoet. Help met een voorbeeld als kiezen moeilijk is. Start opnieuw en geef verder; niemand valt af.",
         level: "Rustig",
-        songs: [musicSongs.rita, musicSongs.tsjoe],
+        songs: [musicSongs.bus],
       },
       {
         title: "Rustige afsluitdans",
