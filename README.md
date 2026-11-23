@@ -4,8 +4,9 @@ Een praktische lesgeverstool voor Multimove-kinderen van 3 tot 6 jaar, met losse
 
 ## Functionaliteit
 
-- 18 losse, thematische kleuteroefeningen en de dierentimer als extra oefening.
-- 178 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
+- 22 losse, thematische kleuteroefeningen en de dierentimer als extra oefening.
+- 258 korte opdrachten met vorige-, volgende- en willekeurige navigatie.
+- Muziek & bewegen met 8 variaties, waaronder stopdans en stoelendans, en directe Spotify-links per opdracht.
 - Compacte mobiele oefeningskaarten met direct zichtbare materiaalpictogrammen.
 - Info over leeftijd, groepsgrootte, opstelling, materiaal en lesgevertips.
 - Een apart parcours met 8 voorbereide stations en 48 combineerbare uitvoeringen.

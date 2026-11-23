@@ -338,6 +338,36 @@ function ExerciseDetail({
                 <p className="mt-4 max-w-2xl text-lg font-medium leading-8 text-[#46534b] sm:text-xl">
                   {assignment.instruction}
                 </p>
+                {assignment.songs && assignment.songs.length > 0 && (
+                  <div className="mt-6 border-t border-white/60 pt-4">
+                    <h4 className="text-xs font-black uppercase tracking-[0.12em] text-[#46534b]">
+                      Liedjes bij deze opdracht
+                    </h4>
+                    <ul className="mt-3 space-y-2">
+                      {assignment.songs.map((song) => (
+                        <li key={song.url}>
+                          <a
+                            href={song.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex min-h-12 items-center justify-between gap-3 rounded-xl bg-white/85 px-4 py-3 text-[#20342a] transition hover:bg-white focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#20342a]"
+                          >
+                            <span className="min-w-0">
+                              <span className="block text-sm font-black">{song.title}</span>
+                              <span className="block text-xs text-[#58655d]">{song.artist}</span>
+                            </span>
+                            <span className="shrink-0 text-xs font-extrabold">
+                              Spotify ↗<span className="sr-only"> (opent in een nieuw tabblad)</span>
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-3 text-xs leading-5 text-[#46534b]">
+                      Start en pauzeer in Spotify op je gekoppelde box.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 

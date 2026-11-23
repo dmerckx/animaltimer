@@ -8,10 +8,17 @@ export const categories = [
 
 export type ExerciseCategory = (typeof categories)[number];
 
+export type ExerciseSong = {
+  title: string;
+  artist: string;
+  url: string;
+};
+
 export type Assignment = {
   title: string;
   instruction: string;
   level?: "Rustig" | "Actief" | "Uitdaging";
+  songs?: ExerciseSong[];
 };
 
 export type Exercise = {
@@ -32,7 +39,110 @@ export type Exercise = {
   assignments: Assignment[];
 };
 
+const musicSongs = {
+  tsjoe: {
+    title: "Tsjoe Tsjoe Wa",
+    artist: "DD Company & Minidisco",
+    url: "https://open.spotify.com/track/5hb0DksHFtYAIIGPFiJfWf",
+  },
+  choo: {
+    title: "Choo Choo Wa",
+    artist: "Minidisco English",
+    url: "https://open.spotify.com/track/0rE6fQWhJAA6JQwnYmWUFb",
+  },
+  rita: {
+    title: "Dans Met Tante Rita",
+    artist: "DD Company & Minidisco",
+    url: "https://open.spotify.com/track/6L6gimE4VLHrnRWOK2Usah",
+  },
+  hoofd: {
+    title: "Hoofd, Schouders, Knie En Teen",
+    artist: "Kinderliedjes",
+    url: "https://open.spotify.com/track/5yvvXdxDrVfldROhJUdyW0",
+  },
+  slaap: {
+    title: "Slaap kindje slaap",
+    artist: "Alles Kids",
+    url: "https://open.spotify.com/track/62GJe7al58JFwcH3LZPzkc",
+  },
+} satisfies Record<string, ExerciseSong>;
+
 export const exercises: Exercise[] = [
+  {
+    id: "muziek",
+    title: "Muziek & bewegen",
+    summary: "Dans, stop en speel samen op bekende kleuterliedjes via je box en Spotify.",
+    category: "Lopen & bewegen",
+    emoji: "🎵",
+    accent: "purple",
+    duration: "± 10–15 min",
+    ages: "3–6 jaar",
+    groupSize: "4–20 kinderen",
+    material: ["Muziekbox", "Telefoon met Spotify"],
+    optionalMaterial: ["1 stevige stoel per kind (stoelendans)", "Hoepels (eilandendans)", "1 zachte bal (doorgeefdans)"],
+    setup:
+      "Koppel je telefoon met Spotify aan de box en test het geluid. Zet de box buiten de speelruimte en laat voldoende plaats tussen de kinderen. Open een liedje bij de opdracht en start of pauzeer het in Spotify. Kies voor stopspelletjes één liedje en pauzeer zelf; de muziek stopt niet automatisch vanuit deze app. Zet vooraf het materiaal klaar voor de gekozen variatie.",
+    tip:
+      "Toon elke beweging eerst en hou het volume zo dat iedereen je kan horen. Begin met korte rondes van 20–30 seconden. Laat bij stopspelletjes niemand afvallen: wie nog beweegt, probeert gewoon opnieuw. Kies bij stoelendans stevige kinderstoelen zonder wieltjes en laat de kinderen wandelen.",
+    assignments: [
+      {
+        title: "Dans mee: Choo Choo Wa",
+        instruction:
+          "Ga verspreid staan met het gezicht naar de lesgever. Doe de bewegingen van Choo Choo Wa samen na: armen vooruit, duimen omhoog en knieën buigen. Bouw de bewegingen één voor één op. Kies Tsjoe Tsjoe Wa voor de Nederlandstalige versie en doe als lesgever mee.",
+        level: "Actief",
+        songs: [musicSongs.tsjoe, musicSongs.choo],
+      },
+      {
+        title: "Stopdans",
+        instruction:
+          "Dans vrij op je eigen plekje. De lesgever pauzeert onverwacht de muziek in Spotify: iedereen bevriest als een standbeeld. Start de muziek weer en dans verder. Wissel af met een gek gezicht of je armen hoog bij de stop. Niemand valt af.",
+        level: "Actief",
+        songs: [musicSongs.rita, musicSongs.tsjoe],
+      },
+      {
+        title: "Stoelendans zonder afvallers",
+        instruction:
+          "Zet voor elk kind een stevige stoel in een kring, met de zitting naar buiten en ruimte om rond te wandelen. Wandel allemaal dezelfde kant op terwijl de muziek speelt. Bij een pauze zoekt iedereen een vrije stoel. Hou alle stoelen staan: iedereen blijft meedoen. Zonder stoelen kan dit met één hoepel per kind.",
+        level: "Actief",
+        songs: [musicSongs.rita, musicSongs.tsjoe],
+      },
+      {
+        title: "Hoofd, schouders, knie en teen",
+        instruction:
+          "Sta op je eigen plekje en wijs de lichaamsdelen aan die je hoort. De lesgever doet voor. Begin met kleine, rustige bewegingen; raak je knieën aan als je tenen te ver zijn. Herhaal en laat de kinderen de bewegingen steeds zelfstandiger uitvoeren.",
+        level: "Rustig",
+        songs: [musicSongs.hoofd],
+      },
+      {
+        title: "Eilandendans",
+        instruction:
+          "Leg één hoepel per kind verspreid op de grond. Dans of wandel tussen de eilanden zonder erin te stappen. Pauzeer de muziek: ieder kind stapt rustig in een vrije hoepel. Start weer en vertrek naar de zee. Hou alle eilanden liggen en laat iedereen meedoen.",
+        level: "Actief",
+        songs: [musicSongs.rita, musicSongs.tsjoe],
+      },
+      {
+        title: "Spiegeldans",
+        instruction:
+          "Sta per twee tegenover elkaar met een armlengte ruimte. Eén kind toont eenvoudige bewegingen op de muziek: klappen, zwaaien of stappen op de plaats. Het andere doet na als een spiegel. Pauzeer na een kort stukje en wissel van leider. De lesgever helpt met voorbeelden.",
+        level: "Actief",
+        songs: [musicSongs.rita, musicSongs.hoofd],
+      },
+      {
+        title: "Muzikale doorgeefdans",
+        instruction:
+          "Sta in een kring en geef een zachte bal rustig van hand tot hand terwijl de muziek speelt. Pauzeer: het kind met de bal toont één beweging die iedereen nadoet. Help met een voorbeeld als kiezen moeilijk is. Start opnieuw en geef verder; niemand valt af.",
+        level: "Rustig",
+        songs: [musicSongs.rita, musicSongs.tsjoe],
+      },
+      {
+        title: "Rustige afsluitdans",
+        instruction:
+          "Zoek een vrij plekje en wieg zacht heen en weer op de muziek. Maak kleine wolken met je handen en laat je armen langzaam zakken. Ga op het einde rustig zitten en adem samen een paar keer in en uit.",
+        level: "Rustig",
+        songs: [musicSongs.slaap],
+      },
+    ],
+  },
   {
     id: "bal-passen",
     title: "Bal passen",
