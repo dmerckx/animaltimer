@@ -69,6 +69,61 @@ const musicSongs = {
 
 export const exercises: Exercise[] = [
   {
+    id: "duplo-estafette",
+    title: "Duplo-estafette",
+    summary: "Verdien bouwblokjes met je ploeg en bouw samen de hoogst mogelijke toren.",
+    category: "Samen spelen",
+    emoji: "🧱",
+    accent: "yellow",
+    duration: "± 10–15 min",
+    ages: "3–6 jaar",
+    groupSize: "2 of meer ploegen van 2–5 kinderen",
+    material: ["Grote Duplo-bouwblokken van gelijke hoogte", "2 kegels per ploeg"],
+    optionalMaterial: ["Hoepels (springpad)", "Zachte ballen (rolopdracht)", "Kersepitzakjes (balansopdracht)"],
+    setup:
+      "Maak twee of meer zo gelijk mogelijke ploegen. Geef elke ploeg een eigen baan met een startkegel, een keerpunt op ongeveer 3–5 meter en een bouwplek naast de start, buiten de looproute. Leg bij elk keerpunt een even grote voorraad Duplo-blokken van gelijke hoogte. Kies één opdracht voor alle ploegen en doe die voor. Per ploeg vertrekt één kind. Na het behalen van de opdracht krijgt het van de lesgever of helper één blokje, wandelt terug en bouwt het op de eigen toren. Pas dan tikt het de volgende aan. Speel bijvoorbeeld drie minuten per ronde; bij het eindsignaal ronden vertrokken kinderen hun beurt af. Vergelijk daarna de vrijstaande torens: welke staat het hoogst?",
+    tip:
+      "Gebruik grote Duplo-blokken en geef elke ploeg dezelfde kansen en afstand. Maak een opdracht makkelijker of help als ze nog niet lukt: na de aangepaste opdracht verdient het kind ook een blokje. Laat iedereen om de beurt bewegen én bouwen. Valt een toren om, dan mag de ploeg hem met de verdiende blokken opnieuw opbouwen. Bouw vanaf de vloer, klim nergens op en raak de torens van andere ploegen niet aan.",
+    assignments: [
+      {
+        title: "Loop en bouw",
+        instruction:
+          "Loop naar je keerpunt, ga om de kegel en stop bij de lesgever. Opdracht behaald? Je krijgt één Duplo-blokje. Wandel ermee terug, zet het op de toren van je ploeg en tik de volgende aan. Welke ploeg bouwt in deze ronde de hoogste vrijstaande toren?",
+        level: "Actief",
+      },
+      {
+        title: "Spring voor een blokje",
+        instruction:
+          "Leg voor elke ploeg drie hoepels vlak achter elkaar in de eigen baan. Spring met twee voeten van hoepel naar hoepel en wandel naar het keerpunt. Instappen mag als springen nog moeilijk is. Na het pad krijg je één blokje. Wandel langs de vrije zijkant terug, bouw en tik de volgende aan.",
+        level: "Actief",
+      },
+      {
+        title: "Dierenbouwers",
+        instruction:
+          "De lesgever kiest voor alle ploegen hetzelfde dier. Ga als een grote olifant met zware stappen of als een kleine muis op je tippen naar het keerpunt. Na de dierentocht krijg je één blokje. Wandel gewoon terug, bouw aan je eigen toren en tik de volgende aan. Kies bij een nieuwe ronde een ander dier.",
+        level: "Actief",
+      },
+      {
+        title: "Rol raak en bouw",
+        instruction:
+          "Wandel naar het keerpunt en rol daar een zachte bal vanaf één grote stap afstand tegen de kegel. Raak? Je krijgt één blokje. Mis? Probeer opnieuw van dichterbij; de lesgever mag helpen. Leg de bal weer klaar, wandel met je blokje terug, bouw en tik de volgende aan.",
+        level: "Rustig",
+      },
+      {
+        title: "Evenwichtige bouwers",
+        instruction:
+          "Draag een kersepitzakje op je open hand naar het keerpunt. Valt het, raap het op en ga vanaf die plek verder; ondersteunen met je andere hand mag. Bij aankomst ruil je het zakje voor één blokje. Wandel terug, bouw en tik de volgende aan. De helper legt het zakje klaar voor de volgende beurt.",
+        level: "Rustig",
+      },
+      {
+        title: "Klap, stamp en bouw",
+        instruction:
+          "Wandel naar het keerpunt. De lesgever toont een kort patroon: twee keer klappen en één keer stampen. Doe het na; samen met de lesgever mag ook. Na het patroon verdien je één blokje. Wandel terug, zet het op de toren en tik de volgende aan. Gebruik voor alle ploegen hetzelfde patroon.",
+        level: "Rustig",
+      },
+    ],
+  },
+  {
     id: "muziek",
     title: "Muziek & bewegen",
     summary: "Dans, stop en speel samen op bekende kleuterliedjes via je box en Spotify.",

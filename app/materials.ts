@@ -58,6 +58,7 @@ export function collectMaterials(items: {
 export function getMaterialIcon(material: string) {
   const value = material.toLocaleLowerCase("nl-BE");
 
+  if (value.includes("duplo")) return "🧱";
   if (value.includes("muziekbox")) return "🔊";
   if (value.includes("spotify")) return "📱";
   if (value.includes("stoel")) return "🪑";
