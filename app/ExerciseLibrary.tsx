@@ -356,15 +356,15 @@ function ExerciseDetail({
                               <span className="block text-sm font-black">{song.title}</span>
                               <span className="block text-xs text-[#58655d]">{song.artist}</span>
                             </span>
-                            <span className="shrink-0 text-xs font-extrabold">
-                              Spotify ↗<span className="sr-only"> (opent in een nieuw tabblad)</span>
+                            <span className="max-w-24 shrink-0 text-right text-xs font-extrabold">
+                              {song.linkType === "search" ? "Zoek op Spotify" : "Spotify"} ↗<span className="sr-only"> (opent in een nieuw tabblad)</span>
                             </span>
                           </a>
                         </li>
                       ))}
                     </ul>
                     <p className="mt-3 text-xs leading-5 text-[#46534b]">
-                      Start en pauzeer in Spotify op je gekoppelde box.
+                      Open het liedje in Spotify op je gekoppelde box en volg de opdracht.
                     </p>
                   </div>
                 )}

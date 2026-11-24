@@ -12,6 +12,7 @@ export type ExerciseSong = {
   title: string;
   artist: string;
   url: string;
+  linkType?: "search";
 };
 
 export type Assignment = {
@@ -39,12 +40,17 @@ export type Exercise = {
   assignments: Assignment[];
 };
 
+// Use a clearly labelled search when an exact Spotify recording is unconfirmed.
+function sarahSongSearch(title: string): ExerciseSong {
+  return {
+    title,
+    artist: "Sarah",
+    url: `https://open.spotify.com/search/${encodeURIComponent(`${title} Sarah`)}`,
+    linkType: "search",
+  };
+}
+
 const musicSongs = {
-  tsjoe: {
-    title: "Tsjoe Tsjoe Wa",
-    artist: "DD Company & Minidisco",
-    url: "https://open.spotify.com/track/5hb0DksHFtYAIIGPFiJfWf",
-  },
   choo: {
     title: "Choo Choo Wa",
     artist: "Minidisco English",
@@ -60,31 +66,61 @@ const musicSongs = {
     artist: "Kinderliedjes",
     url: "https://open.spotify.com/track/5yvvXdxDrVfldROhJUdyW0",
   },
+  bumba: {
+    title: "De Bumba Stopdans",
+    artist: "Bumba",
+    url: "https://open.spotify.com/track/4aooAxoIWTjTJ9LUOM03AR",
+  },
+  apen: {
+    title: "De apenstopdans",
+    artist: "Bewegenboog",
+    url: "https://open.spotify.com/track/755HLtbqKlWdS4zW1nypYT",
+  },
+  sint: {
+    title: "De Sinterklaas Stopdans",
+    artist: "Bewegenboog",
+    url: "https://open.spotify.com/track/0gnAhFGvHI6Nwz931c4rm2",
+  },
   oya: {
     title: "Oya Lélé",
     artist: "K3",
     url: "https://open.spotify.com/track/6iueJjaTNB1bXIvgRJ0IKY",
   },
-  elfjes: {
-    title: "Elfjesdans",
-    artist: "DD Company",
-    url: "https://open.spotify.com/track/4zS3snCAPVBgmkyLqnj56J",
+  ballonnen: {
+    title: "10.000 Luchtballonnen",
+    artist: "K3",
+    url: "https://open.spotify.com/track/5S4gcMj6UwcpgF8AHVCrZG",
   },
-  kopje: {
-    title: "Ik Ben Een Kopje",
-    artist: "DD Company & Minidisco",
-    url: "https://open.spotify.com/track/0gVF2Hkv814IO9b5Nbmiku",
+  waterval: {
+    title: "Waterval",
+    artist: "K3",
+    url: "https://open.spotify.com/track/79JuksO8bRLKojdLSArnvL",
   },
-  bus: {
-    title: "De Wielen Van De Bus",
-    artist: "DD Company & Minidisco",
-    url: "https://open.spotify.com/track/5mDKUuj6HOfNK1gmc0DEkA",
+  mango: {
+    title: "Mango Mango",
+    artist: "K3",
+    url: "https://open.spotify.com/track/0F51ZGp1APMEGmCgmG8Qwo",
+  },
+  kleuren: {
+    title: "Alle Kleuren",
+    artist: "K3",
+    url: "https://open.spotify.com/track/5ZCmdoN5EPtC1s4rX0Y7AG",
+  },
+  heyah: {
+    title: "Heyah Mama",
+    artist: "K3",
+    url: "https://open.spotify.com/track/4RHsbY8e24Z52CQ4SMZzpM",
   },
   slaap: {
     title: "Slaap kindje slaap",
     artist: "Alles Kids",
     url: "https://open.spotify.com/track/62GJe7al58JFwcH3LZPzkc",
   },
+  bus: sarahSongSearch("De wielen van de bus"),
+  handjes: sarahSongSearch("Twee handjes"),
+  beweegt: sarahSongSearch("Alles beweegt"),
+  pingui: sarahSongSearch("De pinguïndans"),
+  paardje: sarahSongSearch("Paardje in galop"),
 } satisfies Record<string, ExerciseSong>;
 
 export const exercises: Exercise[] = [
@@ -156,30 +192,30 @@ export const exercises: Exercise[] = [
     material: ["Muziekbox", "Telefoon met Spotify"],
     optionalMaterial: ["1 stevige stoel per kind (stoelendans)", "Hoepels (eilandendans)", "1 zachte bal (doorgeefdans)"],
     setup:
-      "Koppel je telefoon met Spotify aan de box en test het geluid. Zet de box buiten de speelruimte en laat voldoende plaats tussen de kinderen. Open een liedje bij de opdracht en start of pauzeer het in Spotify. Kies voor stopspelletjes één liedje en pauzeer zelf; de muziek stopt niet automatisch vanuit deze app. Zet vooraf het materiaal klaar voor de gekozen variatie.",
+      "Koppel je telefoon met Spotify aan de box en test het geluid. Zet de box buiten de speelruimte en laat voldoende plaats tussen de kinderen. Open een liedje bij de opdracht en start of pauzeer het in Spotify. De stopdansliedjes bevatten zelf stopmomenten. Bij stoelendans, eilandendans en doorgeefdans pauzeer je zelf in Spotify; deze app bedient de muziek niet. Zoeklinks openen een zoekopdracht op titel en artiest: kies daar de opname van Sarah. Zet vooraf het materiaal klaar voor de gekozen variatie.",
     tip:
       "Toon elke beweging eerst en hou het volume zo dat iedereen je kan horen. Begin met korte rondes van 20–30 seconden. Laat bij stopspelletjes niemand afvallen: wie nog beweegt, probeert gewoon opnieuw. Kies bij stoelendans stevige kinderstoelen zonder wieltjes en laat de kinderen wandelen.",
     assignments: [
       {
-        title: "Dans mee: Choo Choo Wa",
+        title: "Dans mee",
         instruction:
-          "Ga verspreid staan met het gezicht naar de lesgever. Doe de bewegingen van Choo Choo Wa samen na: armen vooruit, duimen omhoog en knieën buigen. Bouw de bewegingen één voor één op. Kies Tsjoe Tsjoe Wa voor de Nederlandstalige versie en doe als lesgever mee.",
+          "Ga verspreid staan met het gezicht naar de lesgever. Kies De wielen van de bus van Sarah en maak de gebaren uit het liedje, zoals draaiende wielen met je handen. Of kies Choo Choo Wa: armen vooruit, duimen omhoog en knieën buigen. De lesgever doet voor en bouwt de bewegingen één voor één op.",
         level: "Actief",
-        songs: [musicSongs.tsjoe, musicSongs.choo],
+        songs: [musicSongs.bus, musicSongs.choo],
       },
       {
         title: "Stopdans",
         instruction:
-          "Dans vrij op je eigen plekje. De lesgever pauzeert onverwacht de muziek in Spotify: iedereen bevriest als een standbeeld. Start de muziek weer en dans verder. Wissel af met een gek gezicht of je armen hoog bij de stop. Niemand valt af.",
+          "Kies De Bumba Stopdans, De apenstopdans of De Sinterklaas Stopdans. Dans op je eigen plekje en volg de bewegingen en stopmomenten in het liedje. Bij het stopsignaal bevriest iedereen als een standbeeld; dans verder zodra het liedje dat aangeeft. Wissel af met een gek gezicht of je armen hoog bij de stop. Niemand valt af.",
         level: "Actief",
-        songs: [musicSongs.rita],
+        songs: [musicSongs.bumba, musicSongs.apen, musicSongs.sint],
       },
       {
         title: "Stoelendans zonder afvallers",
         instruction:
-          "Zet voor elk kind een stevige stoel in een kring, met de zitting naar buiten en ruimte om rond te wandelen. Wandel allemaal dezelfde kant op terwijl de muziek speelt. Bij een pauze zoekt iedereen een vrije stoel. Hou alle stoelen staan: iedereen blijft meedoen. Zonder stoelen kan dit met één hoepel per kind.",
+          "Zet voor elk kind een stevige stoel in een kring, met de zitting naar buiten en ruimte om rond te wandelen. Wandel allemaal dezelfde kant op terwijl de muziek speelt. De lesgever pauzeert zelf het gekozen K3-liedje in Spotify: iedereen zoekt een vrije stoel. Deze gewone liedjes hebben geen ingebouwde stopdansmomenten. Hou alle stoelen staan: iedereen blijft meedoen. Zonder stoelen kan dit met één hoepel per kind.",
         level: "Actief",
-        songs: [musicSongs.oya],
+        songs: [musicSongs.oya, musicSongs.ballonnen, musicSongs.waterval],
       },
       {
         title: "Hoofd, schouders, knie en teen",
@@ -193,21 +229,21 @@ export const exercises: Exercise[] = [
         instruction:
           "Leg één hoepel per kind verspreid op de grond. Dans of wandel tussen de eilanden zonder erin te stappen. Pauzeer de muziek: ieder kind stapt rustig in een vrije hoepel. Start weer en vertrek naar de zee. Hou alle eilanden liggen en laat iedereen meedoen.",
         level: "Actief",
-        songs: [musicSongs.elfjes],
+        songs: [musicSongs.handjes, musicSongs.rita],
       },
       {
         title: "Spiegeldans",
         instruction:
-          "Sta per twee tegenover elkaar met een armlengte ruimte. Eén kind toont eenvoudige bewegingen op de muziek: klappen, zwaaien of stappen op de plaats. Het andere doet na als een spiegel. Pauzeer na een kort stukje en wissel van leider. De lesgever helpt met voorbeelden, zoals een oor maken met je arm voor een kopje of je armen rond houden voor een kom.",
+          "Sta per twee tegenover elkaar met een armlengte ruimte. Eén kind toont eenvoudige bewegingen op de muziek: klappen, zwaaien of stappen op de plaats. Het andere doet na als een spiegel. Pauzeer na een kort stukje en wissel van leider. De lesgever helpt met bewegingen uit het gekozen Sarah-liedje: je hele lichaam bewegen, waggelen als een pinguïn of kleine galopstapjes op de plaats. Blijf tegenover elkaar en wissel wie voordoet.",
         level: "Actief",
-        songs: [musicSongs.kopje],
+        songs: [musicSongs.beweegt, musicSongs.pingui, musicSongs.paardje],
       },
       {
         title: "Muzikale doorgeefdans",
         instruction:
-          "Sta in een kring en geef een zachte bal rustig van hand tot hand terwijl de muziek speelt. Pauzeer: het kind met de bal toont één beweging die iedereen nadoet. Help met een voorbeeld als kiezen moeilijk is. Start opnieuw en geef verder; niemand valt af.",
+          "Sta in een kring en geef een zachte bal rustig van hand tot hand terwijl de muziek speelt. Gebruik een van de gewone K3-liedjes zonder ingebouwde stopdansmomenten. De lesgever pauzeert zelf in Spotify: het kind met de bal toont één beweging die iedereen nadoet. Help met een voorbeeld als kiezen moeilijk is. Start opnieuw en geef verder; niemand valt af.",
         level: "Rustig",
-        songs: [musicSongs.bus],
+        songs: [musicSongs.mango, musicSongs.kleuren, musicSongs.heyah],
       },
       {
         title: "Rustige afsluitdans",
